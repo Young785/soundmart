@@ -167,9 +167,10 @@
                     },
                 success:function(data)
                 {
+
                     showChat(to_user_id);
                 }
-                });
+                }); 
             }
         });
         
