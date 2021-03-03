@@ -1,4 +1,4 @@
-@section('title', 'Profile - Chatbook')
+@section('title', ''.$user->name. ' - Chatbook')
 @include('/user/includes/header')
 
 <!--<div class="se-pre-con"></div>-->
@@ -41,15 +41,25 @@
             <div class=" col-lg-2 col-md-2 col-sm-2"></div>
         @endif    
         @if(session()->has("delMsg"))
-        <div class=" col-lg-2 col-md-2 col-sm-2"></div>
-            <div role="alert" class="alert alert-danger alert-dismissible col-lg-8 col-md-8 col-sm-8" id="remove">
-                <button type="button" data-dismiss="alert" aria-label="Close" class="close">
-                    <span aria-hidden="true">&times;</span>
-                </button><span class="icon mdi mdi-info-outline"></span>
-                <strong>Success!</strong> You Cancelled the friend request Successfully!
-            </div>
-        <div class=" col-lg-2 col-md-2 col-sm-2"></div>
-    @endif    
+            <div class=" col-lg-2 col-md-2 col-sm-2"></div>
+                <div role="alert" class="alert alert-danger alert-dismissible col-lg-8 col-md-8 col-sm-8" id="remove">
+                    <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button><span class="icon mdi mdi-info-outline"></span>
+                    <strong>Success!</strong> You Cancelled the friend request Successfully!
+                </div>
+            <div class=" col-lg-2 col-md-2 col-sm-2"></div>
+        @endif    
+        @if(session()->has("rec_acc"))
+            <div class=" col-lg-2 col-md-2 col-sm-2"></div>
+                <div role="alert" class="alert alert-danger alert-dismissible col-lg-8 col-md-8 col-sm-8" id="remove">
+                    <button type="button" data-dismiss="alert" aria-label="Close" class="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button><span class="icon mdi mdi-info-outline"></span>
+                    <strong>Success!</strong> You Successfully Accepted the friend Request!
+                </div>
+            <div class=" col-lg-2 col-md-2 col-sm-2"></div>
+        @endif    
         @if ($user_sec == $user->secrete_id)
            
         <section class="sec">
@@ -613,7 +623,6 @@
                                                     </ul>
                                                 @endif
                                             </div>
-                                            @include('/user/includes/recent-photos')
                                             <div class="widget">
                                                 <h4 class="widget-title">Shortcuts</h4>
                                                 <ul class="naves">
@@ -730,314 +739,318 @@
                                             </div><!-- who's following -->
                                         </aside>
                                     </div><!-- sidebar -->
-                                    <div class="col-lg-6">
-                                        <div class="central-meta new-pst">
-                                            <div class="new-postbox">
-                                                @if ($user->user_image == null)
-                                                    <figure>
-                                                        <a href="/profile/{{ $user->secrete_id }}"><img src="/assets/images/resources/admin2.jpg" alt="{{ $user->name }}"></a>
-                                                    </figure>
-                                                @else
-                                                    <figure>
-                                                        <a href="/profile/{{ $user->secrete_id }}"><img src="{{ asset("users") }}/{{ $user->user_image }}" class="img-tag" alt="{{ $user->name }}"></a>
-                                                    </figure>
-                                                @endif
-
-                                                <div class="newpst-input">
-                                                    <form method="POST" action="/newsfeed" enctype="multipart/form-data">
-                                                        @csrf
-                                                        <textarea rows="2" name="image_name" placeholder="Write something on {{substr($user->name, 5) }}'s timeline"></textarea>
-                                                        <div class="attachments">
-                                                            <ul>
-                                                                <li>
-                                                                    <i class="fa fa-image"></i>
-                                                                    <label class="fileContainer">
-                                                                        <input type="file" name="image[]" multiple title="Photo">
-                                                                    </label>
-                                                                </li>
-                                                                <li>
-                                                                    <i class="fa fa-camera"></i>
-                                                                    <label class="fileContainer">
-                                                                        <input type="file">
-                                                                    </label>
-                                                                </li>
-                                                                <li>
-                                                                    <button type="submit">Post</button>
-                                                                </li>
-                                                            </ul>
+                                    @if ($check_friend != null)
+                                        <div class="col-lg-6">
+                                            <div class="central-meta new-pst">
+                                                <div class="new-postbox">
+                                                    @if ($user->user_image == null)
+                                                        <figure>
+                                                            <a href="/profile/{{ $user->secrete_id }}"><img src="/assets/images/default.png" alt="{{ $user->name }}"></a>
+                                                        </figure>
+                                                    @else
+                                                        <figure>
+                                                            <a href="/profile/{{ $user->secrete_id }}"><img src="{{asset("users")}}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="img-tag" alt="{{ $user->name }}"></a>
+                                                        </figure>
+                                                    @endif
+                                                        <div class="newpst-input">
+                                                            <form method="POST" action="/newsfeed" enctype="multipart/form-data">
+                                                                @csrf
+                                                                <textarea rows="2" name="image_name" placeholder="Write something on {{substr($user->name, 5) }}'s timeline"></textarea>
+                                                                <div class="attachments">
+                                                                    <ul>
+                                                                        <li>
+                                                                            <i class="fa fa-image"></i>
+                                                                            <label class="fileContainer">
+                                                                                <input type="file" name="image[]" multiple title="Photo">
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <i class="fa fa-camera"></i>
+                                                                            <label class="fileContainer">
+                                                                                <input type="file">
+                                                                            </label>
+                                                                        </li>
+                                                                        <li>
+                                                                            <button type="submit">Post</button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                    </form>
+                                                
+                                                
                                                 </div>
-                                            </div>
-                                        </div><!-- add post new box -->
-                                        <div class="loadMore">
-                                            @foreach ($posts as $item)
-                                            {{-- {{ dd($user->user_image) }} --}}
-                                                        <div class="central-meta item">
-                                                            <div class="user-post">
-                                                                <div class="friend-info">
-                                                                    @if ($user->user_image == null)
-                                                                        <figure>
-                                                                            <img src="/assets/images/default.png" alt="{{ $item->name }}" title="{{ $item->name }}">
-                                                                        </figure>
-                                                                        @else
-                                                                        <figure>
-                                                                            <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="img-tag" alt="{{ $item->name }}" title="{{ $item->name }}">
-                                                                        </figure>
-                                                                    @endif
-                                                                    <div class="friend-name">
-                                                                        <ins><a href="time-line.html" title="">{{ $item->name }}</a></ins>
-                                                                        <span>published: {{ $item->created_at->diffForHumans() }}</span>
-                                                                    </div>
-                                                                    <div class="description">
-                                                                        <p>
-                                                                            {{ $item->image_name }}
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="post-meta" >
-                                                                        @php
-                                                                            $image_explode = explode("/", $item->image);
-                                                                            $count = count($image_explode);
-                                                                        @endphp
-                                                                            @foreach ($image_explode as $value)
-                                                                                @if ($count == 1)
-                                                                                    <a href="/profile/{{ $user->secrete_id }}"> <img src="{{ asset("posts") }}/{{ $value }}"  alt=""></a>
-                                                                                @elseif($count == 2)
-                                                                                    <a href="/profile/{{ $user->secrete_id }}"> <img src="{{ asset("posts") }}/{{ $value }}" class="two-post"  alt=""></a>
+                                            </div><!-- add post new box -->
+                                            <div class="loadMore">
+                                                @foreach ($posts as $item)
+                                                {{-- {{ dd($user->user_image) }} --}}
+                                                            <div class="central-meta item">
+                                                                <div class="user-post">
+                                                                    <div class="friend-info">
+                                                                        @if ($user->user_image == null)
+                                                                            <figure>
+                                                                                <img src="/assets/images/default.png" alt="{{ $item->name }}" title="{{ $item->name }}">
+                                                                            </figure>
+                                                                            @else
+                                                                            <figure>
+                                                                                <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="img-tag" alt="{{ $item->name }}" title="{{ $item->name }}">
+                                                                            </figure>
+                                                                        @endif
+                                                                        <div class="friend-name">
+                                                                            <ins><a href="time-line.html" title="">{{ $item->name }}</a></ins>
+                                                                            <span>published: {{ $item->created_at->diffForHumans() }}</span>
+                                                                        </div>
+                                                                        <div class="description">
+                                                                            <p>
+                                                                                {{ $item->image_name }}
+                                                                            </p>
+                                                                        </div>
+                                                                        <div class="post-meta" >
+                                                                            @php
+                                                                                $image_explode = explode("/", $item->image);
+                                                                                $count = count($image_explode);
+                                                                            @endphp
+                                                                                @foreach ($image_explode as $value)
+                                                                                    @if ($count == 1)
+                                                                                        <a href="/profile/{{ $user->secrete_id }}"> <img src="{{ asset("posts") }}/{{ $value }}"  alt=""></a>
+                                                                                    @elseif($count == 2)
+                                                                                        <a href="/profile/{{ $user->secrete_id }}"> <img src="{{ asset("posts") }}/{{ $value }}" class="two-post"  alt=""></a>
+                                                                                    @endif
+
+                                                                                @endforeach
+                                                                                @if ($count == 3)
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="three-post"  alt="">
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="three-post"  alt="">
+                                                                                @endif
+                                                                                @if ($count == 4)
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="four-post"  alt="">
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="four-post"  alt="">
+                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="four-post"  alt="">
                                                                                 @endif
 
-                                                                            @endforeach
-                                                                            @if ($count == 3)
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="three-post"  alt="">
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="three-post"  alt="">
-                                                                            @endif
-                                                                            @if ($count == 4)
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="four-post"  alt="">
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="four-post"  alt="">
-                                                                                <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="four-post"  alt="">
-                                                                            @endif
-
-                                                                            @if ($count == 5 || $count == 6)
-                                                                                {{-- {{ $count }} --}}
-                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-five-post"  alt="">
-                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="one-five-post"  alt="">
-                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="five-post"  alt="">
-                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
-                                                                                    <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
-                                                                            @endif
-                                                                        <div class="we-video-info">
-                                                                            <ul>
-                                                                                <li>
-                                                                                    <span class="comment" data-toggle="tooltip" title="Comments">
-                                                                                        <i class="fa fa-comments-o"></i>
-                                                                                        <ins>52</ins>
-                                                                                    </span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <span class="like" data-toggle="tooltip" title="like">
-                                                                                        <i class="ti-heart"></i>
-                                                                                        <ins>2.2k</ins>
-                                                                                    </span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <span class="dislike" data-toggle="tooltip" title="dislike">
-                                                                                        <i class="ti-heart-broken"></i>
-                                                                                        <ins>200</ins>
-                                                                                    </span>
-                                                                                </li>
-                                                                                <li class="social-media">
-                                                                                    <div class="menu">
-                                                                                    <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                @if ($count == 5 || $count == 6)
+                                                                                    {{-- {{ $count }} --}}
+                                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-five-post"  alt="">
+                                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="one-five-post"  alt="">
+                                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="five-post"  alt="">
+                                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
+                                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
+                                                                                @endif
+                                                                            <div class="we-video-info">
+                                                                                <ul>
+                                                                                    <li>
+                                                                                        <span class="comment" data-toggle="tooltip" title="Comments">
+                                                                                            <i class="fa fa-comments-o"></i>
+                                                                                            <ins>52</ins>
+                                                                                        </span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <span class="like" data-toggle="tooltip" title="like">
+                                                                                            <i class="ti-heart"></i>
+                                                                                            <ins>2.2k</ins>
+                                                                                        </span>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <span class="dislike" data-toggle="tooltip" title="dislike">
+                                                                                            <i class="ti-heart-broken"></i>
+                                                                                            <ins>200</ins>
+                                                                                        </span>
+                                                                                    </li>
+                                                                                    <li class="social-media">
+                                                                                        <div class="menu">
+                                                                                        <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
                                                                                         <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div class="rotater">
-                                                                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
                                                                                         </div>
-                                                                                    </div>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
+                                                                                        </div>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
+                                                                                        </div>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
+                                                                                        </div>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                            <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="rotater">
+                                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
+                                                                                            </div>
+                                                                                        </div>
 
-                                                                                    </div>
-                                                                                </li>
+                                                                                        </div>
+                                                                                    </li>
 
-                                                                            </ul>
+                                                                                </ul>
+                                                                            </div>
+
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="coment-area">
+                                                                        <ul class="we-comet">
+                                                                            <li>
+                                                                                <a href="#" title="" class="showmore underline">more comments</a>
+                                                                            </li>
+                                                                            <li class="post-comment">
+                                                                                @if ($user->user_image == null)
+                                                                                    <div class="comet-avatar">
+                                                                                        <a href="/profile/{{ $user->secrete_id }}">
+                                                                                            <img class="img-a" src="/assets/images/resources/admin2.jpg" alt="{{ $user->name }}">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                    @else
+                                                                                    <div class="comet-avatar">
+                                                                                        <a href="/profile/{{ $user->secrete_id }}">
+                                                                                        <img class="img-a" src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" alt="{{ $user->name }}">
+                                                                                        </a>
+                                                                                    </div>
+                                                                                @endif
+                                                                                {{-- <div class="comet-avatar">
 
+                                                                                    <a class="img-a" href="/profile/{{ $user->secrete_id }}">
+                                                                                        <img class="img-a" src="/assets/images/resources/admin2.jpg" alt="{{ $user->name }}"> --}}
+                                                                                    {{-- </a> --}}
+
+                                                                                {{-- </div> --}}
+                                                                                <div class="post-comt-box">
+                                                                                    <form method="post">
+                                                                                        <p class="lead emoji-picker-container">
+                                                                                            <textarea placeholder="Write a comment..." data-emojiable="true" id="emojiTextarea"></textarea>
+                                                                                        </p>
+                                                                                        <div class="smiles-bunch">
+                                                                                            <i class="em em---1"></i>
+                                                                                            <i class="em em-smiley"></i>
+                                                                                            <i class="em em-anguished"></i>
+                                                                                            <i class="em em-laughing"></i>
+                                                                                            <i class="em em-angry"></i>
+                                                                                            <i class="em em-astonished"></i>
+                                                                                            <i class="em em-blush"></i>
+                                                                                            <i class="em em-disappointed"></i>
+                                                                                            <i class="em em-worried"></i>
+                                                                                            <i class="em em-kissing_heart"></i>
+                                                                                            <i class="em em-rage"></i>
+                                                                                            <i class="em em-stuck_out_tongue"></i>
+                                                                                        </div>
+                                                                                        <button type="submit"></button>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
                                                                     </div>
                                                                 </div>
-                                                                <div class="coment-area">
-                                                                     <ul class="we-comet">
+                                                            </div>
+                                                        @endforeach
+                                                        <script>
+                                                            $(document).ready(function(){
+                                                                $("#emojiTextarea").emojioneArea();
+                                                            })
+                                                        </script>
+                                                {{-- <div class="central-meta item">
+                                                    <div class="user-post">
+                                                        <div class="friend-info">
+                                                            <figure>
+                                                                <img src="/assets/images/resources/friend-avatar10.jpg" alt="">
+                                                            </figure>
+                                                            <div class="friend-name">
+                                                                <ins><a href="time-line.html" title="">{{ $user['name'] }}</a></ins>
+                                                                <span>published: june,2 2018 19:PM</span>
+                                                            </div>
+                                                            <div class="description">
+
+                                                                    <p>
+                                                                        World's most beautiful car in Curabitur <a href="#" title="">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website
+                                                                    </p>
+                                                                </div>
+                                                            <div class="post-meta">
+                                                                <div class="linked-image align-left">
+                                                                    <a href="#" title=""><img src="/assets/images/resources/page1.jpg" alt=""></a>
+                                                                </div>
+                                                                <div class="detail">
+                                                                    <span>Love Maid - ChillGroves</span>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... </p>
+                                                                    <a href="#" title="">www.sample.com</a>
+                                                                </div>
+                                                                <div class="we-video-info">
+                                                                    <ul>
+
                                                                         <li>
-                                                                            <a href="#" title="" class="showmore underline">more comments</a>
+                                                                            <span class="views" data-toggle="tooltip" title="views">
+                                                                                <i class="fa fa-eye"></i>
+                                                                                <ins>1.2k</ins>
+                                                                            </span>
                                                                         </li>
-                                                                        <li class="post-comment">
-                                                                            @if ($user->user_image == null)
-                                                                                <div class="comet-avatar">
-                                                                                    <a href="/profile/{{ $user->secrete_id }}">
-                                                                                        <img class="img-a" src="/assets/images/resources/admin2.jpg" alt="{{ $user->name }}">
-                                                                                    </a>
+                                                                        <li>
+                                                                            <span class="comment" data-toggle="tooltip" title="Comments">
+                                                                                <i class="fa fa-comments-o"></i>
+                                                                                <ins>52</ins>
+                                                                            </span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="like" data-toggle="tooltip" title="like">
+                                                                                <i class="ti-heart"></i>
+                                                                                <ins>2.2k</ins>
+                                                                            </span>
+                                                                        </li>
+                                                                        <li>
+                                                                            <span class="dislike" data-toggle="tooltip" title="dislike">
+                                                                                <i class="ti-heart-broken"></i>
+                                                                                <ins>200</ins>
+                                                                            </span>
+                                                                        </li>
+                                                                        <li class="social-media">
+                                                                            <div class="menu">
+                                                                            <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
                                                                                 </div>
-                                                                                @else
-                                                                                <div class="comet-avatar">
-                                                                                    <a href="/profile/{{ $user->secrete_id }}">
-                                                                                    <img class="img-a" src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" alt="{{ $user->name }}">
-                                                                                    </a>
+                                                                            </div>
+                                                                                <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
                                                                                 </div>
-                                                                            @endif
-                                                                            {{-- <div class="comet-avatar">
+                                                                            </div>
+                                                                            <div class="rotater">
+                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
+                                                                                </div>
+                                                                            </div>
 
-                                                                                <a class="img-a" href="/profile/{{ $user->secrete_id }}">
-                                                                                    <img class="img-a" src="/assets/images/resources/admin2.jpg" alt="{{ $user->name }}"> --}}
-                                                                                {{-- </a> --}}
-
-                                                                            {{-- </div> --}}
-                                                                            <div class="post-comt-box">
-                                                                                <form method="post">
-                                                                                      <p class="lead emoji-picker-container">
-                                                                                        <textarea placeholder="Write a comment..." data-emojiable="true" id="emojiTextarea"></textarea>
-                                                                                    </p>
-                                                                                    <div class="smiles-bunch">
-                                                                                        <i class="em em---1"></i>
-                                                                                        <i class="em em-smiley"></i>
-                                                                                        <i class="em em-anguished"></i>
-                                                                                        <i class="em em-laughing"></i>
-                                                                                        <i class="em em-angry"></i>
-                                                                                        <i class="em em-astonished"></i>
-                                                                                        <i class="em em-blush"></i>
-                                                                                        <i class="em em-disappointed"></i>
-                                                                                        <i class="em em-worried"></i>
-                                                                                        <i class="em em-kissing_heart"></i>
-                                                                                        <i class="em em-rage"></i>
-                                                                                        <i class="em em-stuck_out_tongue"></i>
-                                                                                    </div>
-                                                                                    <button type="submit"></button>
-                                                                                </form>
                                                                             </div>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    @endforeach
-                                                    <script>
-                                                        $(document).ready(function(){
-                                                            $("#emojiTextarea").emojioneArea();
-                                                        })
-                                                    </script>
-                                            {{-- <div class="central-meta item">
-                                                <div class="user-post">
-                                                    <div class="friend-info">
-                                                        <figure>
-                                                            <img src="/assets/images/resources/friend-avatar10.jpg" alt="">
-                                                        </figure>
-                                                        <div class="friend-name">
-                                                            <ins><a href="time-line.html" title="">{{ $user['name'] }}</a></ins>
-                                                            <span>published: june,2 2018 19:PM</span>
-                                                        </div>
-                                                        <div class="description">
-
-                                                                <p>
-                                                                    World's most beautiful car in Curabitur <a href="#" title="">#test drive booking !</a> the most beatuiful car available in america and the saudia arabia, you can book your test drive by our official website
-                                                                </p>
-                                                            </div>
-                                                        <div class="post-meta">
-                                                            <div class="linked-image align-left">
-                                                                <a href="#" title=""><img src="/assets/images/resources/page1.jpg" alt=""></a>
-                                                            </div>
-                                                            <div class="detail">
-                                                                <span>Love Maid - ChillGroves</span>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur ipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua... </p>
-                                                                <a href="#" title="">www.sample.com</a>
-                                                            </div>
-                                                            <div class="we-video-info">
-                                                                <ul>
-
-                                                                    <li>
-                                                                        <span class="views" data-toggle="tooltip" title="views">
-                                                                            <i class="fa fa-eye"></i>
-                                                                            <ins>1.2k</ins>
-                                                                        </span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span class="comment" data-toggle="tooltip" title="Comments">
-                                                                            <i class="fa fa-comments-o"></i>
-                                                                            <ins>52</ins>
-                                                                        </span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span class="like" data-toggle="tooltip" title="like">
-                                                                            <i class="ti-heart"></i>
-                                                                            <ins>2.2k</ins>
-                                                                        </span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <span class="dislike" data-toggle="tooltip" title="dislike">
-                                                                            <i class="ti-heart-broken"></i>
-                                                                            <ins>200</ins>
-                                                                        </span>
-                                                                    </li>
-                                                                    <li class="social-media">
-                                                                        <div class="menu">
-                                                                          <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
-                                                                            </div>
-                                                                          </div>
-                                                                            <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
-                                                                            </div>
-                                                                          </div>
-                                                                          <div class="rotater">
-                                                                            <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
-                                                                            </div>
-                                                                          </div>
-
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div> --}}
-                                        </div>
-                                    </div><!-- centerl meta -->
+                                                </div> --}}
+                                            </div>
+                                        </div><!-- centerl meta -->
+                                    @else
+                                    @endif
                                 </div>
                             </div>
                         </div>

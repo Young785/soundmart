@@ -1,3 +1,16 @@
+$(".search-click").on("click", function(){
+        $(".mh-head").removeClass("keep");
+        $(".mh-head").addClass("show");
+        $(".search-click").addClass("remove-me");
+        $(".search-click").removeClass("search-click");
+});
+$(document).on("click", ".remove-me", function(){
+    alert("uhn?");
+    $(".mh-head").removeClass("keep");
+    $(".remove-me").addClass("search-click");
+    $(".mh-head").addClass("show");
+    $(".remove-me").removeClass("remove-me");
+});
 function markRead(){
     $.get("/markAsRead")
 }
@@ -42,3 +55,98 @@ $("body *").not('.top-area > .setting-area > li > a').on("click", function() {
 $(".top-area > .setting-area > li > div").not('.searched').removeClass('active');
 
 });
+
+
+     // Like Function   
+    //     $('.like').on('click', function(){
+    //             var post_id = $(this).data('id');
+    
+    //             $post = $(this);
+    
+    //             $.ajax({
+    //                 url: '/',
+    //                 type: 'post',
+    //                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //                 data: {
+    //                     'liked': 1,
+    //                     'post_id': post_id
+    //                 },
+    //                 success: function(response){
+    //                     $post.parent().find('ins.likes_count').text(response);
+    //                     $post.addClass('hide');
+    //                     $(".like-li").addClass('hide');
+    //                     $(".dislike").removeClass('hide');
+    //                     $(".dislike-li").removeClass('hide');
+    //                 }
+    //             });
+    //  // Dislike Function   
+    
+    //         $('.dislike').on('click', function(){
+    //             var post_id = $(this).data('id');
+    //             $post = $(this);
+    
+    //             $.ajax({
+    //                 url: '/',   
+    //                 type: 'post',
+    //                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+    //                 data: {
+    //                     'disliked': 1,
+    //                     'post_id': post_id
+    //                 },
+    //                 success: function(response){
+    //                     $post.parent().find('ins.likes_co   unt').text(response);
+    //                     $post.addClass('hide');
+    //                     $(".dislike-li").addClass('hide');
+    //                     $(".like-li").removeClass('hide');
+    //                     $(".like").removeClass('hide');
+    //                 }
+    //             });
+    //         });
+    //     });
+    //     // function refreshComments() {
+    //     //                 $("#comment-response").html(data);
+    //     //             });
+    //     //         }
+    
+    //     //         setInterval(refreshComments,1000);
+    //  // Comment Function   
+        
+    //         $('.comment-form').on('submit', function(event) {
+    //             event.preventDefault();
+    //             var comment = $('.comment').val();
+    //             var post_id = $('.post_id').val();
+    //             var commentValidate = document.forms["commentForm"]["comment"].value;
+    //             if (commentValidate == "") {
+    //                 alert("Comment must be filled out!");
+    //                 return false;
+    //             }else{
+                
+    //                 $.ajaxSetup({
+    //                     headers: {
+    //                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //                     }
+    //                 });
+    //                 $.ajax({
+    //                     url: '/comment',
+    //                     method: "POST",
+    //                     data: {
+    //                         "comment":comment,
+    //                         "post_id":post_id
+    //                     },
+    //                     success: function(res) {
+    //                         $('.comment-form')[0].reset();
+    //                         $('.commentId').val('0');
+    //                         showComments();
+    //                     },
+    //                 });
+    //             }
+    //         });
+    //     function showComments() {
+    //         $.ajax({
+    //             url:"/fetch_comments",
+    //             method:"POST",
+    //             success:function(response) {
+    //                 $('#dis_comment').append(response);
+    //             }
+    //         });
+    //     }

@@ -19,6 +19,7 @@ class CreatePostsTable extends Migration
             $table->string("image_name");
             $table->json("image")->nullable();
             $table->string("type")->nullable();
+            $table->string("post_id")->nullable();
             $table->timestamps();
         });
     }

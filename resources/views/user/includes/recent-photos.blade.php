@@ -6,7 +6,6 @@
         $image_explode = explode("/", $value->user_image);
         $image_cover_explode = explode("/", $value->user_cover_image);
     }
-    $user = Auth::user();
 @endphp
 <div class="widget">
         <h4 class="widget-title" style="width: 50%">Recent Photos</h4>

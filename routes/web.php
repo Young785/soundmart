@@ -18,17 +18,53 @@ Route::get('/', function () {
     $user = Auth::user();
     $id = Auth::user()->id;
 
-    $posts = App\Post::all()->where("user_id", $id)->sortByDesc("created_at");
 
+    $friends = Friend::where("request_status", "accepted")->where("sender_id", $id)->orWhere("receiver_id", $id)->get();
+
+    foreach ($friends as $key => $value) {}
+
+    $posts = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")
+    ->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get();
+    $postsId = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get("posts.id");
+    $likes = App\Like::where("post_id", "10")->where("user_id", $id)->get();
+    
     $request = User::join("friends", "users.id","=", "friends.sender_id")
             ->where("receiver_id", $id)->where(["request_status" => "pending"])
             ->latest("friends.created_at")->first();
+    $contacts = User::where("status", "1")->get();
+   
+    // $friend_ids = '';
 
+    // if (!empty($friends)) {
+    //     foreach ($friends as $friend) {
+    //     if ($friend->sender_id !== $id) {
+    //         $friend_ids .= $friend['sender_id'] . ',';
+    //     }
+    //     if ($friend->receiver_id !== $id) {
+    //         $friend_ids .= $friend['receiver_id'] . ',';
+    //     }
+    //     }
+    // } else {
+    //     return array();
+    // }  # code...
+    
+     // Gather the list of friends id's.
+    //  $friend_ids = substr($friend_ids, 0, (strlen($friend_ids) - 1)) .'';
+     
+   
+    // $contacts = User::where("status", "1")->whereIn("id",[$friend_ids])->get();
+    // if ($value->sender_id == $id) {
+    //     $contacts = User::where("id", $value->receiver_id)->get();
+    // }elseif ($value->receiver_id == $id) {
+    //     $contacts = User::where("id", $value->sender_id)->get();
+    // }else{
+    //     dd("non");
+    // }
+    // dd($contacts);
+   
     // $online_friends =
-    // dd($request);
-    return view('user/index', compact("user", "posts", "request"));
+    return view('user/index', compact("user", "posts","postsId", "request", "contacts"));
 })->middleware("chatbook");
-
 Route::get('/page/login', "chatbookController@login");
 
 Route::group(['prefix' => '/', 'middleware' => 'chatbook'], function () {
@@ -95,9 +131,29 @@ Route::post('profile/friend-request/{id}', "ChatFunctionController@frequest")->m
 
 Route::post('profile/cancel-request/{id}', "ChatFunctionController@canRequest")->middleware("chatbook");
 
-Route::put('friend-requests/confirm/{id}', "ChatFunctionController@conRequest")->middleware("chatbook");
+Route::put('profile/friend-requests/confirm/{id}', "ChatFunctionController@conRequest")->middleware("chatbook");
 
-Route::post('profile/{secrete_id}/cover', "ChatFunctionController@cover")->middleware("chatbook");
+Route::post('profile/cover/{secrete_id}', "ChatFunctionController@cover")->middleware("chatbook");
+
+Route::post('/', 'ChatFunctionController@LikePost')->name('like')->middleware("chatbook");
+
+Route::post('/return-post', 'ChatFunctionController@return_post')->middleware("chatbook");
+
+Route::post('/comment', 'ChatFunctionController@comment')->middleware("chatbook");
+
+Route::post('/fetch_user', 'ChatFunctionController@fetch_user')->middleware("chatbook");
+Route::post('/fetch_on_user/{res}', 'ChatFunctionController@fetch_o_user')->middleware("chatbook");
+
+Route::post('/fetch_comments', 'ChatFunctionController@fetch')->middleware("chatbook");
+Route::get('/searchbox', 'ChatFunctionController@action')->middleware("chatbook");
+Route::post('/fetch_search', 'ChatFunctionController@action_search')->middleware("chatbook");
+
+Route::post('/insert_chat', 'ChatFunctionController@insertChat')->middleware("chatbook");
+Route::post('/fetch_chat', 'ChatFunctionController@fetch_chat')->middleware("chatbook");
+Route::post('/all_chats', 'ChatFunctionController@all_chat')->middleware("chatbook");
+
+Route::post('/update_is_typing_status', 'ChatFunctionController@update_is_typing')->middleware("chatbook");
+
 });
 // Route::get('/test', function () {
 //         $notifications = Auth::user()->unreadNotifications;

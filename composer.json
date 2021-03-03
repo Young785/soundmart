@@ -10,8 +10,10 @@
     "require": {
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
+        "intervention/image": "^2.5",
         "laravel/framework": "^6.18.35",
         "laravel/tinker": "^2.0",
+        "overtrue/laravel-follow": "^2.2",
         "rennokki/befriended": "3.*",
         "stevebauman/location": "^5.2"
     },

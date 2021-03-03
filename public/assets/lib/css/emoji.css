@@ -56,6 +56,7 @@ img.emoji {
     cursor: pointer;
     position: absolute;
     right: 10px;
+    margin-right: 100px;
     top: 10px;
     font-size: 20px;
     opacity: 0.7;
@@ -96,7 +97,7 @@ img.emoji {
     height: 30px;
     max-height: 284px;
     border-radius: 20px !important;
-    background-color: #efefef !important;
+    background-color: #efefef;
     overflow: auto;
     border: 1px solid #d2dbe3;
     border-radius: 2px;

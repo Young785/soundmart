@@ -53,6 +53,18 @@
     }
 
 }
+/* @media screen and (max-width: 1600px) and (min-width: 1400px) {
+    .edit-cover{
+        float: right;
+        margin-top: 70px;
+        width: 51px;
+        left: 570px;
+        position: absolute;
+    }
+    .edit-phto{
+        width: max-content;
+    }
+} */
 
 @media screen and (max-width: 1600px) and (min-width: 1400px) {
     .user-avatar {
@@ -62,11 +74,19 @@
         width: 18.5%;
     }
     .chat-box {
-        right: 294px;
+        right: 0px;
     }
     .edit-phto {
-        left: 315px;
-        bottom: 125px;
+        width: 165px;
+        /* left: 315px;
+        bottom: 125px; */
+    }
+    .edit-cover{
+        float: right;
+        margin-top: 70px;
+        width: 51px;
+        left: 701px;
+        position: absolute;
     }
     .add-btn {
         bottom: 125px;
@@ -326,19 +346,75 @@
 
 }
 
+@media screen and (max-width: 1000px) {
+    .content-sec {
+        width: 51%;
+    }
+}
 
 /*--- tablet view ---*/
 
 @media screen and (max-width: 980px) {
+    .topbar,
+    .side-panel {
+        display: block;
+    }
+    .top-search{
+        display: none;
+    }
+    .responsive-header {
+        display: block;
+    }
+    .setting-area{
+        width: 300px;
+    }
+    .m-icon{
+        margin-right: 30px; 
+    }
+    .search-li{
+        display: inline-block !important;
+    }
+    .ti-menu{
+        display: none;
+    }
+    .sidebar{
+        display: none;
+    }
+
+    .content-sec{
+        width: 43%;
+    }
+    .new-pst{
+        width: 100%;
+    }
+    .row.merged20 > div {
+        padding: 15px 7.5px;
+    }
+    .central-meta {
+        padding: 30px 15px;
+    }
+    .content-sec {
+        padding-left: 10px !important;
+        padding-right: 30px !important;
+    }
+    .lang{
+        display: none !important;
+    }
+    
+    
+    
     .gap {
         padding: 40px 0;
+    }
+    .m-logo{
+        width: 50px;
     }
     p {
         font-size: 14px;
     }
     .topbar,
     .side-panel {
-        display: none;
+        display: block;
     }
     .responsive-header {
         display: block;
@@ -633,11 +709,50 @@
     }
     .topbar,
     .side-panel {
+        display: block;
+    }
+    .top-search{
         display: none;
     }
     .responsive-header {
         display: block;
     }
+    .setting-area{
+        width: 300px;
+    }
+    .m-icon{
+        margin-right: 30px; 
+    }
+    .search-li{
+        display: inline-block !important;
+    }
+    .ti-menu{
+        display: none;
+    }
+    .sidebar{
+        display: none;
+    }
+
+    .content-sec{
+        width: 37%;
+    }
+    .new-pst{
+        width: 100%;
+    }
+    .row.merged20 > div {
+        padding: 15px 7.5px;
+    }
+    .central-meta {
+        padding: 30px 15px;
+    }
+    .content-sec {
+        padding-left: 10px !important;
+        padding-right: 30px !important;
+    }
+    .lang{
+        display: none !important;
+    }
+
     .error-meta {
         top: 25%;
     }

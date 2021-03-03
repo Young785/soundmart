@@ -3,25 +3,32 @@
 <div class="theme-layout">
 	<div class="postoverlay"></div>
 	<div class="responsive-header">
-		<div class="mh-head first Sticky">
-			<span class="mh-btns-left">
-				<a class="" href="#menu"><i class="fa fa-align-justify"></i></a>
-			</span>
-			<span class="mh-text">
-				<a href="newsfeed.html" title=""><img src="/assets/images/logo2.png" alt=""></a>
-			</span>
-			<span class="mh-btns-right">
-				<a class="fa fa-sliders" href="#shoppingbag"></a>
-			</span>
-		</div>
-		<div class="mh-head second">
-			<form class="mh-form">
-				<input placeholder="search" />
-				<a href="#/" class="fa fa-search"></a>
+		<div class="mh-head second keep">
+			<form class="mh-form" action="/search" method="GET">
+                @csrf
+				<input placeholder="search" class="m-input" name="q" type="text"/>
+				<button href="#/" class="fa fa-search"></button>
 			</form>
 		</div>
 		@include('/user/includes/navbar')
-
+<style>
+    .post {
+	width: 30%;
+	margin: 10px auto;
+	border: 1px solid #cbcbcb;
+	padding: 5px 10px 0px 10px;
+}
+.like, .unlike, .likes_count {
+	color: blue;
+}
+.hide {
+	display: none;
+}
+.fa-thumbs-up, .fa-thumbs-o-up {
+	transform: rotateY(-180deg);
+	font-size: 1.3em;
+}
+</style>
 	<section>
 		<div class="gap2 gray-bg">
 			<div class="container">
@@ -99,6 +106,80 @@
 								</aside>
 							</div><!-- sidebar -->
 							<div class="col-lg-6 content-sec">
+                                <div class="central-meta new-pst post-div-header keep">
+                                    <div class="header-title">
+                                        <h3 class="head-title">Create Post
+                                            <span class="post-span">
+                                                <i class="ti-close cancel-post"></i>
+                                            </span>    
+                                        </h3> 
+                                    </div>
+									<div class="post-box-popup">
+										<div class="post-div">
+                                            @if ($user->user_image == null)
+                                                <figure class="post-figure">
+                                                    <a href="/profile/{{$user->secrete_id}}">
+                                                        <img src="/assets/images/default.png" alt="">
+                                                    </a>
+                                                </figure>
+                                            @else
+                                                <figure class="post-figure">
+                                                    <a href="/profile/{{ $user->secrete_id }}">
+                                                        <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="req-image" style="height: 50px;" alt="{{$user->name}}">
+                                                    </a>
+                                                </figure>
+                                            @endif
+                                            <p class="post-name">{{ $user->name }}</p>
+                                            <div class="dropdown" style="margin-top: -10px;">
+                                                <button class="btn btn-primary dropdown-toggle post-button" type="button" data-toggle="dropdown" aria-expanded="false">Friends</button>
+                                                <ul class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(70px, 30px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                  <li><a href="#">HTML</a></li>
+                                                  <li><a href="#">CSS</a></li>
+                                                  <li><a href="#">JavaScript</a></li>
+                                                </ul>
+                                              </div>
+                                        </div>
+										<div class="post-input">
+											<form method="POST" class="post-form" enctype="multipart/form-data">
+												@csrf												
+                                                <p class="emoji-picker-container">
+                                                    <textarea rows="2" class="post-textarea image_name" name="image_name" placeholder="What's on your mind, Hariyo?" data-emojiable="true" id="emojiinput"></textarea>
+                                                </p>
+                                                <p><img id="result" class="result-image keep" /></p>
+                                                <div class="attachments">
+													<ul>
+                                                        <p class="post-add">Add to Your Post</p>
+														<li class="post-li-image">
+															<i class="fa fa-image"></i>
+															<label class="fileContainer">
+																<input type="file" id="files" class="image" name="image[]" multiple="" accept="image/*"  onchange="loadCoverFile(event)" title="Photo">
+															</label>
+														</li>
+														<li class="post-li-camera">
+															<i class="fa fa-camera"></i>
+															<label class="fileContainer">
+																<input type="file"  title="Camera">
+															</label>
+														</li>
+                                                        <li class="post-li-user">
+															<i class="fa fa-user"></i>
+															<label class="fileContainer">
+																<input type="file"  title="Tag Friends">
+															</label>
+														</li>
+                                                        <li class="post-li-smile">
+															<i class="fa fa-smile-o"></i>
+															<label class="fileContainer"  title="Add Gifs">
+																<input type="file">
+															</label>
+														</li>
+													</ul>
+												</div>
+                                                <button class="btn btn-primary post-submit" type="submit">Post</button>
+											</form>
+										</div>
+									</div>
+                                </div>
 								@if (session()->has("msg"))
 								<div role="alert" class="alert alert-success alert-dismissible" id="remove">
 									<button type="button" data-dismiss="alert" aria-label="Close" class="close">
@@ -123,7 +204,7 @@
 									<strong>Success!</strong> Post added Successfully!
 								</div>
 								@endif
-								<div class="central-meta new-pst">
+								<div class="central-meta new-pst post-normal-div">
 									<div class="new-postbox">
 										@if ($user->user_image == null)
 											<figure>
@@ -134,11 +215,11 @@
 										@else
 											<figure>
                                                 <a href="/profile/{{ $user->secrete_id }}">
-                                                    <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" alt="{{$user->name}}">
+                                                    <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="req-image" style="height: 50px;" alt="{{$user->name}}">
                                                 </a>
 											</figure>
 										@endif
-
+<a>
 										<div class="newpst-input">
 											<form method="POST" action="/newsfeed" enctype="multipart/form-data">
 												@csrf
@@ -148,17 +229,17 @@
 														<li>
 															<i class="fa fa-image"></i>
 															<label class="fileContainer">
-																<input type="file" name="image[]" multiple title="Photo">
+																<input type="file" name="image[]" multiple title="Photo" disabled>
 															</label>
 														</li>
-														<li>
+														<li aria-disabled="true">
 															<i class="fa fa-camera"></i>
 															<label class="fileContainer">
-																<input type="file">
+																<input type="file" disabled>
 															</label>
 														</li>
 														<li>
-															<button type="submit">Post</button>
+															<button disabled type="submit">Post</button>
 
 																	  <!-- Nifty Modal-->
 																	  <div id="full-success" class="modal-container modal-full-color modal-full-color-success modal-effect-8">
@@ -175,30 +256,46 @@
 													</ul>
 												</div>
 											</form>
-										</div>
+										</div></a>
 									</div>
                                 </div><!-- add post new box -->
                                     @if (count($posts) != null)
-                                        <div class="more">
+                                        <div class="more" id="new-post">
                                             @foreach ($posts as $item)
-                                                <div class="central-meta item">
+                                                <div class="central-meta item" id="post-{{ $item->post_id }}">
                                                     <div class="user-post">
                                                         <div class="friend-info">
-                                                            @if ($user->user_image == null)
+                                                            @if ($item->user_image == null)
                                                                 <figure>
-                                                                    <a href="/profile/{{$user->secrete_id}}">
+                                                                    <a href="/profile/{{$item->secrete_id}}">
                                                                         <img src="/assets/images/default.png" alt="{{ $item->name }}" title="{{ $item->name }}">
                                                                     </a>
                                                                 </figure>
                                                                 @else
                                                                 <figure>
-                                                                    <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" title="{{ $item->name }}">
+                                                                    <a href="/profile/{{$item->secrete_id}}" title="">
+                                                                        <img src="{{ asset("users") }}/{{ substr($item->user_image, 0, 10) }}.{{$item->secrete_id}}.jpg"  class="req-image" style="height: 50px;"  title="{{ $item->name }}">
+                                                                    </a>
                                                                 </figure>
                                                             @endif
+                                                            @php
+                                                                $likes = App\Like::where("post_id", $item->post_id)->where("user_id", Auth::user()->id)->get();
+                                                                $dates = App\Post::where("post_id", $item->post_id)->get();
+                                                                $count_likes = App\Like::where("post_id", $item->post_id)->count();
+                                                                
+                                                                // $likes = App\Like::where("post_id", $item->post_id)->where("user_id", Auth::user()->id)->get();
+                                                                // dd($likes);
+                                                            @endphp
                                                             <div class="friend-name">
-                                                                <ins><a href="time-line.html" title="">{{ $item->name }}</a></ins>
-                                                                <span>published: {{ $item->created_at->diffForHumans() }}</span>
-                                                            </div>
+                                                                <ins><a href="/profile/{{$item->secrete_id}}" title="">{{ $item->name }}</a></ins>
+                                                                @foreach ($dates as $date)
+                                                                <span>published: {{ $date->updated_at->diffForHumans() }}</span>
+                                                                    
+                                                                @endforeach
+                                                             
+                                                          
+                                                   {{-- <span class="likes_count">{{ count($likes) }} likes</span> --}}
+                                                            </div>  
                                                             <div class="description">
                                                                 <p>
                                                                     {{ $item->image_name }}
@@ -210,7 +307,8 @@
                                                                     $count = count($image_explode);
                                                                 @endphp
                                                                     @foreach ($image_explode as $value)
-                                                                        @if ($count == 1)
+                                                                        @if ($count == '')
+                                                                        @elseif ($count == 1)
                                                                             <img src="{{ asset("posts") }}/{{ $value }}"  alt="">
                                                                         @elseif($count == 2)
                                                                             <img src="{{ asset("posts") }}/{{ $value }}" class="two-post"  alt="">
@@ -246,18 +344,37 @@
                                                                                 <ins>52</ins>
                                                                             </span>
                                                                         </li>
-                                                                        <li>
-                                                                            <span class="like" data-toggle="tooltip" title="like">
-                                                                                <i class="ti-heart"></i>
-                                                                                <ins>2.2k</ins>
-                                                                            </span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <span class="dislike" data-toggle="tooltip" title="dislike">
-                                                                                <i class="ti-heart-broken"></i>
-                                                                                <ins>200</ins>
-                                                                            </span>
-                                                                        </li>
+                                                                        @if (count($likes) != null)
+                                                                            <!-- user already likes post -->
+                                                                            <li class="dislike-li">
+                                                                                <span class="dislike"  data-id="{{ $item->post_id }}" title="dislike">
+                                                                                    <i class="ti-heart-broken"></i>
+                                                                                    <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                </span>
+                                                                            </li>
+                                                                            <li class="like-li">
+                                                                                <span class="like hide" data-id="{{ $item->post_id }}" title="like">
+                                                                                    <i class="ti-heart"></i>
+                                                                                    <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                </span>
+                                                                            </li>
+                                                                            @else
+                                                                                <!-- user has not yet liked post -->
+                                                                                <li class="like-li">
+                                                                                    <span class="like"  data-id="{{ $item->post_id }}" title="like">
+                                                                                        <i class="ti-heart"></i>
+                                                                                            <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                        </span>
+                                                                                    </li>   
+
+                                                                                <li class="dislike-li">
+                                                                                    <span class="dislike hide" data-id="{{ $item->post_id }}" title="dislike">
+                                                                                        <i class="ti-heart-broken"></i>
+                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                    </span>
+                                                                                </li> 
+                                                                        @endif
+                                                                      
                                                                         <li class="social-media">
                                                                             <div class="menu">
                                                                             <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
@@ -297,49 +414,100 @@
                                                             </div>
                                                         </div>
                                                         <div class="coment-area">
-                                                            <ul class="we-comet">
+                                                            <ul class="we-comet" id="dis_comment">
+                                                                @php
+                                                                    $comments = App\Comment::rightjoin("users", "comments.user_id", "=","users.id")->where("post_id", $item->post_id)->get();
+                                                                    foreach ($comments as $key => $comment) {
+
+                                                                    }
+                                                                @endphp
+                                                            @foreach ($comments as $comment)
+                                                               @php
+                                                                    $com_id = $comment->comment_id;
+                                                                    $time = App\Comment::where("comment_id", $comment->comment_id)->get();
+                                                                    foreach ($time as $key => $tim) {
+                                                                        # code...
+                                                                    }
+                                                               @endphp
+                                                                @if ($tim == null)
+                                                                    @else 
+                                                                    <li>
+                                                                        @if ($comment->user_image == null)
+                                                                            <div class="comet-avatar">
+                                                                                <img src="/assets/images/default.png" alt="">
+                                                                            </div>
+                                                                        @else
+                                                                            <div class="comet-avatar">
+                                                                                <img src="{{ asset("users") }}/{{ substr($comment->user_image, 0, 10) }}.{{$comment->secrete_id}}.jpg" alt="">
+                                                                            </div>
+                                                                        @endif
+                                                                        <div class="we-comment comment-div">
+                                                                            <div class="coment-head">
+                                                                                <h5><a href="time-line.html" title="">{{ $comment->name }}</a></h5>
+                                                                                <span>{{ $tim->created_at->diffForHumans() }}</span>
+                                                                                <a class="we-reply" href="#comment-{{ $com_id }}"
+                                                                                    id="com_id" data-commentid='$com_id' name='com_reply' onclick='com({{ $com_id}})' data-respondelement='respond'
+                                                                                    aria-label='Reply to' title="Reply">
+                                                                                    <i class="fa fa-reply"></i>
+                                                                                </a>
+                                                                            </div>
+
+                                                                            <p>{{ $comment->comment }}</p>
+                                                                        </div>
+                                                                        <div class='keep reply reply-div' id='{{ $com_id }}'>
+                                                                            <div class="post-reply-box">
+                                                                                <form method="post" name="commentForm" action="/comment/{{ $item->post_id }}">
+                                                                                    @csrf
+                                                                                    <p class="lead emoji-picker-container">
+                                                                                        <input class="comment-message comment-input" name="comment" style="display: block !important" placeholder="Write a REPLY..." data-emojiable="true" id="emojiinput">
+                                                                                        <input hidden class="post_id" name="post_id" value="{{ $item->post_id }}" data-id="{{ $item->post_id }}">
+                                                                                        <input type="hidden" name="commentId" class="commentId" value="0" />
+                                                                                    </p>
+                                                                                    <button type="submit" class="comment-button">Reply</button>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                @endif
+                                                               
+                                                                @endforeach
                                                                 <li>
                                                                     <a href="#" title="" class="showmore underline">more comments</a>
                                                                 </li>
-                                                                <li class="post-comment">
-                                                                    @if ($user->user_image == null)
-                                                                        <div class="comet-avatar">
-                                                                            <img src="/assets/images/default.png" alt="">
-                                                                        </div>
-                                                                    @else
-                                                                        <div class="comet-avatar">
-                                                                            <img src="{{asset("/users")}}/{{$user->user_image}}" alt="">
-                                                                        </div>
-                                                                    @endif
-
-                                                                    <div class="post-comt-box">
-                                                                        <form method="post">
-                                                                            <p class="lead emoji-picker-container">
-                                                                                <textarea placeholder="Write a comment..." data-emojiable="true" id="emojiTextarea"></textarea>
-                                                                            </p>
-                                                                            <div class="smiles-bunch">
-                                                                                <i class="em em---1"></i>
-                                                                                <i class="em em-smiley"></i>
-                                                                                <i class="em em-anguished"></i>
-                                                                                <i class="em em-laughing"></i>
-                                                                                <i class="em em-angry"></i>
-                                                                                <i class="em em-astonished"></i>
-                                                                                <i class="em em-blush"></i>
-                                                                                <i class="em em-disappointed"></i>
-                                                                                <i class="em em-worried"></i>
-                                                                                <i class="em em-kissing_heart"></i>
-                                                                                <i class="em em-rage"></i>
-                                                                                <i class="em em-stuck_out_tongue"></i>
-                                                                            </div>
-                                                                            <button type="submit"></button>
-                                                                        </form>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
+                                                           
+                                            <li class="post-comment">
+                                                @if ($item->user_image == null)
+                                                <a href="/profile/{{ $item->secrete_id }}">
+                                                    <div class="comet-avatar">
+                                                        <img src="/assets/images/default.png" alt="">
                                                     </div>
+                                                </a>
+                                                @else
+                                                <a href="/profile/{{ $item->secrete_id }}">
+                                                    <figure class="comet-avatar">
+                                                        <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg"  class="req-image" style="height: 50px;"  alt="">
+                                                    </figure>
+                                                </a>
+                                                @endif
+                                                <div class="post-comt-box">
+                                                    <form method="POST" name="commentForm" class="comment-form">
+                                                        {{ csrf_field() }}
+                                                        <p class="lead emoji-picker-container">
+                                                            <input  class="comment-message comment-input" name="comment" type="text" style="display: block !important" placeholder="Write a comment..." data-emojiable="true" data-emoji-input="unicode" id="emojiinput">
+                                                            <input hidden class="post_id" name="post_id" value="{{ $item->post_id }}">
+                                                            <input type="hidden" name="commentId" class="commentId" value="0" />
+                                                        </p>
+                                                        <p id="empty-comment"></p>
+                                                        <button  type="submit" id="comment-button" class="comment-button">Comment</button>
+                                                    </form>
                                                 </div>
-                                            @endforeach
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                                    @endforeach
                                     </div>
                                     @else
                                     <div class="widget">
@@ -349,9 +517,9 @@
                                 @endif
                             </div><!-- centerl meta -->
 
-							<div class="col-lg-3" style="overflow-y: scroll;
-                            height: 30px;">
-								<aside class="sidebar static right" id="sidebar-right">
+							<div class="col-lg-3">
+                            <div class="sidebar-div">
+                                <aside class="sidebar static right" id="sidebar-right">
                                     <div class="widget sidebar-widget">
 										<div class="banner medium-opacity bluesh">
 											<div class="bg-image" style="background-image: url(/assets/images/resources/baner-widgetbg.jpg)"></div>
@@ -390,7 +558,7 @@
                                                 
                                                     <div class="r-details">
                                                         <a href="/profile/{{$user->secrete_id}}">
-                                                            <p class="req-name col-lg-8 col-md-8 col-sm-7">{{ $request->name }}
+                                                            <p class="req-name col-lg-8 col-md-8 col-sm-7">{{ $request->name }} 
                                                                 <div class="users-thumb-list ol-lg-8 col-md-8 col-sm-7">
                                                                     <a href="#" title="Anderw" data-toggle="tooltip">
                                                                         <img src="/assets/images/resources/userlist-1.jpg" alt="">
@@ -427,25 +595,44 @@
                                         
                                     @endif
                                     
-                                    <div class="widget">
+                                    <div class="widget" id="contacts-widget">
                                         <div class="contact">
                                             <h3 class="friend-request">Contacts</h3>
-                                            <span class="req-a"><i class="fa fa-search"></i></span>
+                                            <span class="req-a">
+                                                <i class="fa fa-search search-contact"></i>
+                                                <i class="ti-close search-cancel keep"></i>
+                                            </span>
                                             <span class="req-a"><i class="fa fa-ellipsis-h"></i></span>
-
                                         </div>
-                                        <div class="online-friends col-lg-12 col-md-12 col-sm-12">
-                                            <figure class="col-lg-2 col-md-2 col-sm-3 req-figure">
-												<a href="/profile/{{$user->secrete_id}}">
-                                                    <img src="/assets/images/default.png" class="req-image" alt="">
-                                                    <span class="status-on f-online"></span>
-                                                </a>
-                                            </figure>
-                                            <div class="col-lg-10 col-md-10 col-sm-10">
-                                                <h3 class="online-h3">Kodaolu Idris</h3>
-                                            </div>
+                                        <input type="text" placeholder="Search friends" class="search-con form-control keep" id="search-me" name="search-me">
+                                        <div class="online-friends-search"></div>
+                                        <div class="online-friends-div">
+                                            @foreach ($contacts as $contact)
+                                                <div class="online-friends col-lg-12 col-md-12 col-sm-12 chatbox"  data-touserid="{{ $contact->id }}" data-tousername="{{ $contact->name }}" data-id="{{ $contact->id }}">
+                                                        @if ($contact->user_image == null)
+                                                            <figure class="col-lg-2 col-md-2 col-sm-3 req-figure">
+                                                                <a href="/profile/{{$user->secrete_id}}">
+                                                                    <img src="/assets/images/default.png" class="req-image" alt="">
+                                                                    <span class="status-on f-online"></span>
+                                                                </a>
+                                                            </figure>
+                                                        @else
+                                                            <figure class="col-lg-2 col-md-2 col-sm-3 req-figure">
+                                                                <a href="/profile/{{$user->secrete_id}}">
+                                                                    <img src="{{ asset("users") }}/{{ substr($contact->user_image, 0, 10) }}.{{$contact->secrete_id}}.jpg" class="req-image" style="height: 50px;" alt="{{$contact->name}}">
+                                                                    <span class="status-on f-online"></span>
+                                                                </a>
+                                                            </figure>
+                                                        @endif
+                                                    <div class="col-lg-10 col-md-10 col-sm-10">
+                                                        <h3 class="online-h3">{{ $contact->name }}</h3>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
+                                    <script>
+                                    </script>
 									<div class="widget">
 										<h4 class="widget-title">Your page</h4>
 										<div class="your-page">
@@ -522,7 +709,7 @@
 											</div>
 										</div>
 									</div><!-- page like widget -->
-
+                                    
 									<div class="widget stick-widget">
 										<h4 class="widget-title">Profile intro</h4>
 										<ul class="short-profile">
@@ -541,6 +728,8 @@
 										</ul>
 									</div>
 								</aside>
+                            </div>
+							
 							</div><!-- sidebar -->
 						</div>
 					</div>
@@ -548,5 +737,9 @@
 			</div>
 		</div>
     </section>
+<script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+
 <script src="/assets/js/my.js"></script>
+<script src="/assets/js/function.js" type="text/javascript"></script>
+
 @include('/user/includes/footer')

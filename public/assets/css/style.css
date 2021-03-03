@@ -464,7 +464,7 @@ iframe {
 	background: url(../images/loader.gif) center no-repeat #fff;
 }*/
 .postoverlay {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgb(249 247 247 / 80%);
   position: absolute;
   top: 0;
   right: 0;
@@ -808,6 +808,9 @@ header.sticky {
     position: relative;
     line-height: 60px;
 }
+.nav-img{
+    max-height: 50px !important;
+}
 
 .top-area .user-img > span.status {
     bottom: 10px;
@@ -909,14 +912,31 @@ header.sticky {
     width: 100%;
 	border-radius: 100%;
 }
-
+.sub2{
+    width: 1220px;
+    height: 400px;
+}
 .user-avatar > figure {
     display: inline-block;
     margin-bottom: 0;
     position: relative;
     width: 100%;
 }
-
+.made-center{
+    text-align: center;
+    float: right;
+    width: 200px;
+    margin-left: 410px;
+    margin-bottom: -187px;
+}
+.friends-button{
+    background: #088dcd;
+    border-color: #088dcd;
+    padding: 6px;
+    color: #fff;
+    border-bottom: #088dcd;
+    border-radius: 6px;
+}
 .timeline-info {
     background: #fff none repeat scroll 0 0;
     display: block;
@@ -1906,9 +1926,15 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
 
 .comet-avatar {
     display: table-cell;
-    max-width: 7.6%;
+    max-width: 5.6%;
     vertical-align: top;
-    width: 7.6%;
+    width: 5.6%;
+}
+.post-reply-box{
+    display: inline-block;
+    padding-left: 15px;
+    position: relative;
+    width: 99%;
 }
 .comet-avatar > img{
 	max-width: 35px;
@@ -2009,16 +2035,16 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
 
 li.post-comment .comet-avatar {
     display: inline-block;
-    max-width: 6%;
+    max-width: 7%;
     vertical-align: top;
-    width: 6%;
+    width: 7%;
 }
 
 .post-comt-box {
     display: inline-block;
     padding-left: 15px;
     position: relative;
-    width: 93%;
+    width: 92%;
 }
 
 .post-comt-box form textarea {
@@ -2751,7 +2777,8 @@ footer .logo {
 .req-image{
     display: inline;
     border-radius: 100%;
-    width: 50px;
+    width: 50px !important;
+    max-width: 50px !important;
 }
 .request-details{
     /* margin-top: 20px; */
@@ -2784,17 +2811,85 @@ footer .logo {
     position: relative;
     line-height: inherit;
 }
+.keep{
+    display: none !important;
+}
+.online-p{
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+}
+.online-friends-search {
+    max-height: 250px;
+    overflow-y: scroll;
+}
+#keep{
+    display: none;
+}
+.reply-div{
+    margin-top: 20px;
+    margin-left: 30px;
+}
+.commetnt-div{
+    width: 100% !important;
+}
 .req-a{
+    margin-left: 15px;
     float: right;
     font-size: 15px;
+}
+.search-con{
+    width: 100%;
+    border: 2px solid #c1c0c0;
+    border-radius: 6px;
+    height: 35px;
+    margin-top: 10px;
+    padding: 10px;
+}
+.view{
+    visibility: visible;
+}
+.keep{
+    display: ;
 }
 #topbar{
     position: fixed !important; 
     width:99%
 }
-#sidebar-right{
-    width: 23%;
+.sidebar-div{
+    overflow-y: scroll;
+    max-height: 700px;
+    height: 700px;
     position: fixed !important;
+    width: 24%;
+}
+.show-chats{
+    overflow-y: scroll !important;
+}
+div .sidebar-div::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background: #c1c1c1;
+    display: none;
+}
+div .sidebar-div:hover::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background: #c1c1c1;
+    display: inline;
+}
+div .online-friends-div::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background:#c1c1c1;
+    display: none;
+}
+div .online-friends-div:hover::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+    background:#c1c1c1;
+    display: inline;
 }
 .profile-name{
     line-height: 0px;
@@ -2882,12 +2977,16 @@ footer .logo {
 .online-friends{
     margin-top: 20px;
     border-bottom: 1px solid #eee;
-    height: 55px;
+    height: 65px;
+}
+.online-friends-div{
+    max-height: 250px;
+    overflow-y: scroll;
 }
 .status-on{
     border-radius: 50%;
     bottom: 0;
-    top: 30px;
+    top: 38px;
     display: inline-block;
     left: 35px;
     height: 12px;
@@ -4923,8 +5022,19 @@ canvas {
     color: #fff;
     transform: translate(-50%, -50%) rotate(360deg);
 }
-
-
+.search-li{
+    display: none !important;
+}
+.m-input{
+    color: #000;
+    font-weight: 700;
+}
+.newpst-over-input {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+    width: 85.5%;
+}
 /*--- responsive header ---*/
 
 .responsive-header {
@@ -4935,6 +5045,9 @@ canvas {
     background: #4bb5ef;
     color: #fff;
     height: auto;
+    margin-top: 60px;
+    position: fixed !important;
+    z-index: 999;
 }
 
 .mh-text {
@@ -5121,7 +5234,102 @@ canvas {
     padding-left: 17px;
 }
 
-
+/***Post pop up div***/
+.post-div-header{
+    box-shadow: #000;
+    -webkit-box-shadow: 0 20px 150px -40px #7b7b7b;
+}
+.header-title{
+    margin-top: -7px;
+    height: 62px;
+}
+.head-title{
+    text-align: center;
+    font-size: 19px;
+    margin-top: -7px;
+    height: 62px;
+    font-weight: 600;
+    color: #000;
+    font-family: inherit;
+    border-bottom: 1px solid #eee;
+}
+.post-span{
+    float: right;
+    border-radius: 31px;
+    line-height: 50px;
+    background: #eee;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+}
+.post-box-popup{
+    margin-top: 20px;
+    display: inline-block;
+    width: 100%;
+}
+.post-div{
+    height: 60px;
+}
+.post-figure{
+    float: left;
+    margin-right: 20px;
+}
+.post-name{
+    font-size: 15px;
+    color: #2d2d2d;
+    font-weight: 600;
+}
+.post-button{
+    background: #737272 !important;
+    border-color: #737272 !important;
+}
+.post-add{
+    float: left;
+    font-weight: 600;
+    color: #2d2d2d;
+    margin-left: 50px;
+    font-size: 17px;
+}
+.post-input{
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+}
+.post-textarea{
+    height: 210px !important;
+    padding: 35px !important;
+    font-size: 21px !important;
+    font-family: sans-serif;
+    background-color: none !important;
+    border: 0px !important;
+}
+.post-li-image{
+    font-size: 30px;
+    color: #ffb631;
+}
+.post-li-camera{
+    font-size: 30px;
+    color: #f94f4f;
+}
+.post-li-user{
+    font-size: 30px;
+    color: #1a81f4;
+}
+.post-li-smile{
+    font-size: 30px;
+    color: #08cc08;
+}
+.post-submit{
+    width: 100%;
+    height: 50px;
+    font-size: 17px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.result-image{
+    width: 110px;
+    height: 100px;
+}
 /*--- side chat message box ---*/
 
 .chat-box {
@@ -5172,7 +5380,7 @@ canvas {
 }
 
 .more > span {
-    margin-left: 15px;
+    margin-left: -30px;
     cursor: pointer;
     position: relative;
 }
@@ -5182,7 +5390,15 @@ canvas {
     top: 50%;
     transform: translateY(-50%);
 }
-
+.chatbox{
+    cursor: pointer;
+    padding: 10px;
+}
+.chatbox:hover{
+    cursor: pointer;
+    background: #f5f5f5;
+    padding: 10px;
+}
 .more-optns:hover > ul {
     opacity: 1;
     visibility: visible;
@@ -5215,7 +5431,7 @@ canvas {
 
 .chat-list {
     display: inline-block;
-    padding: 15px;
+    padding: 25px 0px 0 15px;
     position: relative;
     width: 100%;
 }
@@ -5224,6 +5440,7 @@ canvas {
     margin: 0;
     padding-left: 0;
     max-height: 290px;
+    height: 290px;
     overflow: hidden;
     position: relative;
     padding-right: 8px;
@@ -5239,7 +5456,7 @@ canvas {
     display: inline-block;
     margin-left: 8px;
     vertical-align: top;
-    width: 84%;
+    width: 50%;
 }
 
 .chat-thumb > img {
@@ -5254,7 +5471,24 @@ canvas {
     padding: 12px;
     color: #333;
 }
-
+.me-msg{
+    float: left;
+}
+.you-msg{
+    float: right;
+}
+.current-time{
+    margin: 10px;
+    color: #858585;
+}
+.send_chat{
+    float: right;
+    margin: -47px 0px 0px 0;
+    height: 46px;
+}
+.emoji-right{
+    margin-right: 50px !important;
+}
 .notification-date {
     color: #999;
     display: inline-block;
@@ -5278,6 +5512,7 @@ canvas {
 
 .text-box {
     position: relative;
+    margin: 40px -3px 0 0;
 }
 
 .text-box > textarea {
@@ -5723,14 +5958,27 @@ canvas {
 .row.merged20 > div {
     padding: 45px 7.5px;
 }
-
-
+/*--- Ui Dialog styles for message ---*/
+.ui-widget-header{
+    display: none !important;
+}
+.ui-dialog .ui-dialog-content {
+    padding: 0em !important;
+}
+.ui-draggable{
+    left: 1082.93px !important;
+    top: 280.0037px !important;
+    display: block !important;
+    height: 455px !important;
+    width: 375px !important;
+}
 /*--- fixed sidebar right ---*/
 
 .fixed-sidebar {
     background: #fff none repeat scroll 0 0;
     height: 100vh;
     left: 0;
+    visibility: hidden;
     padding-bottom: 30px;
     padding-top: 30px;
     position: fixed;
@@ -5763,7 +6011,8 @@ canvas {
     padding-left: 0;
     width: 100%;
     position: relative;
-    max-height: 79vh;
+    max-height: 95vh;
+    height: 600px;
 }
 
 .chat-users > li {
@@ -6749,7 +6998,28 @@ figure.aligncenter,
 
 
 /*--- comments section ---*/
-
+.comment-input{
+    background: #f3f3f3 none repeat scroll 0 0;
+border-color: transparent;
+border-radius: 3px;
+color: #696969;
+font-size: 13px;
+font-weight: 400;
+height: 40px;
+line-height: 16px;
+border: 1px solid #eeeeee;
+border-radius: 6px 6px 0 0;
+padding: 10px;
+width: 100%;
+border-bottom: 0;
+}
+.comment-button{
+    bottom: 18px !important;
+    position: absolute !important;
+    right: 0 !important;
+    background: #1b86f5 !important;
+    height: 41px !important;
+}
 .comment-area {
     float: left;
     width: 100%;

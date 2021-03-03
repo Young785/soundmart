@@ -126,7 +126,7 @@
                                                     </figure>
                                                 @else
                                                     <figure style="float: left">
-                                                        <img src="{{ asset("users") }}/{{ $item->user_image }}"  class="img-tag search-image" alt="{{ $item->name }}" title="{{ $item->name }}">
+                                                        <img src="/users/{{ substr($item['user_image'], 0, 10) }}.{{$item->secrete_id}}.jpg"  class="img-tag search-image" alt="{{ $item->name }}" title="{{ $item->name }}">
                                                     </figure>
                                                 @endif
                                                 <div class="newpst-input">

@@ -75,15 +75,16 @@ class chatbookController extends Controller
         return view("user/time-line");
     }
     public function profile($secrete_id){
-        $id = Auth::user()->id;
+        $auth_id = Auth::user()->id;
         $user = User::where("secrete_id", $secrete_id)->firstOrFail();
 
         $id = $user->id;
         $posts = Post::all()->where("user_id", $id)->sortByDesc("created_at");
-        // dd($posts);
+        // dd($id);
         $s_id = $secrete_id;
-        
-        $check_friend = Friend::where("sender_id", $id)->orWhere("receiver_id", $user->id)->first();
+        // 
+        $check_friend = Friend::where(["sender_id" => $auth_id])->where(["receiver_id"=> $user->id])->orWhere(["sender_id"=> $user->id])->where(["receiver_id"=> $auth_id])->first();
+        // dd($check_friend);
         return view("user/profile", compact("user", "posts","s_id", "check_friend"));
     }
     public function edit_profile()
@@ -94,6 +95,9 @@ class chatbookController extends Controller
     }
     public function logout()
     {
+        $id = Auth::user()->id;
+        User::where("id", $id)->update(['status' => '0']);
+
         Auth::logout();
 
         return redirect("/page/login");
@@ -131,8 +135,10 @@ class chatbookController extends Controller
     {
         $id = Auth::user()->id;
         $users = User::all()->where("secrete_id", $secrete_id);
-
-        $posts = Post::all()->where("user_id", $id)
+        $user = User::where("secrete_id", $secrete_id)->firstOrFail();
+        $check_friend = Friend::where(["sender_id" => $id])->where(["receiver_id"=> $user->id])->orWhere(["sender_id"=> $user->id])->where(["receiver_id"=> $id])->first();
+// dd($check_friend);
+        $posts = Post::all()->where("user_id", $user->id)
             ->whereNotNull("type")->sortByDesc("created_at");
         // foreach ($posts as $key => $value) {
         //     $image_explode = explode("/", $value->image);
@@ -140,16 +146,17 @@ class chatbookController extends Controller
         //         dd($v);
         //     }
         // }
+        
         if (count($posts) == null) {
             $user_image = User::all()->where("id", $id);
-            return view("user/timeline-photos", compact("posts", "users", "user_image"));
+            return view("user/timeline-photos", compact("posts", "users", "check_friend", "user", "user_image"));
         }else{
             foreach ($posts as $key => $value) {
                 $image_explode = explode("/", $value->image);
             }
 
             $user_image = User::all()->where("id", $id);
-            return view("user/timeline-photos", compact("posts", "users", "image_explode", "user_image"));
+            return view("user/timeline-photos", compact("posts", "users", "check_friend", "user", "image_explode", "user_image"));
         }
     }
 }

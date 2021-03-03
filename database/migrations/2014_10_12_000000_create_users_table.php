@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('secrete_id');
             $table->string('about')->nullable();
             $table->enum("status", ['0',"1"])->default("0");
+            $table->enum("is_typing", ['no',"yes"])->default("no");
             $table->string('religion')->nullable();
             $table->string('occupation')->nullable();
             $table->string('education')->nullable();

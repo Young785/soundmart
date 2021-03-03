@@ -400,9 +400,21 @@ jQuery(".post-comt-box textarea").on("keydown", function(event) {
 // new post box	
 $(".newpst-input").click(function () {
     $(".postoverlay").fadeIn(500);
+    $(".post-normal-div").addClass("keep");
+    $(".post-div-header ").removeClass("keep");
+    $(".post-div-header ").addClass("show");
   });
   $(".postoverlay").not(".newpst-input").click(function() {
     $(".postoverlay").fadeOut(500);
+	$(".post-normal-div").removeClass("keep");
+    $(".post-div-header ").removeClass("show");
+    $(".post-div-header ").addClass("keep");
+  });
+  $(".cancel-post").click(function(){
+	$(".postoverlay").fadeOut(500);
+	$(".post-normal-div").removeClass("keep");
+    $(".post-div-header ").removeClass("show");
+    $(".post-div-header ").addClass("keep");
   });
 //   $("[type = submit]").click(function () {
 //     var post = $("textarea").val();

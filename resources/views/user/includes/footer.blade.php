@@ -9,6 +9,7 @@
     </div>
 </div>
 </div>
+<script src="/assets/js/comment-reply.min.js"></script>
 <script src="/assets/js/main.min.js"></script>
 {{-- <script src="/assets/js/script.js"></script> --}}
 <script src="/assets/js/map-init.js"></script>
@@ -16,20 +17,30 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="/assets/js/emojionearea.min.js"></script>
-
-<script src="/assets/lib/js/config.js"></script>
-<script src="/assets/lib/js/util.js"></script>
-<script src="/assets/lib/js/jquery.emojiarea.js"></script>
-<script src="/assets/lib/js/emoji-picker.js"></script>
-
-
 <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="/assets/js/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+<script src="/assets/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/assets/js/script.js" type="text/javascript"></script>
+
+<script src="/assets/vendor/emoji-picker/lib/js/config.js"></script>
+<script src="/assets/vendor/emoji-picker/lib/js/util.js"></script>
+<script src="/assets/vendor/emoji-picker/lib/js/jquery.emojiarea.js"></script>
+<script src="/assets/vendor/emoji-picker/lib/js/emoji-picker.js"></script>
+
 <script src="/assets/js/main.js" type="text/javascript"></script>
-<script src="/assets/js/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/assets/js/jquery.niftymodals.js" type="text/javascript"></script>
 <script type="text/javascript">
+            $(function () {
+                // Initializes and creates emoji set from sprite sheet
+                window.emojiPicker = new EmojiPicker({
+                    emojiable_selector: '[data-emojiable=true]',
+                    assetsPath: '/assets/vendor/emoji-picker/lib/img/',
+                    popupButtonClasses: '/assets/images/icon-smile'
+                });
+
+                window.emojiPicker.discover();
+            });
+
   $.fn.niftyModal('setDefaults',{
       overlaySelector: '.modal-overlay',
       closeSelector: '.modal-close',
