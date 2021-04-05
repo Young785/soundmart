@@ -145,6 +145,7 @@ class ChatFunctionController extends Controller
         $data->image_name = $request->image_name;
         $id = Auth::user()->id;
         $data->user_id = $id;
+        $data->post_type = "user post";
         // return $request->image;
         $images = array();
         if($request->hasFile('image')){
@@ -243,7 +244,7 @@ class ChatFunctionController extends Controller
         $send_id = Auth::user()->id;
         $rec_id = session()->put("id", $id);
 
-        $data['sender_id'] = Auth::user()->id;
+        $data['sender_id'] = $send_id;
         $data['receiver_id'] = $id;
         $data['request_status'] = "pending";
     
@@ -272,7 +273,6 @@ class ChatFunctionController extends Controller
     {
         Friend::where("id", $id)->update(["request_status" => "accepted"]);
         
-        return redirect()->back()->with("req_acc", "You Successfully Accepted the friend Request!");
     }
     public function LikePost(Request $request){
 

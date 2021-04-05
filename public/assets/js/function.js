@@ -220,7 +220,7 @@ $(document).ready(function(){
     $('#search-me').on('keyup', function(){
         var query = $(this).val();
         // alert("Am there!!!");
-        console.log(query);
+        // console.log(query);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

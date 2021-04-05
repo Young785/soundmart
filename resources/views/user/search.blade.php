@@ -287,4 +287,6 @@
 			</div>
 		</div>
 	</section>
+<script src="/assets/js/my.js"></script>
+
 @include('/user/includes/footer')

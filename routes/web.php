@@ -18,21 +18,29 @@ Route::get('/', function () {
     $user = Auth::user();
     $id = Auth::user()->id;
 
-
-    $friends = Friend::where("request_status", "accepted")->where("sender_id", $id)->orWhere("receiver_id", $id)->get();
-
-    foreach ($friends as $key => $value) {}
-
-    $posts = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")
-    ->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get();
-    $postsId = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get("posts.id");
     $likes = App\Like::where("post_id", "10")->where("user_id", $id)->get();
     
     $request = User::join("friends", "users.id","=", "friends.sender_id")
             ->where("receiver_id", $id)->where(["request_status" => "pending"])
             ->latest("friends.created_at")->first();
     $contacts = User::where("status", "1")->get();
-   
+
+    $friends = Friend::where("request_status", "accepted")->where("sender_id", $id)->orWhere("receiver_id", $id)->get();
+
+    foreach ($friends as $key => $value) {}
+
+    if (!empty($value)) {
+        $posts = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")
+        ->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get();
+        $postsId = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get("posts.id");
+        
+        return view('user/index', compact("user", "posts","postsId", "request", "contacts"));
+
+    }else{
+       
+
+        return view('user/new_index', compact("user", "request", "contacts"));
+    }
     // $friend_ids = '';
 
     // if (!empty($friends)) {
@@ -77,6 +85,7 @@ Route::group(['prefix' => '/', 'middleware' => 'chatbook'], function () {
     Route::get('test', "chatbookController@test");
 
     Route::get('timeline-friends', "chatbookController@timeline_friends");
+    Route::get('/sip', "chatbookController@sip");
 
     // Route::get('timeline-images', "chatbookController@timeline_images");
 
@@ -131,7 +140,7 @@ Route::post('profile/friend-request/{id}', "ChatFunctionController@frequest")->m
 
 Route::post('profile/cancel-request/{id}', "ChatFunctionController@canRequest")->middleware("chatbook");
 
-Route::put('profile/friend-requests/confirm/{id}', "ChatFunctionController@conRequest")->middleware("chatbook");
+Route::post('profile/friend-requests/confirm/{id}', "ChatFunctionController@conRequest")->middleware("chatbook");
 
 Route::post('profile/cover/{secrete_id}', "ChatFunctionController@cover")->middleware("chatbook");
 

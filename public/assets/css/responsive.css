@@ -53,19 +53,27 @@
     }
 
 }
-/* @media screen and (max-width: 1600px) and (min-width: 1400px) {
+@media screen and (max-width: 1600px) and (min-width: 1300px) {
     .edit-cover{
         float: right;
         margin-top: 70px;
-        width: 51px;
-        left: 570px;
-        position: absolute;
+        left: 555px;    
+        position: static;
     }
     .edit-phto{
         width: max-content;
+        margin-left: -120px;
     }
-} */
+    .user-avatar .edit-phto {
+        left: 142px;
+    }
+}
+@media screen and (min-width: 1200px) {
 
+    .caret-down{
+        margin-top: -18px;
+    }
+}
 @media screen and (max-width: 1600px) and (min-width: 1400px) {
     .user-avatar {
         top: -33px;
@@ -81,15 +89,18 @@
         /* left: 315px;
         bottom: 125px; */
     }
-    .edit-cover{
+ 0   .edit-cover{
         float: right;
         margin-top: 70px;
         width: 51px;
-        left: 701px;
-        position: absolute;
+        left: 635px;
     }
     .add-btn {
         bottom: 125px;
+    }
+    .sec {
+        padding-right: 190px;
+        padding-left: 190px;
     }
 }
 
@@ -167,6 +178,12 @@
 	.top-area > ul > li > a {
 	    padding: 0 10px;
 	}
+    .home-display{
+        display: none !important;
+    }
+    .setting-area{
+        width: 340px;
+    }
     .edit-phto {
         bottom: 148px;
     }
@@ -721,13 +738,15 @@
         width: 300px;
     }
     .m-icon{
-        margin-right: 30px; 
+        margin-right: 12px; 
     }
     .search-li{
         display: inline-block !important;
     }
     .ti-menu{
-        display: none;
+        left: 15px;
+        float: left;
+        top: 15px;
     }
     .sidebar{
         display: none;
@@ -740,7 +759,7 @@
         width: 100%;
     }
     .row.merged20 > div {
-        padding: 15px 7.5px;
+        padding: 0px !important;
     }
     .central-meta {
         padding: 30px 15px;
@@ -1942,4 +1961,220 @@
     }
     .apply-bttons > a{font-size: 13px; padding: 8px 14px;}
 
+}
+
+@media screen and (min-width: 375px) and (max-width:812px) {
+
+    .top-area {
+        display: inline-block;
+        text-align: right;
+        vertical-align: middle;
+        width: 80%;
+    }
+    .nav-img{
+        display: none !important;
+    }
+    .user-img{
+        vertical-align: baseline !important;
+    }
+    .user-setting {
+        left: -95px !important;
+    }
+    .caret-down{
+        display: inline-block !important;
+    }
+    .more-option{
+        display: inline-block !important;
+    }
+    .newpst-input {
+        width: 80% !important;
+    }
+    .newpst-input {
+        margin-left: 25px !important;
+    }
+    .attachments{
+        display: none !important;
+    }
+    .text-a{
+        width: 80% !important;
+    }
+    .post-li-camera-m{
+        margin-left: 12px;
+        margin-bottom: -58px;
+        font-size: 17px;
+        color: #8c8f91;
+    }
+    .post-image{
+        float: left;
+        display: inline-block !important;
+        width: 20%;
+    }
+    .friend-name{
+        padding-left: 2px !important;
+        width: 75% !important;
+    }
+    .post-comt-box{
+        padding-left: 30px;
+    }
+    .central-meta {
+        padding: 10px 15px !important;
+        margin: -6px 10px 10px 0 !important;
+    }
+    .opt--div{
+        width: 15%;
+        float: right;
+        margin-top: -32px;
+    }
+    .we-comment{
+        padding: 3px !important;
+    }
+    .comet-avatar {
+        max-width: 2.3% !important;
+        width: 2.3% !important;
+    }
+    .opt--span{
+        float: left;
+        margin: 0 0 0 55px;
+        font-size: 15px;
+    }
+    .we-video-info > ul li {
+        width: 105px;
+        height: 35px;
+        text-align: center;
+        margin-right: 0px !important;
+        border: 1px solid #dadada;
+        border-radius: 8px;
+    }
+    .share-menu{
+        margin-left: 40px;
+        margin-top: 3px;
+    }
+    .msg-count{
+        right: -5px !important;
+    }
+    .pt-span{
+        float: right;
+        border-radius: 31px;
+        font-size: 10px;
+        width: 50px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .central-meta {
+        padding: 5px 5px !important;
+    }
+    .row.merged20 > div {
+        padding-top: 17px !important;
+    }
+    .pt--type{
+        border-radius: 5px;
+        border: 1px solid #bdbfc0;
+        width: 45%;
+        line-height: 25px;
+        float: left;
+        text-align: center;
+    }
+    .req-image{
+        height: 35px !important;
+        margin-top: 5px;
+        width: 35px !important;
+        max-width: 35px !important;
+    }
+    .comment-input{
+        width: 109% !important;
+    }
+    .m-sub{
+        display: inline-block !important;
+        color: #259ad3;
+        font-size: 28px;
+        margin-right: -35px;
+        bottom: 20px !important;
+    }
+    .comment-button{
+        display: none;
+    }
+    .pplikes{
+        width: 100%;
+        float: left;
+        margin-top: 15px;
+        display: inline-block;
+    }
+    .pplikes-i{
+        margin-right: 5px;
+        color: #259ad3;
+    }
+    .other--div{
+        display: none;
+    }
+    .pt{
+        width: 100%;
+        display: inline-block !important;
+    }
+    .uwtps--div{
+        display: none;
+    }
+        
+    /* mobile story */
+    .m-uwtps-div{
+        display: inline-block;
+        height: 130px;
+    }
+    .m-uwtps{
+        width: 80px;
+        border-radius: 10px;
+        height: 116px;
+        margin-left: 5px;
+        float: left;
+    }
+    .m-uwtps-span{
+        position: absolute;
+        border-radius: 15px;
+        width: 16px;
+        margin-left: 5px;
+        margin-top: 5px;
+        background-color: #fff;
+    }
+    .m-plus{
+        text-align: center;
+        padding: 1px;
+    }
+    .m-uwtps-ds{
+        position: absolute;
+        color: #fff;
+        margin-top: 96px;
+        font-weight: 600;
+        font-size: 11px;
+        text-align: center;
+        border-radius: 14px;
+        margin-left: 10px;
+    }
+    .m-uwtps-img{
+        height: 116px;
+        border-radius: 10px;
+    }
+    .m-uwtps-count-span{
+        position: absolute;
+        float: right;
+        margin-left: 60px;
+        margin-top: 5px;
+        border-radius: 5px;
+        background: #4285f4;
+        color: #fff;
+        text-align: center;
+        width: 15px;
+    }
+    .m-ds{
+        margin-top: 80px;
+        position: absolute;
+        color: #fff;
+        font-weight: 600;
+        font-size: 11px;
+        text-align: center;
+        border-radius: 14px;
+        margin-left: 10px;
+        width: 35px;
+    }
+    /* .setting-area {
+        width: 300px;
+    } */
 }

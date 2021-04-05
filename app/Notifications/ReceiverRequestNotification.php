@@ -42,7 +42,7 @@ class ReceiverRequestNotification extends Notification
     public function toDatabase($notifiable)
     {
         $user = session("rec");
-        $auth =Auth::user();
+        $auth = Auth::user();
         return [
             'id' => $user->id,
             'sender_id' => $auth->id,

@@ -68,7 +68,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row merged20" id="page-contents">
-                                <div class="col-lg-4">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-3" style="margin-right: 30px;">
                                     <aside class="sidebar static">
                                         @php
                                             $id = Auth::user('id');
@@ -122,6 +123,7 @@
                                         @if ($posts == null)
 
                                         @else
+                                          @include('/user/includes/friends')
                                           @include('/user/includes/recent-photos')
                                         @endif
 
@@ -239,9 +241,27 @@
                                                 </li>
                                             </ul>
                                         </div><!-- who's following -->
+                                        <footer class="footer-none">
+                                            <a href="" class="footer-items">
+                                                <span>Privacy . </span>
+                                            </a>
+                                            <a href="" class="footer-items">
+                                                <span>Terms .</span>
+                                            </a>
+                                            <a href="" class="footer-items">
+                                                <span>Advertising .</span>
+                                            </a>
+                                            <a href="" class="footer-items">
+                                                <span>Ad Choices . </span>
+                                            </a>
+                                            <a href="" class="footer-items">
+                                                <span>Cookie . </span>
+                                            </a><br>
+                                            <span> Chatbook © {{ date("Y") }}</span>
+                                        </footer>
                                     </aside>
                                 </div><!-- sidebar -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <div class="central-meta new-pst">
                                         <div class="new-postbox">
                                             @if ($user->user_image == null)
@@ -556,6 +576,7 @@
                                     </div>
                                 @endif
                                 </div><!-- centerl meta -->
+                                <div class="col-lg-2"></div>
                             </div>
                         </div>
                     </div>
@@ -1076,4 +1097,3 @@
     <script src="/assets/js/my.js"></script>
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
-

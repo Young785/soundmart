@@ -57,7 +57,7 @@ Last change:  26/August/19
 ***General Styling
 ===============*/
 html,body{
-	font-family: "Roboto", "Segoe Ui";
+        font-family: "Segoe UI", Arial, sans-serif !important;
 }
 body {
     float: left;
@@ -65,7 +65,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    color: #545454;
+    color: #1d1d1d;
     font-weight: 400;
     letter-spacing: 0.1px;
 
@@ -73,7 +73,7 @@ body {
 .container {
     /* max-width: 1230px; */
     max-width: 1600px;
-    width: 1510px !important;
+    width: 100% !important;
 }
 
 p {
@@ -136,7 +136,7 @@ section {
 
 .gap {
     float: left;
-    padding: 30px 0;
+    padding: 15px 0;
     position: relative;
     width: 100%;
 }
@@ -301,7 +301,7 @@ section {
 .gray-bg {
     float: left;
     width: 100%;
-    background: #f4f2f2;
+    background: #eee;
 }
 
 [type="submit"],
@@ -313,7 +313,6 @@ html [type="button"] {
 textarea {
     resize: none;
 }
-
 a:hover.facebook {
     background: #516eab;
 }
@@ -731,7 +730,15 @@ header.sticky {
     height: 200px;
 }
 .profile-image{
-    width: 70px;
+    height: 94px;
+    width: 50px;
+}
+.prf-name{
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: -5px;
+    color: #000;
+    margin-right: 20px;
 }
 .notifi-button{
     float: right;
@@ -741,7 +748,112 @@ header.sticky {
     display: none;
 }
 
+/* other */
 
+.other--div{
+    height: 60px;
+    width: 47%;
+    line-height: 39px;
+    float: left;
+}
+.other--icon{
+    float: left;
+    margin-top: 30px;
+    font-size: 25px;
+    text-align: center;
+    /* margin-right: 75px;
+    margin-left: 20px; */
+    width: 100px;
+    height: 44px;
+}
+.icon-active {
+    border-bottom: 3px solid #1877f2;
+    text-align: center;
+}
+
+/* User story */
+.uwtps--div{
+    margin-bottom: 10px;
+    height: 212px;
+}
+.uwtps{
+    height: 190px;
+    background: #fff;
+    width: 115px;
+    float: left;
+    margin-left: 30px;
+    border-radius: 10px;
+}
+.uwtps--mini-div{
+    height: 130px;
+    border-radius: 10px;
+}
+.uwtps--img{
+    border-radius: 10px;
+    height: 130px;
+}
+.uwtps--p{
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    color: #000;
+}
+.fs--mini-div{
+    height: 190px;
+    border-radius: 10%;
+}
+.fs--img{
+    height: 190px;
+    border-radius: 10px;
+}
+.fs--uimg-a{
+    background:#088dcd;
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.fs--uimg{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background: #088dcd;
+    padding: 5px;
+}
+.fs-span{
+    position: absolute;
+    width: 17%;
+    margin-top: 145px;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 10px;
+    font-size: 12px;
+
+}
+.uwtps--uimg-a{
+    position: absolute;
+    border-radius: 100%;
+    margin-top: 110px;
+    width: 47px;
+    margin-left: 35px;
+    padding: 2px;
+    background: #fff;
+}
+.uwtps--span{
+    background: #088dcd;
+    color: #fff;
+    margin-left: 2px;
+    border-radius: 100%;
+}
+.uwtps-iplus{
+    margin-left: 0px;
+    font-size: 23px;
+    padding: 7px;
+}
+.m-uwtps-div{
+    display: none;
+}
 /*--- topbar ---*/
 
 .topbar {
@@ -757,7 +869,7 @@ header.sticky {
 .logo {
     display: inline-block;
     vertical-align: inherit;
-    width: 15%;
+    width: 8%;
     position: relative;
     z-index: 10;
 }
@@ -773,7 +885,7 @@ header.sticky {
     display: inline-block;
     text-align: right;
     vertical-align: middle;
-    width: 84%;
+    width: 91%;
 }
 
 .top-area > ul {
@@ -872,11 +984,147 @@ header.sticky {
     font-size: 11px;
     line-height: initial;
     position: absolute;
-    right: 8px;
+    right: 3px;
 }
 
 
+/*--- timeline story achieve area ---*/
+.sa-photos{
+    height: 270px;
+    width: 135px !important;
+}
+.photos{
+    width: 20.2%;
+}
+.vertical-align{
+    transform: translateY(-50%);
+    top: 5%;
+    position: absolute;
+    width: 100%;
+    left: 20px;
+}
+.color-white{
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+}
+.verical-container{
+    width: 100%;
+}
+.story-i{
+    margin-right: 10px;
+}
+.story-h2{
+    font-size: 13px;
+    font-weight: 500;
+    float: left;
+}
+#nasa{
+    font-size: 20px;
+    font-weight: 600;
+    color: #726f6f;
+}
+/*--- timeline  story achieve area  end ---*/
+.add-elip{
+    float:right
+}
+#check-div{
+    border: 2px solid #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+}
+.check-h3{
+    font-weight: 600;
+    font-size: 20px;
+    margin-top:10px;
+    margin-bottom: 0px;
+}
+.check-p{
+    margin-bottom: 0px;
+}
+
+/***Likes ***/
+.like-div{
+    padding: 15px;
+    background: #fbfbfb;
+}
+.like-img{
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.like-pad{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.like-h3{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+/***Likes end***/
 /*--- timeline area ---*/
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+
+  /* <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> */
+
+
+
+
+
 
 .feature-photo .container-fluid {
     padding: 0 43px;
@@ -902,7 +1150,7 @@ header.sticky {
     border-radius: 100%;
     box-shadow: 0 1px 0 #e1e8ed;
     float: right;
-    margin-top: -138px;
+    margin-top: -175px;
     overflow: hidden;
     position: relative;
     width: auto;
@@ -926,15 +1174,18 @@ header.sticky {
     text-align: center;
     float: right;
     width: 200px;
-    margin-left: 410px;
-    margin-bottom: -187px;
+    margin-left: 365px;
+}
+.image-result{
+    height: 200px;
+    width: 200px;
 }
 .friends-button{
-    background: #088dcd;
-    border-color: #088dcd;
-    padding: 6px;
-    color: #fff;
-    border-bottom: #088dcd;
+    background: #088dcd !important;
+    border-color: #088dcd !important;
+    padding: 6px !important;
+    color: #fff !important;
+    border-bottom: #088dcd !important;
     border-radius: 6px;
 }
 .timeline-info {
@@ -952,7 +1203,20 @@ header.sticky {
     vertical-align: middle;
     width: 100%;
 }
-
+.timeline--divname{
+    text-align: center;
+}
+.timelin-h4{
+    color: #088dcd;
+    font-weight: 600;
+}
+.timeline-name{
+    font-weight: 800;
+    /* color: #1d1d1d; */
+}
+.timeline-i{
+    margin-left: 5px;
+}
 .timeline-info > ul li {
     display: inline-block;
     margin-right: 50px;
@@ -961,7 +1225,7 @@ header.sticky {
 
 .timeline-info > ul li a {
     display: inline-block;
-    font-size: 13.5px;
+    font-size: 15.5px;
     margin-right: 40px;
     position: relative;
     line-height: initial;
@@ -1028,9 +1292,9 @@ header.sticky {
 
 .edit-phto {
     background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
-    bottom: 100px;
+    bottom: 145px;
     color: #fff;
-    left: 275px;
+    left: 1000px;
     padding: 5px 20px;
     position: absolute;
     z-index: 9;
@@ -1247,9 +1511,9 @@ header.sticky {
 }
 
 .add-btn {
-    bottom: 100px;
+    bottom: 151px;
     position: absolute;
-    right: 118px;
+    right: 300px;
 }
 
 .add-btn > span {
@@ -1525,7 +1789,7 @@ form button {
 }
 
 .friend-name > span {
-    color: #999;
+    color: #676767;
     float: left;
     font-size: 12px;
     text-transform: capitalize;
@@ -1551,8 +1815,12 @@ form button {
 
 .description > p {
     margin-bottom: 20px;
+    color: #585858;
+    font-weight: 500;
 }
-
+.pt{
+    display: none;
+}
 .description > span {
     color: #424242;
     font-size: 18px;
@@ -1627,7 +1895,7 @@ form button {
 }
 
 .we-video-info > ul li span.like {
-    color: green;
+    color: #259ad3;
     cursor: pointer;
     transition: all 0.2s linear 0s;
 }
@@ -2721,18 +2989,15 @@ footer .logo {
 
 .sidebar .widget ul.recent-photos li {
     float: left;
-    margin-bottom: 5px;
-    margin-left: 2.5px;
+    margin-bottom: 20px;
+    margin-left: 2px;
     margin-right: 2.5px;
     width: 30%;
 }
 .recent-img{
     height: 90px;
     width: 100px;
-}
-.sec{
-    padding-right: 150px;
-    padding-left: 150px;
+    border-radius: 5px;
 }
 .profile-button{
     margin-top: -104px;
@@ -2740,6 +3005,32 @@ footer .logo {
 }
 .profile-but{
     margin-left: 25px;
+}
+.friends-img{
+    font-weight: 600;
+    list-style: none;
+    word-wrap: break-word;
+    font-size: 11px;
+    line-height: 1.2308;
+    color: #000;
+    -webkit-tap-highlight-color: transparent;
+    text-align: inherit;
+}
+.footer-items{
+    float: left;
+    color: #65676b;
+    margin-right: 5px;
+}
+.footer-items:hover{
+    float: left;
+    color: #65676b;
+    margin-right: 5px;
+    text-decoration: underline;
+}
+.footer-none{
+    background: none !important;
+    position: inherit !important;
+    padding: 0px !important;
 }
 .btn-junior{
     color: #fff;
@@ -2760,8 +3051,8 @@ footer .logo {
     border-left-color: rgb(108, 117, 125);
 }
 .profile-picture{
-    height: 150px;
-    width: 500px !important;
+    height: 175px;
+    width: 170px !important;
 }
 .heading{
     font-weight: 800;
@@ -2771,8 +3062,8 @@ footer .logo {
     border-bottom: 1px solid #d2d2d2 !important;
 }
 .sub{
-        width: 1200px;
-        height: 400px;
+    width: 1200px;
+    height: 365px;
 }
 .req-image{
     display: inline;
@@ -2834,6 +3125,9 @@ footer .logo {
 .commetnt-div{
     width: 100% !important;
 }
+.m-sub{
+    display: none;
+}
 .req-a{
     margin-left: 15px;
     float: right;
@@ -2855,7 +3149,7 @@ footer .logo {
 }
 #topbar{
     position: fixed !important; 
-    width:99%
+    width:100%
 }
 .sidebar-div{
     overflow-y: scroll;
@@ -2863,6 +3157,10 @@ footer .logo {
     height: 700px;
     position: fixed !important;
     width: 24%;
+}
+.icon-a{
+    bottom: 13px;
+    color: #000 !important;
 }
 .show-chats{
     overflow-y: scroll !important;
@@ -2956,6 +3254,10 @@ div .online-friends-div:hover::-webkit-scrollbar {
 .req-button{
     margin-top: 10px;
 }
+.sec{
+    background: #fff;
+    height: 520px;
+}
 .content-sec{
     padding-left: 30px !important;
     padding-right: 30px !important;
@@ -2966,8 +3268,21 @@ div .online-friends-div:hover::-webkit-scrollbar {
 .recent-photos{
     font-weight: 700;
     font-size: 22px;
-    text-decoration: underline;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+.add-photos{
+    font-size: 15px;
+    font-weight: 800;
+    float: left;
+}
+.add-p{
+    float: left;
+    line-height: 47px;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 50px;
+    text-align: center;
+    background: #d7d4d4;
 }
 .online-h3{
     line-height: 0px;
@@ -3007,8 +3322,8 @@ span.status-on::after {
     width: 6px;
 }
 .user-li{
-    min-width: 0px !important;
-    margin-right: -40px !important;
+    min-width: 0px !important;    
+    margin-right: -31px !important;
 }
 .recent-a{
     float: left;
@@ -3021,8 +3336,44 @@ span.status-on::after {
     text-transform: capitalize;
 }
 .timeline-figure{
-    height: 400px;
+    height: 365px;
     background-color: #d1d5da;
+    border-radius: 10px;
+}
+.info-name{
+    color: #878585;
+    height: 30px;
+    font-weight: 600 !important;
+}
+.timeline-f-p{
+    float: right;
+    margin-left: 5px;
+    font-size: 11px;
+}
+.info-drop{
+    background: white;
+    color: #878585;
+    font-weight: 600;
+    border: none;
+    font-family: inherit;
+}
+.infodrop{
+    float: right;
+}
+.drop-li{
+    height: 35px;
+}
+.drop-a{
+    font-size: 12px;
+    font-family: unset;
+    font-weight: 800;
+}
+.drop-menu{
+    transform: none !important;
+    top: 35px !important;
+}
+.type-div{
+    border-top: 1px solid #eee;
 }
 .widget ul.recent-photos {
     display: inline-block;
@@ -4068,13 +4419,29 @@ a.add-butn {
 
 .frnds .nav-tabs .nav-item a {
     font-weight: 500;
+    float: left;
 }
-
+.add-butn{
+    color: #fff;
+    float: right;
+    font-size: 13px;
+    line-height: initial;
+    padding: 5px 10px;
+    margin-right: 20px;
+    text-transform: capitalize;
+    top: 10px;
+    border-radius: 4px;
+}
+.more-action{
+    background: lightslategray none repeat scroll 0 0;
+    right: 74px;
+}
 .frnds .nav-tabs .nav-item > span {
     border: 1px solid #ccc;
     border-radius: 30%;
     display: inline-block;
     font-size: 14px;
+    margin-top: 10px;
     line-height: initial;
     margin-left: 5px;
     text-align: center;
@@ -5025,6 +5392,57 @@ canvas {
 .search-li{
     display: none !important;
 }
+.caret-down > a{
+    bottom: 10px;
+    right: 3px;
+}
+.more-option{
+    display: none !important;
+}
+.more-option > span{
+    bottom: 9px;
+    right: 12px;
+    font-size: 15px;
+    color: #000;
+}
+.count-span{
+    width: 15px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff !important;
+    background: #f02849;
+    bottom: 23px !important;
+    right: -5px !important;
+}
+.msg-count{
+    bottom: 30px !important;
+    color: #fff !important;
+    width: 15px;
+    text-align: center;
+    border-radius: 10px;
+    background: #f02849;
+}
+.post-image{
+    display: none;
+}
+.opt--div{
+    width: 15%;
+    float: right;
+    margin-top: -50px;
+}
+.opt-span{
+    float: left;
+    margin: 0 0 0 65px;
+    font-size: 15px;
+}
+.m-icon{
+    background: #eee;
+    height: 38px;
+    margin-right: 10px;
+    top: 13px;
+    width: 40px;
+    border-radius: 88px;
+}
 .m-input{
     color: #000;
     font-weight: 700;
@@ -5909,7 +6327,7 @@ canvas {
     float: left;
     margin-top: 7px;
     text-align: left;
-    width: 32%;
+    width: 25%;
 }
 
 .top-search form {
@@ -5928,7 +6346,7 @@ canvas {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    border-radius: 5px;
+    border-radius: 50px;
 }
 
 .top-search button {
@@ -5956,7 +6374,8 @@ canvas {
 }
 
 .row.merged20 > div {
-    padding: 45px 7.5px;
+    /* padding: 45px 7.5px; */
+    padding: 0px;
 }
 /*--- Ui Dialog styles for message ---*/
 .ui-widget-header{
@@ -5964,14 +6383,111 @@ canvas {
 }
 .ui-dialog .ui-dialog-content {
     padding: 0em !important;
+    margin-left: 369px;
+    margin-right: -367px;
 }
 .ui-draggable{
     left: 1082.93px !important;
-    top: 280.0037px !important;
+    top: 190.0037px !important;
     display: block !important;
     height: 455px !important;
+    left: 935px !important;
     width: 375px !important;
 }
+
+/* story upload */
+.story-sd-nav{
+    height: 630px;
+    background: #fff;
+}
+.story-sd-div{
+    margin-top: 10px;
+    height: 8%;
+    border-bottom: 1px solid #efefef;
+}
+.story-sd-span{
+    background: #eee;
+    height: 58px;
+    padding: 5px;
+    font-size: 33px;
+    margin-right: 10px;
+    width: 73px;
+    border-radius: 88px;
+}
+.story-div{
+    display: inline-block;
+    vertical-align: inherit;
+    width: 30%;
+    position: relative;
+    z-index: 10;
+}
+.m-icon{
+    font-size: 24px;
+    text-align: center;
+    float: left;
+}
+.story--p{
+    font-size: 22px;
+    font-weight: 900;
+    margin-top: 10px;
+    color: #000;
+    float: left;
+}
+.story--span{
+    margin-left: -26px;
+    font-size: 24px;
+    text-align: center;
+    float: right;
+}
+.story--fig{
+    display: inline-block;
+    margin-bottom: 0;
+    height: auto;
+    vertical-align: middle;
+    width: 20%;
+    float: left;
+    /* border-radius: 124%; */
+    margin: 0 0 1rem;
+}
+.story--p-div{
+    float: left;
+    font-weight: 700;
+    margin-left: 15px;
+    font-size: 16px;
+    margin-top: 17px;  
+}
+.st-fdiv{
+    margin-top: 200px;
+    height: 330px;
+    border-radius: 10px;
+    background: linear-gradient(to left, rgb(96 68 232) 0%, rgb(129 188 247) 87%);
+    width: 230px;
+    margin-left: 170px;
+    float: left;
+}
+.st-fdiv2{
+    margin-top: 200px;
+    height: 330px;
+    border-radius: 10px;
+    background: linear-gradient(to top, rgb(170 73 214) 0%, rgb(224 82 138) 87%);
+    width: 230px;
+    margin-left: 170px;
+    float: left;
+}
+.st-sdiv{
+    text-align: center;
+    margin-top: 135px;
+    font-weight: 600;
+    line-height: 50px;
+    color: #fff;
+    font-size: 19px;
+}
+.st-span{
+    background: #fff;
+    border-radius: 100%;
+    padding: 16px;
+}
+
 /*--- fixed sidebar right ---*/
 
 .fixed-sidebar {
@@ -7000,18 +7516,18 @@ figure.aligncenter,
 /*--- comments section ---*/
 .comment-input{
     background: #f3f3f3 none repeat scroll 0 0;
-border-color: transparent;
-border-radius: 3px;
-color: #696969;
-font-size: 13px;
-font-weight: 400;
-height: 40px;
-line-height: 16px;
-border: 1px solid #eeeeee;
-border-radius: 6px 6px 0 0;
-padding: 10px;
-width: 100%;
-border-bottom: 0;
+    border-color: transparent;
+    border-radius: 3px;
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 16px;
+    border: 1px solid #eeeeee;
+    border-radius: 6px 6px 0 0;
+    padding: 10px;
+    width: 100%;
+    border-bottom: 0;
 }
 .comment-button{
     bottom: 18px !important;

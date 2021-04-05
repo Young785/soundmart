@@ -1,4 +1,4 @@
-<div class="bottombar">
+{{-- <div class="bottombar">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 </div>
 <script src="/assets/js/comment-reply.min.js"></script>
 <script src="/assets/js/main.min.js"></script>

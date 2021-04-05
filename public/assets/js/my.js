@@ -4,6 +4,9 @@ $(".search-click").on("click", function(){
         $(".search-click").addClass("remove-me");
         $(".search-click").removeClass("search-click");
 });
+function home(){
+    location.href = '/';
+};
 $(document).on("click", ".remove-me", function(){
     alert("uhn?");
     $(".mh-head").removeClass("keep");
@@ -37,7 +40,8 @@ $('.user-img').on('click', function() {
     $('.user-setting').toggleClass("active");
 });
 //------ scrollbar plugin
-if ($.isFunction($.fn.perfectScrollbar)) {
+if ($.
+isFunction($.fn.perfectScrollbar)) {
     $('.dropdowns, .twiter-feed, .invition, .followers, .chatting-area, .peoples, #people-list, .chat-list > ul, .message-list, .chat-users, .left-menu').perfectScrollbar();
 }
 

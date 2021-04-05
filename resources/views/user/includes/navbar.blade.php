@@ -148,7 +148,7 @@
 </div>
 <div class="topbar stick" id="topbar" style="">
     <div class="logo">
-        <a title="" href="/newsfeed"><img src="/assets/images/logo.png" alt=""></a>
+        <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
     </div>
 
         @php
@@ -166,13 +166,74 @@
             <button data-ripple><i class="ti-search"></i></button>
         </form>
     </div>
+    <div class="other--div">
+        <ul>
+            <a href="#" title="Messages" data-ripple="" class="icon-a">
+                <span class="other--icon icon-active">
+                    <i class="ti-home" data-ripple=""></i>
+                </span>
+            </a> 
+            <a href="#" title="Videos" data-ripple="" class="icon-a">
+                <span class="other--icon" style="margin-right: 0px !important;">
+                    <i class="fa fa-tv" data-ripple=""></i>
+                </span>
+            </a>
+            <a href="#" title="Market" data-ripple="" class="icon-a">
+                <span class="other--icon">
+                        <i class="fa fa-laptop" data-ripple=""></i>
+                </span>
+            </a>           
+            <a href="#" title="Friends" data-ripple="" class="icon-a">
+                <span class="other--icon">
+                    <i class="fa fa-users" data-ripple=""></i>
+                </span>
+            </a>    
+            <a href="#" title="Messages" data-ripple="" class="icon-a">
+                <span class="other--icon">
+                    <i class="fa fa-users" data-ripple=""></i>
+                </span>
+            </a>       
+        </ul>
+    </div>
+    <div class="user-img nav-img">
+        @if ($user->user_image == null)
+            <img src="/assets/images/default.png" class="profile-image" alt="{{ $user->name }}">
+            <span class="prf-name">{{ Str::substr($user->name, 0, 6)}}</span>
+        @else
+            <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="profile-image nav-img" alt="{{ $user->name }}">
+            <span class="prf-name">{{ Str::substr($user->name, 0, 6)}}</span>
+        @endif  
+    </div>
     <ul class="setting-area">
-        <li class="m-icon"><a href="/newsfeed" title="Home" data-ripple=""><i class="ti-home"></i></a></li>
+        <li class="m-icon search-li"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-search"></i></a></li>
+        <li class="m-icon more-option"><span class="fa fa-users main-menu" data-ripple=""></span></li>
+        {{-- <li class="m-icon home-display"><a href="/newsfeed" type="button" title="Home" class="icon-a " onclick="home()" data-ripple=""><i class="fa fa-home"></i></a></li> --}}
         <li class="m-icon">
-            <a href="#"  onclick="markRead()" title="Notification" >
-                <i class="ti-bell"></i>
+            <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-comment"></i><span class="msg-count">12</span></a>
+            <div class="dropdowns">
+                <span>5 New Messages</span>
+                <ul class="drops-menu">
+                    <li>
+                        <a href="notifications.html" title="">
+                            <img src="/assets/images/resources/thumb-1.jpg" alt="">
+                            <div class="mesg-meta">
+                                <h6>sarah Loren</h6>
+                                <span>Hi, how r u dear ...?</span>
+                                <i>2 min ago</i>
+                            </div>
+                        </a>
+                        <span class="tag green">New</span>
+                    </li>
+                      </ul>
+                <a href="messages.html" title="" class="more-mesg">view more</a>
+            </div>
+        </li>
+
+        <li class="m-icon">
+            <a href="#" class="icon-a" style="margin-top: -24px;" onclick="markRead()" title="Notification" >
+                <i class="fa fa-bell"></i>
                 @if ($notification != null)
-                    <span>{{ count(Auth::user()->unreadNotifications) }}</span>
+                    <span class="count-span">{{ count(Auth::user()->unreadNotifications) }}</span>
                 @else
                 @endif
             </a>
@@ -190,96 +251,17 @@
                 <a href="/notifications" title="" class="more-mesg">view more</a>
             </div>
         </li>
-
-        <li class="m-icon">
-            <a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span>12</span></a>
-            <div class="dropdowns">
-                <span>5 New Messages</span>
-                <ul class="drops-menu">
-                    <li>
-                        <a href="notifications.html" title="">
-                            <img src="/assets/images/resources/thumb-1.jpg" alt="">
-                            <div class="mesg-meta">
-                                <h6>sarah Loren</h6>
-                                <span>Hi, how r u dear ...?</span>
-                                <i>2 min ago</i>
-                            </div>
-                        </a>
-                        <span class="tag green">New</span>
-                    </li>
-                    <li>
-                        <a href="notifications.html" title="">
-                            <img src="/assets/images/resources/thumb-2.jpg" alt="">
-                            <div class="mesg-meta">
-                                <h6>Jhon doe</h6>
-                                <span>Hi, how r u dear ...?</span>
-                                <i>2 min ago</i>
-                            </div>
-                        </a>
-                        <span class="tag red">Reply</span>
-                    </li>
-                    <li>
-                        <a href="notifications.html" title="">
-                            <img src="/assets/images/resources/thumb-3.jpg" alt="">
-                            <div class="mesg-meta">
-                                <h6>Andrew</h6>
-                                <span>Hi, how r u dear ...?</span>
-                                <i>2 min ago</i>
-                            </div>
-                        </a>
-                        <span class="tag blue">Unseen</span>
-                    </li>
-                    <li>
-                        <a href="notifications.html" title="">
-                            <img src="/assets/images/resources/thumb-4.jpg" alt="">
-                            <div class="mesg-meta">
-                                <h6>Tom cruse</h6>
-                                <span>Hi, how r u dear ...?</span>
-                                <i>2 min ago</i>
-                            </div>
-                        </a>
-                        <span class="tag">New</span>
-                    </li>
-                    <li>
-                        <a href="notifications.html" title="">
-                            <img src="/assets/images/resources/thumb-5.jpg" alt="">
-                            <div class="mesg-meta">
-                                <h6>Amy</h6>
-                                <span>Hi, how r u dear ...?</span>
-                                <i>2 min ago</i>
-                            </div>
-                        </a>
-                        <span class="tag">New</span>
-                    </li>
-                </ul>
-                <a href="messages.html" title="" class="more-mesg">view more</a>
-            </div>
-        </li>
-        <li class="m-icon search-li"><a href="#" class="search-click" title="Search" data-ripple=""><i class="ti-search"></i></a></li>
-        <li class="m-icon lang"><a href="#" title="Languages" data-ripple=""><i class="fa fa-globe"></i></a>
-            <div class="dropdowns languages">
-                <a href="#" title=""><i class="ti-check"></i>English</a>
-                <a href="#" title="">Arabic</a>
-                <a href="#" title="">Dutch</a>
-                <a href="#" title="">French</a>
+   
+        <li class="m-icon caret-down user-img"><a href="#" style="padding-bottom: 10px !important;" title="More" data-ripple=""><i class="fa fa-align-justify"></i></a>
+            <div class="user-setting">
+                <a href="/profile/{{ Auth::user()->secrete_id }}" title=""><i class="ti-user"></i> view profile</a>
+                <a href="/profile/{{  Auth::user()->secrete_id }}/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a>
+                <a href="/accout-setting" title=""><i class="ti-settings"></i>account setting</a>
+                <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
             </div>
         </li>
     </ul>
-    <div class="user-img nav-img">
-        @if ($user->user_image == null)
-            <img src="/assets/images/default.png" class="profile-image" alt="{{ $user->name }}">
-        @else
-            <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="profile-image nav-img" alt="{{ $user->name }}">
-        @endif
-        <span class="status f-online"></span>
-        <div class="user-setting">
-            <a href="/profile/{{ Auth::user()->secrete_id }}" title=""><i class="ti-user"></i> view profile</a>
-            <a href="/profile/{{  Auth::user()->secrete_id }}/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a>
-            <a href="/accout-setting" title=""><i class="ti-settings"></i>account setting</a>
-            <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
-        </div>
-    </div>
-    <span class="ti-menu main-menu" data-ripple=""></span>
+  
 </div>
 </div><!-- topbar -->
 

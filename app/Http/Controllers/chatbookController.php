@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Checkin;
 use App\Friend;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
@@ -16,6 +17,10 @@ use Symfony\Component\Console\Input\Input;
 
 class chatbookController extends Controller
 {
+    public function sip()
+    {
+        return view('user\story_image_preview');
+    }
     public function newsfeed()
     {
         $user = Auth::user();
@@ -84,8 +89,10 @@ class chatbookController extends Controller
         $s_id = $secrete_id;
         // 
         $check_friend = Friend::where(["sender_id" => $auth_id])->where(["receiver_id"=> $user->id])->orWhere(["sender_id"=> $user->id])->where(["receiver_id"=> $auth_id])->first();
+        $friends = Friend::where(["request_status"=> "accepted"])->where(["sender_id" => $id])->orWhere(["receiver_id"=> $id])->get();
+        
         // dd($check_friend);
-        return view("user/profile", compact("user", "posts","s_id", "check_friend"));
+        return view("user/profile", compact("user", "posts","s_id", "check_friend", "friends"));
     }
     public function edit_profile()
     {
@@ -137,26 +144,39 @@ class chatbookController extends Controller
         $users = User::all()->where("secrete_id", $secrete_id);
         $user = User::where("secrete_id", $secrete_id)->firstOrFail();
         $check_friend = Friend::where(["sender_id" => $id])->where(["receiver_id"=> $user->id])->orWhere(["sender_id"=> $user->id])->where(["receiver_id"=> $id])->first();
-// dd($check_friend);
+        $friends = Friend::where(["request_status"=> "accepted"])->where(["sender_id" => $id])->orWhere(["receiver_id"=> $id])->get();
+
+        $friend =  User::join("friends", "users.id","=", "friends.sender_id")
+        ->where("receiver_id", $id)->where(["request_status" => "accepted"])
+        ->latest("friends.created_at")->get();
+        foreach ($friends as $key => $value) {}
+
+        // dd($value);
         $posts = Post::all()->where("user_id", $user->id)
             ->whereNotNull("type")->sortByDesc("created_at");
+
+        $post_story = Post::where(["post_type"=> "story"])->get();
+        $check_ins = Checkin::where(["user_id"=> $id])->get();
+        $request = User::rightjoin("friends", "users.id","=", "friends.sender_id")
+            ->where("receiver_id", $id)->where(["request_status" => "pending"])
+            ->latest("friends.created_at")->get();
+        // dd($request);
         // foreach ($posts as $key => $value) {
         //     $image_explode = explode("/", $value->image);
         //     foreach ($image_explode as $key => $v) {
         //         dd($v);
         //     }
         // }
-        
         if (count($posts) == null) {
             $user_image = User::all()->where("id", $id);
-            return view("user/timeline-photos", compact("posts", "users", "check_friend", "user", "user_image"));
+            return view("user/timeline-photos", compact("posts", "users", "friends","friend", "check_friend", "request", "user", "post_story",  "check_ins", "user_image"));
         }else{
             foreach ($posts as $key => $value) {
                 $image_explode = explode("/", $value->image);
             }
 
             $user_image = User::all()->where("id", $id);
-            return view("user/timeline-photos", compact("posts", "users", "check_friend", "user", "image_explode", "user_image"));
+            return view("user/timeline-photos", compact("posts", "users", "friends","friend", "check_friend", "request", "user", "image_explode", "check_ins",  "post_story", "user_image"));
         }
     }
 }
