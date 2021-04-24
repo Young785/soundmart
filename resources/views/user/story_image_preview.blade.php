@@ -1,4 +1,3 @@
-
 @include('/user/includes/header')
 <link rel="stylesheet" href="/assets/css/style.css">
         <div class="col-lg-12">

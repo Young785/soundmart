@@ -147,6 +147,22 @@
     </form>
 </div>
 <div class="topbar stick" id="topbar" style="">
+    <div class="logo--div keep">
+        <div class="logo-div">
+            <img src="/assets/images/logo.png" alt="">
+        </div>
+        <div class="logo-div">
+            <li style="margin-top: 5px;" class="m-icon search-li user-img"><a href="#" style="padding-bottom: 10px !important;color: black; font-size: 16px;" title="More" data-ripple=""><i class="fa fa-align-justify"></i></a>
+                <div class="user-setting">
+                    <a href="/profile/{{ Auth::user()->secrete_id }}" title=""><i class="ti-user"></i> view profile</a>
+                    <a href="/profile/{{  Auth::user()->secrete_id }}/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a>
+                    <a href="/accout-setting" title=""><i class="ti-settings"></i>account setting</a>
+                    <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
+                </div>
+            </li>
+            <a href="#" data-ripple="" class="icon-a m-icon search-li" title="Search" data-ripple=""><i class="fa fa-search"></i></a>
+        </div>
+    </div>
     <div class="logo">
         <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
     </div>
@@ -205,11 +221,32 @@
         @endif  
     </div>
     <ul class="setting-area">
-        <li class="m-icon search-li"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-search"></i></a></li>
+        <li class="m-icon search-li hide"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-search"></i></a></li>
+        <li class="m-icon homeli keep"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-home"></i></a></li>
         <li class="m-icon more-option"><span class="fa fa-users main-menu" data-ripple=""></span></li>
         {{-- <li class="m-icon home-display"><a href="/newsfeed" type="button" title="Home" class="icon-a " onclick="home()" data-ripple=""><i class="fa fa-home"></i></a></li> --}}
         <li class="m-icon">
             <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-comment"></i><span class="msg-count">12</span></a>
+            <div class="dropdowns">
+                <span>5 New Messages</span>
+                <ul class="drops-menu">
+                    <li>
+                        <a href="notifications.html" title="">
+                            <img src="/assets/images/resources/thumb-1.jpg" alt="">
+                            <div class="mesg-meta">
+                                <h6>sarah Loren</h6>
+                                <span>Hi, how r u dear ...?</span>
+                                <i>2 min ago</i>
+                            </div>
+                        </a>
+                        <span class="tag green">New</span>
+                    </li>
+                      </ul>
+                <a href="messages.html" title="" class="more-mesg">view more</a>
+            </div>
+        </li>
+        <li class="m-icon">
+            <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-tv"></i><span class="msg-count">12</span></a>
             <div class="dropdowns">
                 <span>5 New Messages</span>
                 <ul class="drops-menu">
@@ -251,8 +288,28 @@
                 <a href="/notifications" title="" class="more-mesg">view more</a>
             </div>
         </li>
+        <li class="m-icon cartli keep">
+            <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-shopping-cart"></i><span class="msg-count">12</span></a>
+            <div class="dropdowns">
+                <span>5 New Messages</span>
+                <ul class="drops-menu">
+                    <li>
+                        <a href="notifications.html" title="">
+                            <img src="/assets/images/resources/thumb-1.jpg" alt="">
+                            <div class="mesg-meta">
+                                <h6>sarah Loren</h6>
+                                <span>Hi, how r u dear ...?</span>
+                                <i>2 min ago</i>
+                            </div>
+                        </a>
+                        <span class="tag green">New</span>
+                    </li>
+                      </ul>
+                <a href="messages.html" title="" class="more-mesg">view more</a>
+            </div>
+        </li>
    
-        <li class="m-icon caret-down user-img"><a href="#" style="padding-bottom: 10px !important;" title="More" data-ripple=""><i class="fa fa-align-justify"></i></a>
+        <li class="m-icon caret-down user-img hide"><a href="#" style="padding-bottom: 10px !important;" title="More" data-ripple=""><i class="fa fa-align-justify"></i></a>
             <div class="user-setting">
                 <a href="/profile/{{ Auth::user()->secrete_id }}" title=""><i class="ti-user"></i> view profile</a>
                 <a href="/profile/{{  Auth::user()->secrete_id }}/edit-profile" title=""><i class="ti-pencil-alt"></i>edit profile</a>

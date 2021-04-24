@@ -1,6 +1,442 @@
 @include('/user/includes/header')
-<!--<div class="se-pre-con"></div>-->
-<div class="theme-layout">
+    <div class="story-upload keep">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <div class="col-lg-12">
+            <div class="col-lg-3 story-sd-nav">
+                <div class="story-sd-div">
+                    <span class="m-icon close-story" id="m-icon"><i class="ti-close"></i></span>
+                    <div class="">
+                        <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 30px;"> 
+                    <div style="height: 43px;">
+                        <p class="story--p">Your Story</p>
+                        <span class="story--span m-icon">
+                            <i class="fa fa-cog"></i>
+                        </span>
+                    </div>
+                    <div style="float: left">
+                        <figure class="story--fig">
+                            <img src="/assets/images/default.png" style="border-radius: 100%" alt="">
+                        </figure>
+                        <div class="story--p-div">Haryormekun Hariyor</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="st-header-div">
+                    <div class="" class="st-header-mdiv">
+                        <div class="">
+                            <span class="story--span m-icon user-img new--style">
+                                <i class="fa fa-caret-down"></i>
+                                <div class="user-setting dropDiv">
+                                    <div class="dropUser">
+                                        <a href="/profile/4722497077" title="">
+                                            <figure style="float: left">
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="req-image" style="height: 50px;" alt="Haryormekun Hariyo">
+                                            </figure>
+                                            <div class="drop--p">
+                                                <p class="dropName">Haryormekun Hariyor</p>
+                                            <p>View Profile</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <hr style="margin-top: 0px !important">
+                                    <a href="/profile/4722497077/edit-profile" class="drop--a" title="">
+                                        <i class="ti-pencil-alt drop--i"></i>
+                                        <p class="drop-a-p">edit profile</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/accout-setting" title="" class="drop--a">
+                                        <i class="ti-settings drop--i"></i>
+                                        <p class="drop-a-p">account setting</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/logout" title="" class="drop--a">
+                                        <i class="ti-power-off drop--i"></i>
+                                        <p class="drop-a-p">log out</p>
+                                    </a>
+                                </div>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="fa fa-bell bell-i"></i>
+                                <span class="bell-span bell-span">12</span>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="ti-plus" style="font-size: 18px;"></i>
+                            </span>
+                        </div>
+                    </div> 
+                </div>
+                <div style="padding: 125px">
+                    <label class="fileContainer">
+                        <input type="file" id="story-image">
+                        <div class="st-fdiv">
+                            <div class="st-sdiv">
+                                <span class="st-span"><i class="ti-camera" style="color: #000;font-weight: bold;"></i></span><br>
+                                <span>Create a Photo Story</span>
+                            </div>
+                        </div>
+                    </label>
+                    <div class="st-fdiv2">
+                        <div class="st-sdiv">
+                            <span class="st-span"><i class="ti-text" style="color: #000;font-weight: bold;"></i></span><br>
+                            <span>Create a Photo Story</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="story-upload1 keep">
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <div class="col-lg-12">
+            <div class="col-lg-3 story-sd-nav">
+                <div class="story-sd-div">
+                    <span class="m-icon close-tudiv" id="m-icon"><i class="ti-close"></i></span>
+                    <div class="">
+                        <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 30px;"> 
+                    <div style="height: 43px;">
+                        <p class="story--p">Your Story</p>
+                        <span class="story--span m-icon">
+                            <i class="fa fa-cog"></i>
+                        </span>
+                    </div>
+                    <div style="float: left">
+                        <figure class="story--fig">
+                            <img src="/assets/images/default.png" style="border-radius: 100%" alt="">
+                        </figure>
+                        <div class="story--p-div">Haryormekun Hariyor</div>
+                        <hr style="margin-top: 80px;">
+                        <div class="text-div">
+                            <div class="text--div">
+                                <input type="text" placeholder="Start Typing" id="text-input" class="text-input">
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Dropdown button
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                  <a class="dropdown-item" href="#">Action</a>
+                                  <a class="dropdown-item" href="#">Another action</a>
+                                  <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                              </div>
+                            <div class="dropdown drop--div">
+                                <button class="text---div btn  dropdown-togsgle drop--button" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    <ul class="dropdown-menu" x-placement="bottom-start">
+                                        <li class="drop--li">
+                                            <span class="drop--span"><i class="ti-text"></i>
+                                                <a href="#" class="drop--a">HTML</a>
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <span class="text-span">
+                                        <i class="ti-text text-i"></i>      
+                                    </span>
+                                    <p class="text-p">Clean</p>
+                                    <span class="text--span">
+                                        <i class="fa fa-caret-down"></i>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="text----div">
+                                <p class="text--p">Backgrounds</p>
+                                <div style="height: 64%;">
+                                    <div class="add1 textRemoval text-active">
+                                        <p id="1" class="text---p selectColor addp1" data-id="_1">.</p>
+                                    </div>
+                                    <div class="add_2 textRemoval">
+                                        <p id="2" class="text---p selectColor addp2" data-id="_2">.</p>
+                                    </div>
+                                    <div class="add_3 textRemoval">
+                                        <p id="3" class="text---p selectColor addp3" data-id="_3">.</p>
+                                    </div>
+                                    <div class="add_4 textRemoval">
+                                        <p id="4" class="text---p selectColor addp4" data-id="_4">.</p>
+                                    </div>
+                                    <div class="add_5 textRemoval">
+                                        <p id="5" class="text---p selectColor addp5" data-id="_5">.</p>
+                                    </div>
+                                    <div class="add_6 textRemoval">
+                                        <p id="6" class="text---p selectColor addp6" data-id="_6">.</p>
+                                    </div>
+                                    <div class="add_7 textRemoval">
+                                        <p id="7" class="text---p selectColor addp7" data-id="_7">.</p>
+                                    </div>
+                                    <div class="add_8 textRemoval">
+                                        <p id="8" class="text---p selectColor addp8" data-id="_8">.</p>
+                                    </div>
+                                    <div class="add_9 textRemoval">
+                                        <p id="9" class="text---p selectColor addp9" data-id="_9">.</p>
+                                    </div>
+                                    <div class="add_10 textRemoval">
+                                        <p id="10" class="text---p selectColor addp10" data-id="_10">.</p>
+                                    </div>
+                                    <div class="add_11 textRemoval">
+                                        <p id="11" class="text---p selectColor addp11" data-id="_11">.</p>
+                                    </div>
+                                    <div class="add_12 textRemoval">
+                                        <p id="12" class="text---p selectColor addp12" data-id="_12">.</p>
+                                    </div>
+                                    <div class="add_13 textRemoval">
+                                        <p id="13" class="text---p selectColor addp13" data-id="_13">.</p>
+                                    </div>
+                                    <div class="add_14 textRemoval">
+                                        <p id="14" class="text---p selectColor addp14" data-id="_14">.</p>
+                                    </div>
+                                    <div class="add_15 textRemoval">
+                                        <p id="15" class="text---p selectColor addp15" data-id="_15">.</p>
+                                    </div>
+                                    <div class="add_16 textRemoval">
+                                        <p id="16" class="text---p selectColor addp16" data-id="_16">.</p>
+                                    </div>
+                                    <div class="add_17 textRemoval">
+                                        <p id="17" class="text---p selectColor addp17" data-id="_17">.</p>
+                                    </div>
+                                    <div class="add_18 textRemoval">
+                                        <p id="18" class="text---p selectColor addp18" data-id="_18">.</p>
+                                    </div>
+                                    <div class="add_19 textRemoval">
+                                        <p id="19" class="text---p selectColor addp19" data-id="_19">.</p>
+                                    </div>
+                                    <div class="add_20 textRemoval">
+                                        <p id="20" class="text---p selectColor addp20" data-id="_20">.</p>
+                                    </div>
+                                    <div class="add_21 textRemoval">
+                                        <p id="21" class="text---p selectColor addp21" data-id="_21">.</p>
+                                    </div>
+                                    <div class="add_22 textRemoval">
+                                        <p id="22" class="text---p selectColor addp22" data-id="_22">.</p>
+                                    </div>
+                                    <div class="add_23 textRemoval">
+                                        <p id="23" class="text---p selectColor addp23" data-id="_23">.</p>
+                                    </div>
+                                    <div class="add_24 textRemoval">
+                                        <p id="24" class="text---p selectColor addp24" data-id="_24">.</p>
+                                    </div>
+                                    <div class="add_25 textRemoval">
+                                        <p id="25" class="text---p selectColor addp25" data-id="_25">.</p>
+                                    </div>
+                                    <div class="add_26 textRemoval">
+                                        <p id="26" class="text---p selectColor addp26" data-id="_26">.</p>
+                                    </div>
+                                    <div class="add_27 textRemoval">
+                                        <p id="27" class="text---p selectColor addp27" data-id="_27">.</p>
+                                    </div>
+                                    <div class="add_28 textRemoval">
+                                        <p id="28" class="text---p selectColor addp28" data-id="_28">.</p>
+                                    </div>
+                                    <div class="add_29 textRemoval">
+                                        <p id="29" class="text---p selectColor addp29" data-id="_29">.</p>
+                                    </div>
+                                    <div class="add_30 textRemoval">
+                                        <p id="30" class="text---p selectColor addp30" data-id="_30">.</p>
+                                    </div>
+                                    <div class="add_31 textRemoval">
+                                        <p id="31" class="text---p selectColor addp31" data-id="_31">.</p>
+                                    </div>
+                                    <div class="add_32 textRemoval">
+                                        <p id="32" class="text---p selectColor addp32" data-id="_32">.</p>
+                                    </div>
+                                    <div class="add_33 textRemoval">
+                                        <p id="33" class="text---p selectColor addp33" data-id="_33">.</p>
+                                    </div>
+                                    <div class="add_34 textRemoval">
+                                        <p id="34" class="text---p selectColor addp34" data-id="_34">.</p>
+                                    </div>
+                                    <div class="add_35 textRemoval">
+                                        <p id="35" class="text---p selectColor addp35" data-id="_35">.</p>
+                                    </div>
+                                    <div class="add_36 textRemoval">
+                                        <p id="36" class="text---p selectColor addp36" data-id="_36">.</p>
+                                    </div>
+                                    <div class="add_37 textRemoval">
+                                        <p id="37" class="text---p selectColor addp37" data-id="_37">.</p>
+                                    </div>
+                                    <div class="add_38 textRemoval">
+                                        <p id="38" class="text---p selectColor addp38" data-id="_38">.</p>
+                                    </div>
+                                    <div class="add_39 textRemoval">
+                                        <p id="39" class="text---p selectColor addp39" data-id="_39">.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sup-col3-bdiv">
+                <hr>
+                <div>
+                    <button class="btn btn-default sup-col3-bdivb1">Cancel</button>
+                    <button class="btn btn-primary sup-col3-bdivb2">Save Story</button>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="st-header-div">
+                    <div class="" class="st-header-mdiv">
+                        <div class="">
+                            <span class="story--span m-icon user-img new--style">
+                                <i class="fa fa-caret-down"></i>
+                                <div class="user-setting dropDiv">
+                                    <div class="dropUser">
+                                        <a href="/profile/4722497077" title="">
+                                            <figure style="float: left">
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="req-image" style="height: 50px;" alt="Haryormekun Hariyo">
+                                            </figure>
+                                            <div class="drop--p">
+                                                <p class="dropName">Haryormekun Hariyor</p>
+                                            <p>View Profile</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <hr style="margin-top: 0px !important">
+                                    <a href="/profile/4722497077/edit-profile" class="drop--a" title="">
+                                        <i class="ti-pencil-alt drop--i"></i>
+                                        <p class="drop-a-p">edit profile</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/accout-setting" title="" class="drop--a">
+                                        <i class="ti-settings drop--i"></i>
+                                        <p class="drop-a-p">account setting</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/logout" title="" class="drop--a">
+                                        <i class="ti-power-off drop--i"></i>
+                                        <p class="drop-a-p">log out</p>
+                                    </a>
+                                </div>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="fa fa-bell" style="font-size: 17px;"></i>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="ti-plus" style="font-size: 18px;"></i>
+                            </span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="sup-div">
+                    <p class="sup-p">Preview</p>
+                    <div class="col-md-12 sup--div">
+                        <div class="col-md-6 sup---div">
+                            <div id="sup-tdiv">
+                                <h2 id="sup-tp">Start Typing...</h2>
+                            </div>
+                        </div>
+                    </div>
+                <div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="se-pre-con"></div>-->
+    {{-- <div class="story-upload keep">
+        <div class="col-lg-12">
+            <div class="col-lg-3 story-sd-nav">
+                <div class="story-sd-div">
+                    <span class="m-icon close-story" id="m-icon"><i class="ti-close"></i></span>
+                    <div class="">
+                        <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="" style="margin-top: 30px;"> 
+                    <div style="height: 43px;">
+                        <p class="story--p">Your Story</p>
+                        <span class="story--span m-icon">
+                            <i class="fa fa-cog"></i>
+                        </span>
+                    </div>
+                    <div style="float: left">
+                        <figure class="story--fig">
+                            <img src="/assets/images/default.png" style="border-radius: 100%" alt="">
+                        </figure>
+                        <div class="story--p-div">Haryormekun Hariyor</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sup-col3-bdiv">
+                <hr>
+                <div>
+                    <button class="btn btn-default" style="width: 45%;">Cancel</button>
+                    <button class="btn btn-primary sup-col3-bdivb2">Save Story</button>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="st-header-div">
+                    <div class="" class="st-header-mdiv">
+                        <div class="">
+                            <span class="story--span m-icon user-img new--style">
+                                <i class="fa fa-caret-down"></i>
+                                <div class="user-setting dropDiv">
+                                    <div class="dropUser">
+                                        <a href="/profile/4722497077" title="">
+                                            <figure style="float: left">
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="req-image" style="height: 50px;" alt="Haryormekun Hariyo">
+                                            </figure>
+                                            <div class="drop--p">
+                                                <p class="dropName">Haryormekun Hariyor</p>
+                                            <p>View Profile</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <hr style="margin-top: 0px !important">
+                                    <a href="/profile/4722497077/edit-profile" class="drop--a" title="">
+                                        <i class="ti-pencil-alt drop--i"></i>
+                                        <p class="drop-a-p">edit profile</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/accout-setting" title="" class="drop--a">
+                                        <i class="ti-settings drop--i"></i>
+                                        <p class="drop-a-p">account setting</p>
+                                        <span class="ryt-span">
+                                            <i class="fa fa-angle-double-right ryt-i"></i>
+                                        </span>
+                                    </a>
+                                    <a href="/logout" title="" class="drop--a">
+                                        <i class="ti-power-off drop--i"></i>
+                                        <p class="drop-a-p">log out</p>
+                                    </a>
+                                </div>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="fa fa-bell" style="font-size: 17px;"></i>
+                            </span>
+                            <span class="story--span m-icon new--style">
+                                <i class="ti-plus" style="font-size: 18px;"></i>
+                            </span>
+                        </div>
+                    </div> 
+                </div>
+                <div class="sup-div">
+                    <p class="sup-p">Preview</p>
+                    <div class="col-md-12 sup--div">
+                        <div class="col-md-6 sup---div">
+                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="sup-img">
+                        </div>
+                    </div>
+                <div>
+            </div>
+        </div>
+    </div> --}}
+    </div></div>
+
+    
+<div class="theme-layout searcher">
 	<div class="postoverlay"></div>
 	<div class="responsive-header">
 		<div class="mh-head second keep">
@@ -12,7 +448,7 @@
 		</div>
 		@include('/user/includes/navbar')
 <style>
-    .post {
+.post {
 	width: 30%;
 	margin: 10px auto;
 	border: 1px solid #cbcbcb;
@@ -29,7 +465,7 @@
 	font-size: 1.3em;
 }
 </style>
-	<section>
+	<section class="user-section">
 		<div class="gap2 gray-bg">
 			<div class="container">
 				<div class="row">
@@ -106,6 +542,41 @@
 								</aside>
 							</div><!-- sidebar -->
 							<div class="col-lg-6 content-sec">
+                                <div class="uwtps--div">
+                                    <a class="postStory">
+                                        <div class="uwtps">
+                                            <div class="uwtps--mini-div">
+                                                <span class="uwtps--span">
+                                                    <i class="fa fa-plus uwtps-iplus"></i>
+                                                </span>
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="uwtps--img" alt="">
+                                                <p class="uwtps--p">Create a Story</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="uwtps">
+                                        <a href="" class="fs--uimg-a">
+                                            <span>
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="fs--uimg" alt="">
+                                            </span>
+                                        </a>
+                                        <div class="fs--mini-div">
+                                            <p class="fs-p">Haryormekun Hariyor</p>
+
+                                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="" class="mini-img">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="m-uwtps-div">
+                                    <div class="m-uwtps">
+                                        <span class="m-uwtps-span">
+                                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="">
+                                            <span><i class="fa fa-plus m-plus"></i></span>
+                                            <span>Create a Story</span>
+                                        </span>
+                                    </div>
+                                </div>
                                 <div class="central-meta new-pst post-div-header keep">
                                     <div class="header-title">
                                         <h3 class="head-title">Create Post
@@ -219,7 +690,7 @@
                                                 </a>
 											</figure>
 										@endif
-<a>
+                                    <a>
 										<div class="newpst-input">
 											<form method="POST" action="/newsfeed" enctype="multipart/form-data">
 												@csrf
@@ -256,7 +727,22 @@
 													</ul>
 												</div>
 											</form>
-										</div></a>
+										</div>
+                                        <div class="post-image">
+                                            <div class="post-li-camera-m">
+                                                <i class="fa fa-camera"></i>
+                                                <span class="post--span">Photos</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="post-options">
+                                        <div class="post--options1">
+                                            <a href="#" class="btn">Text</a>
+                                        </div>
+                                        <div class="post--options2">
+                                            <a href="#" class="btn">Image</a>
+                                        </div>
+                                    </div>
 									</div>
                                 </div><!-- add post new box -->
                                     @if (count($posts) != null)
@@ -335,48 +821,64 @@
                                                                             <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
                                                                             <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
                                                                     @endif
-
-                                                                <div class="we-video-info">
+                                                                <div class="pplikes">
+                                                                    <a href="" style="color: #65676b;">
+                                                                        <span>
+                                                                            <i class="ti-heart" style="#4285f4">😂</i>
+                                                                             You, Hariyo, Dupe Adedunjoyef and 73K others
+                                                                            {{-- ❤️😱😪😡 --}}
+                                                                        </span>
+                                                                    </a>
+                                                                    <a href="" class="comment-link">
+                                                                        <span>
+                                                                            <i class="ti-heart" style="#4285f4">😂</i>
+                                                                             11 Comments
+                                                                            
+                                                                        </span>
+                                                                    </a>
+                                                                </div>
+                                                                <div class="we-video-info uf_div">
                                                                     <ul>
+                                                                        <span>
+                                                                            @if (count($likes) != null)
+                                                                                <!-- user already likes post -->
+                                                                                <li class="dislike-li ">
+                                                                                    <span class="dislike"  data-id="{{ $item->post_id }}" title="dislike">
+                                                                                        <i class="ti-heart-broken"></i>
+                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                    </span>
+                                                                                </li>
+                                                                                <li class="like-li">
+                                                                                    <span class="like hide" data-id="{{ $item->post_id }}" title="like">
+                                                                                        <i class="ti-heart"></i>
+                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                    </span>
+                                                                                </li>
+                                                                                @else
+                                                                                    <!-- user has not yet liked post -->
+                                                                                    <li class="like-li">
+                                                                                        <span class="like"  data-id="{{ $item->post_id }}" title="like">
+                                                                                            <i class="ti-heart"></i>
+                                                                                                <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                            </span>
+                                                                                        </li>   
+
+                                                                                    <li class="dislike-li hide">
+                                                                                        <span class="dislike hide" data-id="{{ $item->post_id }}" title="dislike">
+                                                                                            <i class="ti-heart-broken"></i>
+                                                                                            <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                        </span>
+                                                                                    </li> 
+                                                                            @endif
+                                                                        </span>
                                                                         <li>
                                                                             <span class="comment" data-toggle="tooltip" title="Comments">
                                                                                 <i class="fa fa-comments-o"></i>
                                                                                 <ins>52</ins>
                                                                             </span>
                                                                         </li>
-                                                                        @if (count($likes) != null)
-                                                                            <!-- user already likes post -->
-                                                                            <li class="dislike-li">
-                                                                                <span class="dislike"  data-id="{{ $item->post_id }}" title="dislike">
-                                                                                    <i class="ti-heart-broken"></i>
-                                                                                    <ins class="likes_count">{{ $count_likes }}</ins>
-                                                                                </span>
-                                                                            </li>
-                                                                            <li class="like-li">
-                                                                                <span class="like hide" data-id="{{ $item->post_id }}" title="like">
-                                                                                    <i class="ti-heart"></i>
-                                                                                    <ins class="likes_count">{{ $count_likes }}</ins>
-                                                                                </span>
-                                                                            </li>
-                                                                            @else
-                                                                                <!-- user has not yet liked post -->
-                                                                                <li class="like-li">
-                                                                                    <span class="like"  data-id="{{ $item->post_id }}" title="like">
-                                                                                        <i class="ti-heart"></i>
-                                                                                            <ins class="likes_count">{{ $count_likes }}</ins>
-                                                                                        </span>
-                                                                                    </li>   
-
-                                                                                <li class="dislike-li">
-                                                                                    <span class="dislike hide" data-id="{{ $item->post_id }}" title="dislike">
-                                                                                        <i class="ti-heart-broken"></i>
-                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
-                                                                                    </span>
-                                                                                </li> 
-                                                                        @endif
-                                                                      
                                                                         <li class="social-media">
-                                                                            <div class="menu">
+                                                                            <div class="menu share-menu">
                                                                             <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
                                                                             <div class="rotater">
                                                                                 <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
@@ -742,4 +1244,58 @@
 <script src="/assets/js/my.js"></script>
 <script src="/assets/js/function.js" type="text/javascript"></script>
 
+<script>
+    $('.postStory').on('click', function(){
+        $('.searcher').addClass('keep');
+        $('.user-section').addClass('keep');
+        $('.story-upload').removeClass('keep');
+    });
+    $('.close-story').on('click', function(){
+        $('.story-upload').addClass('keep');
+        $('.searcher').removeClass('keep');
+        $('.user-section').removeClass('keep');
+    });
+    $('.st-fdiv2').on('click', function(){
+        $('.story-upload').addClass('keep');
+        $('.story-upload1').removeClass('keep');
+    });
+    $('.close-tudiv').on('click', function(){
+        $('.story-upload1').addClass('keep');
+        $('.story-upload').removeClass('keep');
+    });
+    $('#text-input').on('keyup', function(){
+        var x = document.getElementById('text-input').value;
+        document.getElementById("sup-tp").innerHTML = x;
+    });
+    $('.drop--div').on('click', function(){
+        $('.drop--div').addClass('open');
+        $('.drop--div').addClass('drop---div');
+    });
+    $('.drop---div').on('click', function(){
+        $('.drop---div').removeClass('open');
+        $('.drop---div').removeClass('drop---div');
+    });
+    $('.selectColor').on('click', function(){
+        var result = sessionStorage.getItem("addpClass");
+
+        if (result != null) {
+            $('#sup-tdiv').removeClass(result);
+            sessionStorage.removeItem("addpClass");
+        }else{
+
+        }
+
+        var dataId = $(this).data('id');
+        var idSplit = dataId.match(/\d/g);
+        var id = idSplit.join('');
+        var add = '.add'+dataId;
+        var add1 = 'addp'+id;
+
+        sessionStorage.setItem("addpClass", add1);
+
+        $('.textRemoval').removeClass('text-active');
+        $('#sup-tdiv').addClass('addp'+id);
+        $(add).addClass('text-active');
+    });
+</script>
 @include('/user/includes/footer')

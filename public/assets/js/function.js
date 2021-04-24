@@ -118,7 +118,7 @@
                     "user_id":user_id
                 },
                 success:function(data){
-                    $("#typing").append(data);
+                    $("#typing").append(data);  
                 }
             });
             window.emojiPicker = new EmojiPicker({
@@ -165,6 +165,7 @@
                         "receiver_id":to_user_id, 
                         "message":chat_message
                     },
+                    // $(this).reset();
                 success:function(data)
                 {
 

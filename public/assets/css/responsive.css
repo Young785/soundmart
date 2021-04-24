@@ -742,6 +742,7 @@
     }
     .search-li{
         display: inline-block !important;
+        float: right;
     }
     .ti-menu{
         left: 15px;
@@ -1964,12 +1965,17 @@
 }
 
 @media screen and (min-width: 375px) and (max-width:812px) {
-
+    .content-sec {
+        width: 100%;
+    }
     .top-area {
         display: inline-block;
         text-align: right;
         vertical-align: middle;
-        width: 80%;
+        width: 100%;
+    }
+    .post-options{
+        display: display !important;
     }
     .nav-img{
         display: none !important;
@@ -1987,10 +1993,7 @@
         display: inline-block !important;
     }
     .newpst-input {
-        width: 80% !important;
-    }
-    .newpst-input {
-        margin-left: 25px !important;
+        width: 55% !important;
     }
     .attachments{
         display: none !important;
@@ -2001,14 +2004,42 @@
     .post-li-camera-m{
         margin-left: 12px;
         margin-bottom: -58px;
-        font-size: 17px;
+        line-height: 7px;
+        font-size: 25px;
         color: #8c8f91;
     }
+    .post--span{
+        margin-top: 23px;
+        font-size: 10px;
+    }
     .post-image{
-        float: left;
+        float: right;
+        text-align: center;
         display: inline-block !important;
         width: 20%;
+        margin-top: 10px;
     }
+
+    .post--options1{
+        width: 48%;
+        float: left;
+        border: 1px solid #649bf6;
+    }
+    .post--options1 > a{
+        width: 100%;
+        color: #999b9d;
+    }
+    .post--options2{
+        width: 48%;
+        float: left;
+        margin-left: 5px;
+        border: 1px solid #f5a8b5;
+    }
+    .post--options2 > a{
+        width: 100%;
+        color: #999b9d;
+    }
+
     .friend-name{
         padding-left: 2px !important;
         width: 75% !important;
@@ -2045,6 +2076,9 @@
         border: 1px solid #dadada;
         border-radius: 8px;
     }
+    .social-media{
+        margin-bottom: -11px;
+    }
     .share-menu{
         margin-left: 40px;
         margin-top: 3px;
@@ -2064,7 +2098,7 @@
         padding: 5px 5px !important;
     }
     .row.merged20 > div {
-        padding-top: 17px !important;
+        padding-top: 42px !important;
     }
     .pt--type{
         border-radius: 5px;
@@ -2080,6 +2114,44 @@
         width: 35px !important;
         max-width: 35px !important;
     }
+
+    .setting-area {
+        width: 100% !important;
+    }
+    .logo{
+        display: none !important;
+    }
+    .main-menu{
+        bottom: 13px !important;
+        right: 0px !important;
+    }
+    .m-icon{
+        margin-right: 16px !important;
+    }
+    .logo-div{
+        width: 50%;
+        float: left;
+    }
+    .search-li{
+        top: 5px !important;
+        font-size: 21px;
+    }
+    #topbar{
+        height: 110px !important;
+    }
+    .content-sec{
+        padding: 44px !important;
+    }
+    .logo--div{
+        margin-bottom: 50px;
+        display: block !important;
+    }
+    .homeli{
+        display: block !important;
+    }
+    .cartli{
+        display: block !important;
+    }
     .comment-input{
         width: 109% !important;
     }
@@ -2092,12 +2164,6 @@
     }
     .comment-button{
         display: none;
-    }
-    .pplikes{
-        width: 100%;
-        float: left;
-        margin-top: 15px;
-        display: inline-block;
     }
     .pplikes-i{
         margin-right: 5px;

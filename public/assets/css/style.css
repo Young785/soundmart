@@ -793,8 +793,9 @@ header.sticky {
     height: 130px;
 }
 .uwtps--p{
-    padding: 16px;
+    padding: 20px;
     text-align: center;
+    line-height: 17px;
     font-weight: 600;
     color: #000;
 }
@@ -812,7 +813,7 @@ header.sticky {
     border-radius: 100%;
     margin-top: 10px;
     margin-left: 10px;
-}
+} 
 .fs--uimg{
     border-radius: 100%;
     width: 40px;
@@ -831,6 +832,10 @@ header.sticky {
     font-size: 12px;
 
 }
+.mini-img{
+    height: 100%;
+    border-radius: 10px;
+}
 .uwtps--uimg-a{
     position: absolute;
     border-radius: 100%;
@@ -840,10 +845,22 @@ header.sticky {
     padding: 2px;
     background: #fff;
 }
+.fs-p{
+    position: absolute;
+    width: 38px;
+    font-weight: 500;
+    color: #fff;
+    margin-top: 136px;
+    margin-left: 10px;
+}
 .uwtps--span{
     background: #088dcd;
     color: #fff;
-    margin-left: 2px;
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 110px;
+    height: 35px;
+    width: 32px;
     border-radius: 100%;
 }
 .uwtps-iplus{
@@ -853,6 +870,11 @@ header.sticky {
 }
 .m-uwtps-div{
     display: none;
+}
+.close-story{
+    line-height: 40px;
+    font-size: 17px;
+    cursor: pointer;
 }
 /*--- topbar ---*/
 
@@ -1762,6 +1784,7 @@ form button {
 
 .friend-info {
     display: inline-block;
+    margin-bottom: 15px;
     position: relative;
     width: 100%;
 }
@@ -1834,7 +1857,7 @@ form button {
 
 .we-video-info {
     float: left;
-    padding: 15px 0 10px;
+    padding: 7px 0 7px;
     width: 100%;
     position: relative;
     z-index: 0;
@@ -2198,6 +2221,9 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
     vertical-align: top;
     width: 5.6%;
 }
+.post-options{
+    display: none;
+}
 .post-reply-box{
     display: inline-block;
     padding-left: 15px;
@@ -2208,6 +2234,21 @@ for some reason nth-child(1) is always busy and elements starting from 2 */
 	max-width: 35px;
 	width: 35px;
 	min-width: 35px;
+}
+.pplikes{
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.comment-link{
+    color: #65676b;
+    float: right;
+}
+.uf_div{
+    border-top: 1px solid #ced0d4;
+    border-bottom: 1px solid #ced0d4;
 }
 .we-comment {
     border: 1px solid #ede9e9;
@@ -6396,6 +6437,66 @@ canvas {
 }
 
 /* story upload */
+.st-header-div{    
+    margin-top: 10px;
+    height: 55px;
+    width: 980px;
+}
+.st-header-mdiv{
+    float: right;
+    margin-top: 7px;
+}
+.new--style{
+    background: #e3e2e2 !important;
+    margin-left: 0px !important;
+    cursor: pointer;
+}
+.dropDiv{
+    position: relative;
+    z-index: 1;
+    margin-left: -235px;
+    width: 347px;
+    margin-top: -20px;
+}
+.dropUser{
+    height: 78px; 
+    padding: 15px;
+}
+.drop--p{
+    margin-left: 20px;
+    width: 77%;
+    float: left;
+    line-height: 12px;
+}
+.dropName{
+    color: #000;
+    font-weight: 700;
+    margin-bottom: -2px;
+    font-size: 20px;
+}
+.drop--a{
+    padding: 12px;
+    padding-bottom: 0px;
+}
+.drop--i{
+    font-size: 20px !important;
+    float: left !important;
+    font-weight: 800 !important;
+    color: #000 !important;
+}
+.drop-a-p{
+    font-size: 15px;
+    font-weight: 700;
+    float: left;
+    margin-top: -4px;
+    color: #4d4c4c;
+}
+.ryt-span{
+    float: right;
+}
+.ryt-i{
+    font-size: 25px;
+}
 .story-sd-nav{
     height: 630px;
     background: #fff;
@@ -6405,6 +6506,273 @@ canvas {
     height: 8%;
     border-bottom: 1px solid #efefef;
 }
+
+/* Rest Styles */
+.drop--button{
+    width: 100%;
+    background: #fff;
+}
+.drop--li{
+    height: 40px;
+}
+.drop--span{
+    float: left;
+    width: 100%;
+    padding-top: 15px;
+    padding-left: 20px;
+}
+.drop--a{
+    width: 67%;
+    float: right;
+    font-weight: 700;
+}
+.drop--a:hover{
+    width: 67%;
+    float: right;
+    font-weight: 700;
+    background-color: #f5f5f5;
+}
+.text-div{
+    height: 315px;
+    overflow-y: scroll;
+    max-height: 315px;
+}
+.text--div{
+    max-height: 153px;
+    height: 153px;
+}
+.text-input{
+    width: 100%;
+    height: 100%;
+    padding-bottom: 95px;
+    padding-left: 17px;
+    border: 1px solid #c8c7c7;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #7b7b7c;
+}
+
+.text---div{
+    border: 1px solid #c8c7c7;
+    height: 54px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.text-span{
+    float: left;
+    width: 16%;
+    font-size: 16px;
+    padding: 12px;
+    font-weight: 800;
+}
+.text-i{
+    float: left;
+    width: 13%;
+    font-size: 16px;
+    padding: 12px;
+    font-weight: 800;
+}
+.text-p{
+    width: 10%;
+    float: left;
+    font-size: 16px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 21px;
+}
+.text--span{
+    float: right;
+    padding: 17px;
+    font-size: 15px;
+}
+.text----div{
+    border: 1px solid #c8c7c7;
+    height: 220px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.text--p{
+    padding: 10px;
+    margin-bottom: 0px !important;
+}
+.text-active{
+    height: 33px;
+    background: blue;
+    width: 11%;
+    float: left;
+    margin-left: 8px;
+    border-radius: 100%;
+}
+.text---p{
+    width: 25px;
+    margin-top: 3px;
+    float: left;
+    cursor: pointer;
+    margin-left: 3px;
+    border-radius: 100%;
+}
+
+/* Bg Colors Style Start */
+/* latin */
+@font-face {
+    font-family: 'B612 Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/b612mono/v5/kmK_Zq85QVWbN1eW6lJV0A7d.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+@font-face {
+    font-family: 'Indie Flower';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/indieflower/v12/m8JVjfNVeKWVnh3QMuKkFcZVaUuH.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Stylish';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/stylish/v10/m8JSjfhPYriQkk7-foiRYr5LBQTwuLLyUZJAC6M3P8sGXg.2.woff2) format('woff2');
+    unicode-range: U+d723-d728, U+d72a-d733, U+d735-d748, U+d74a-d74f, U+d752-d753, U+d755-d757, U+d75a-d75f, U+d762-d764, U+d766-d768, U+d76a-d76b, U+d76d-d76f, U+d771-d787, U+d789-d78b, U+d78d-d78f, U+d791-d797, U+d79a, U+d79c, U+d79e-d7a3, U+f900-f909, U+f90b-f92e;
+  }
+  @font-face {
+    font-family: custom-font;
+    src: url(sansation_light_v3.woff);
+   }
+   
+
+.addp1{
+    background: linear-gradient(to top, rgb(170 73 214) 9%, rgb(224 82 138) 87%) !important;
+    color: rgb(255, 255, 255);
+    font-size: 1.375rem; 
+    text-align: center; 
+    font-style: normal; font-weight: bold; 
+    color: rgb(255, 255, 255); visibility: visible; font-family: "Facebook Stencil", Helvetica, Arial, sans-serif;
+}
+.addp2{
+    background: linear-gradient(to top, rgb(226 90 73 ) 9%, rgb(199 148 56) 87%) !important;
+}
+.addp3{
+    background: linear-gradient(to top, rgb(110 53 127 ) 9%, rgb(185 74 39) 87%) !important;
+}
+.addp4{
+    background: linear-gradient(to top, rgb(101 33 170 ) 9%, rgb(207 34 99) 87%) !important;
+}
+.addp5{
+    background: linear-gradient(to top, rgb(25 88 195 ) 9%, rgb(165 177 196) 87%) !important
+}
+.addp6{
+    background: linear-gradient(to top, rgb(235 205 29 ) 9%, rgb(168 207 186) 87%) !important;
+}
+.addp7{
+    background: linear-gradient(to top, rgb(217 237 254 ) 9%, rgb(254 180 230) 87%) !important;
+}
+.addp8{
+    background: linear-gradient(to top, rgb(168 120 143 ) 9%, rgb(79 124 127) 87%) !important;
+}
+.addp9{
+    background: linear-gradient(to top, rgb(18 97 135 ) 9%, rgb(172 204 209) 87%) !important;
+}
+.addp10{
+    background: linear-gradient(to top, rgb(26 192 138) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp11{
+    background: linear-gradient(to top, rgb(192 26 95) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp12{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp13{
+    background: linear-gradient(to top, rgb(120 26 192) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp14{
+    background: linear-gradient(to top, rgb(26 85 192) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp15{
+    background: linear-gradient(to top, rgb(26 161 192) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp16{
+    background: linear-gradient(to top, rgb(44 192 26) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp17{
+    background: linear-gradient(to top, rgb(128 192 26) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp18{
+    background: linear-gradient(to top, rgb(192 179 26) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp19{
+    background: linear-gradient(to top, rgb(192 110 26) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp20{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp21{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp22{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp23{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp24{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp25{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp26{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp27{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp28{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp29{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp30{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp31{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp32{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp33{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp34{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp35{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp36{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp37{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp38{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+.addp39{
+    background: linear-gradient(to top, rgb(192 26 187) 9%, rgb(165 177 196) 87%) !important;
+}
+/* Bg Colors Style End*/
+
+/* Rest Styles End*/
+
 .story-sd-span{
     background: #eee;
     height: 58px;
@@ -6439,6 +6807,24 @@ canvas {
     text-align: center;
     float: right;
 }
+.bell-i{
+    font-size: 17px;
+    left: 10px;
+    margin-left: 6px;
+}
+.bell-span{
+    bottom: 30px !important;
+    color: #fff !important;
+    width: 15px;
+    padding: 1px;
+    top: -50px;
+    left: 13px;
+    font-size: 10px;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    background: #f02849;
+}
 .story--fig{
     display: inline-block;
     margin-bottom: 0;
@@ -6457,22 +6843,26 @@ canvas {
     margin-top: 17px;  
 }
 .st-fdiv{
-    margin-top: 200px;
     height: 330px;
     border-radius: 10px;
     background: linear-gradient(to left, rgb(96 68 232) 0%, rgb(129 188 247) 87%);
     width: 230px;
-    margin-left: 170px;
+    margin-left: 80px;
     float: left;
 }
 .st-fdiv2{
-    margin-top: 200px;
     height: 330px;
     border-radius: 10px;
     background: linear-gradient(to top, rgb(170 73 214) 0%, rgb(224 82 138) 87%);
     width: 230px;
-    margin-left: 170px;
+    margin-left: 70px;
     float: left;
+}
+.st-fdiv:hover{
+    background: rgb(197 210 245);
+}
+.st-fdiv2:hover{
+    background: #f5bbd4;
 }
 .st-sdiv{
     text-align: center;
@@ -6488,6 +6878,74 @@ canvas {
     padding: 16px;
 }
 
+/* Story Proceeding Styles start */
+.sup-col3-bdiv{
+    position: absolute;
+    top: 530px;
+    width: 23%;
+    margin-left: 10px;
+}
+.sup-col3-bdivb1{
+    width: 45%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #dadada;
+}
+.sup-col3-bdivb2{
+    width: 45%;
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.sup-div{
+    height: 580px;
+    background: #fff;
+    border-radius: 7px;
+}
+.sup-p{
+    color: #000;
+    font-weight: 600;
+    padding-left: 20px;
+    padding-top: 16px;
+    margin-left: 0px;
+}
+.sup--div{
+    padding: 20px;
+    border-radius: 7px;
+    height: 87%;
+    width: 96%;
+    background: #000;
+    /* margin-right: 2px; */
+    margin-left: 20px;
+}
+.sup---div{
+    width: 33%;
+    height: 87%;
+    margin-top: 5px;
+    margin-left: 290px;
+    position: absolute;
+}
+.sup-img{
+    height: 105%;
+    width: 100%;
+    border-radius: 7px;
+}
+.secondBg{
+    background: linear-gradient(to top, rgb(226 90 73 ) 9%, rgb(199 148 56) 87%) !important;
+}
+#sup-tdiv{
+    height: 100%;
+    background: linear-gradient(to top, rgb(170 73 214) 9%, rgb(224 82 138) 87%);
+    border-radius: 7px;
+}
+#sup-tp{
+    padding-top: 170px;
+    font-weight: 400;
+    text-align: center;
+}
+.close-tudiv{
+    cursor: pointer;
+}
 /*--- fixed sidebar right ---*/
 
 .fixed-sidebar {
