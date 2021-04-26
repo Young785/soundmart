@@ -54,6 +54,19 @@ $(this).siblings('div').addClass('active');
 });
 
 
+
+$('.rdrp').on('click', function(){
+    alert("ibninoi");
+    // $('.rdrp').addClass('drpDiv');
+    // $('.dropUl').removeClass('show');
+    // $('.rdrp').removeClass('rdrp');
+});
+$('.drpDiv').on('click', function(){
+    $('.drpDiv').addClass('rdrp');
+    $('.dropUl').addClass('show');
+    $('.drpDiv').removeClass('drpDiv');
+});
+
 //------- remove class active on body
 $("body *").not('.top-area > .setting-area > li > a').on("click", function() {
 $(".top-area > .setting-area > li > div").not('.searched').removeClass('active');

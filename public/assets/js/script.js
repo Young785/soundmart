@@ -410,8 +410,8 @@ $(".newpst-input").click(function () {
     $(".post-div-header ").removeClass("show");
     $(".post-div-header ").addClass("keep");
   });
-  $(".cancel-post").click(function(){
-	$(".postoverlay").fadeOut(500);
+  $(".post-span").click(function(){
+	$(".postoverlay").fadeOut(500);	
 	$(".post-normal-div").removeClass("keep");
     $(".post-div-header ").removeClass("show");
     $(".post-div-header ").addClass("keep");
