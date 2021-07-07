@@ -10,7 +10,7 @@
 <div class="widget">
         <h4 class="widget-title" style="width: 50%">Recent Photos</h4>
         <a href="/{{$user->secrete_id}}/timeline-images" class="recent-a">View all photos</a>
-        <ul class="recent-photos">
+        <ul class="recent-photos" style="padding: 0px !important">
             @if (empty($image_explode))
 
                 @else

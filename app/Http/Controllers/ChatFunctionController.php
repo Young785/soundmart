@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Follow_Friend;
 use App\Friend;
+use App\Group;
 use App\Like;
+use App\Story;
 use App\Message;
 use App\Notifications\ChatNotification;
 use App\Notifications\profilePicNotification;
@@ -14,6 +17,7 @@ use App\Notifications\friendRequestNotification;
 use App\Notifications\ReceiverRequestNotification;
 use App\Notifications\recfriendRequestNotification;
 use App\Notifications\SenderRequestNotification;
+use App\Page;
 use App\Post;
 use Illuminate\Http\Request;
 use App\User;
@@ -37,6 +41,8 @@ class ChatFunctionController extends Controller
             'password' => 'required|min:8',
             'confPass' => 'required|same:password',
         ]);
+        $email = request("email");
+        $password = request("password");
 
         $data = new User();
         $data['fullname'] = request("fullname");
@@ -48,9 +54,11 @@ class ChatFunctionController extends Controller
         $data['status'] = "0";
         $data['password'] = Hash::make(request("password"));
         $data['secrete_id'] = rand($min = 0, $max = 10000000000);
-        $data->save();
+        $data->save();  
 
-        return redirect("/pages/login")->with("mssg", "Thanks for Joining ChatBook, We hope you get the Satisfaction you desire! You can now login below.");
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect("/")->with("mssg", "Thanks for Joining ChatBook, We hope you get the Satisfaction you desire! You can now login below.");
+        }
     }
     public function loginFun()
     {
@@ -141,33 +149,84 @@ class ChatFunctionController extends Controller
 
     public function post(Request $request)
     {
-        $data = new Post();
-        $data->image_name = $request->image_name;
-        $id = Auth::user()->id;
-        $data->user_id = $id;
-        $data->post_type = "user post";
-        // return $request->image;
-        $images = array();
-        if($request->hasFile('image')){
-            $files = request()->file('image');
-            foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
-                $file->move("posts/", $filename);
-                $images[] = $filename;
-                // dd($images);
-                $data->image = implode('/', $images);
-                $data->type = substr($filename, -3);
-        }
-         $data->save();
+        if(request('image_name_a') != null && request('image') == null){
+            $data = new Post();
+            $data->image_name = $_POST['image_name_a'];
+            $id = Auth::user()->id;
+            $data->user_id = $id;
+            $data->post_type = "user post";
+            $data->save();
+            $data_id = $data->id;
 
-         Post::where("id", $data->id)->update(["post_id" => $data->id]);
-         $result = Post::where("id", $data->id)->first();
-         session()->put("result", $result);
-        return response()->json($result);
-        // return redirect("/")->with("mssg", "Notification deleted Successfully!");
+            Post::where("id", $data_id)->update(["post_id" => $data_id]);
+            $result = Post::where("id", $data_id)->first();
+            session()->put("result", $result);
+            
+            return response()->json($result);
+        }elseif (request('image_name_a') == null && request('image') != null) {
+            $data = new Post();
+            $id = Auth::user()->id;
+            $data->user_id = $id;
+            $data->post_type = "user post";
+
+            // return $request->image;
+            $images = array();
+            if($request->hasFile('image')){
+                $files = request()->file('image');
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    $file->move("posts/", $filename);
+                    $images[] = $filename;
+                    // dd($images);
+                    $data->image = implode('/', $images);
+                    $data->type = substr($filename, -3);
+                }
+            }
+            $data->save();
+            $data_id = $data->id;
+
+            Post::where("id", $data_id)->update(["post_id" => $data_id]);
+            $result = Post::where("id", $data_id)->first();
+            session()->put("result", $result);
+            
+            return response()->json($result);
         }
-        $data->save();
-        return redirect("/")->with("mssg", "Notification deleted Successfully!");
+        if(request('image_name_a') != null && request('image') != null){
+            $data = new Post();
+            $data->image_name = $_POST['image_name_a'];
+
+            $id = Auth::user()->id;
+            $data->user_id = $id;
+            $data->post_type = "user post";
+            
+            // return $request->image;
+            $images = array();
+            if($request->hasFile('image')){
+                $files = request()->file('image');
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    $file->move("posts/", $filename);
+                    $images[] = $filename;
+                    // dd($images);
+                    $data->image = implode('/', $images);
+                    $data->type = substr($filename, -3);
+                }
+            }
+
+            $data->save();
+            $data_id = $data->id;
+   
+            Post::where("id", $data_id)->update(["post_id" => $data_id]);
+            $result = Post::where("id", $data_id)->first();
+            session()->put("result", $result);
+            
+            return response()->json($result);
+        }
+       
+        // return redirect("/")->with("mssg", "Notification deleted Successfully!");
+        // }
+        // $data->save();
+        // return redirect("/")->with("mssg", "Notification deleted Successfully!");
     }
 
     public function user_image($secrete_id)
@@ -247,8 +306,15 @@ class ChatFunctionController extends Controller
         $data['sender_id'] = $send_id;
         $data['receiver_id'] = $id;
         $data['request_status'] = "pending";
-    
+        
+        $follow['followable_id'] = $id;
+        $follow['follower_id'] = $send_id;
+        
         $check = Friend::create($data);
+        $f_id = $check->id;
+        $follow['friend_id'] = $f_id;
+
+        $add_follower =  Follow_Friend::create($follow);
         $req_id = $check->id;
         $user_check = User::where("id", $id)->first();
 
@@ -264,6 +330,7 @@ class ChatFunctionController extends Controller
     public function canRequest($id)
     {
        $friends = Friend::where("id", $id)->delete();
+       $follower = Follow_Friend::where("friend_id", $id)->delete();
     //    $id = $friends->id;
 
        return response()->json($friends);
@@ -408,5 +475,77 @@ class ChatFunctionController extends Controller
     public function return_post()
     {
         return view("user.return-posts");
+    }
+    public function storyCreate()
+    {
+        $user_id = Auth::user()->id;
+        $data = new Story;
+        $data['user_id'] = $user_id;
+        $data['story_name'] = $_POST['story_name'];
+        $data['story_bg'] = $_POST['story_bg'];
+        $data['story_text'] = $_POST['story_text'];
+
+        if ($_POST['story_image'] != null) {
+            $data['story_image'] = $_POST['story_image'];
+        }else{
+
+        }
+        $data->save();
+        $id = $data->id;
+        Story::where('id', $id)->update(['story_id' => $id]);
+        $return_data = Story::rightjoin("users", "stories.user_id", "=", "users.id")->where("user_id", $user_id)->orderBy("stories.created_at", "desc")->first();
+        // dd($return_data);
+        return response()->json($return_data);
+    }
+    
+    public function create_group()
+    {
+        $id = Auth::user()->id;
+        $data = new Group;
+        $data['name'] = request('name');
+        $data['privacy'] = request('privacy');
+        $data['group_admin'] = $id;
+        $data['group_secId'] = rand($min = 0, $max = 10000000000);
+        $data->save();
+        $dataId = $data->id;
+        $datasecId = $data->group_secId;
+        // dd($datasecId);
+        Group::where('id', $dataId)->update(['group_id' => $dataId]);
+
+        // $data['group_id'] = $dataId;
+        return redirect("/groups/$datasecId");
+    }
+    public function group()
+    {
+        dd('iftuty');
+        // return view("user.return-posts");
+    }
+
+    public function create_page()
+    {
+        $id = Auth::user()->id;
+        $data = new Page;
+        $data['page_name'] = request('page_name');
+        $data['page_admin'] = $id;
+        $data['category'] = request('category');
+        $data['page_description'] = request('page_description');
+        $data['page_secId'] = rand($min = 0, $max = 10000000000);
+        $data->save();
+        $dataId = $data->id;
+        $datasecId = $data->page_secId;
+        // dd($datasecId);
+        Page::where('id', $dataId)->update(['page_id' => $dataId]);
+        return redirect("/groups/$datasecId");
+    }
+    function story_reply($StoryId)
+    {
+        $data['sender_id'] = Auth::user()->id;
+        $data['message'] = $_POST['story_reply'];
+        $data['receiver_id'] = $_POST['rec_id'];
+        $data['story_id'] = $StoryId;
+        $send_req = Message::create($data);
+        Message::where("id", $send_req->id)->update(['comment_id' => $send_req->id]);
+        
+        return response()->json($send_req); 
     }
 }

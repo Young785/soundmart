@@ -78,82 +78,53 @@
                                     <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
                                     <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
                             @endif
+                            <div class="we-video-info uf_div">
+                                <ul style="padding-left: 40px;">
+                                    <span>
+                                        <span id="dislike_{{ $post->post_id }}"></span>
+                                        <span id="like_{{ $post->post_id }}"></span>
 
-                        <div class="we-video-info">
-                            <ul>
-                                <li>
-                                    <span class="comment" data-toggle="tooltip" title="Comments">
-                                        <i class="fa fa-comments-o"></i>
-                                        <ins>52</ins>
-                                    </span>
-                                </li>
-                                @if (count($likes) != null)
-                                    <!-- user already likes post -->
-                                    <li class="dislike-li">
-                                        <span class="dislike"  data-id="{{ $post->post_id }}" title="dislike">
-                                            <i class="ti-heart-broken"></i>
-                                            <ins class="likes_count">{{ $count_likes }}</ins>
-                                        </span>
-                                    </li>
-                                    <li class="like-li">
-                                        <span class="like hide" data-id="{{ $post->post_id }}" title="like">
-                                            <i class="ti-heart"></i>
-                                            <ins class="likes_count">{{ $count_likes }}</ins>
-                                        </span>
-                                    </li>
-                                    @else
-                                        <!-- user has not yet liked post -->
-                                        <li class="like-li">
-                                            <span class="like"  data-id="{{ $post->post_id }}" title="like">
-                                                <i class="ti-heart"></i>
-                                                    <ins class="likes_count">{{ $count_likes }}</ins>
+                                        @if (count($likes) != null)
+                                            <!-- user already likes post -->
+                                            <li class="dislike-li" data-id="{{ $post->post_id }}">
+                                                <span class="dislike" title="dislike">
+                                                    <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                    <span class="dislike-span">Like</span>
                                                 </span>
-                                            </li>   
 
-                                        <li class="dislike-li">
-                                            <span class="dislike hide" data-id="{{ $post->post_id }}" title="dislike">
-                                                <i class="ti-heart-broken"></i>
-                                                <ins class="likes_count">{{ $count_likes }}</ins>
-                                            </span>
-                                        </li> 
-                                @endif
-                              
-                                <li class="social-media">
-                                    <div class="menu">
-                                    <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
-                                        </div>
-                                    </div>
-                                        <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="rotater">
-                                        <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
-                                        </div>
-                                    </div>
+                                                <span class="like hide" data-id="{{ $post->post_id }}" title="like">
+                                                    <i class="fa fa-thumbs-up like-thumb"></i>
+                                                    <span class="like-span">Like</span>
+                                                </span>
+                                            </li>
+                                            @else
+                                                <!-- user has not yet liked post -->
+                                                <li class="like-li" data-id="{{ $post->post_id }}">
+                                                    <span class="like" title="like">
+                                                        <i class="fa fa-thumbs-up like-thumb"></i>
+                                                        <span class="like-span">Like</span>
+                                                    </span>
 
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
+                                                    <span class="dislike hide" data-id="{{ $post->post_id }}" title="dislike">
+                                                        <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                        <span class="dislike-span">Like</span>
+                                                    </span>
+                                                </li> 
+                                        @endif
+                                    </span>
+                                    <li>
+                                        <span class="comment" id="com-tooltip" data-toggle="tooltip" title="Comments">
+                                            <i class="ti-comment comment-i"></i>
+                                            <span class="comment-span">Comments</span>
+                                        </span>
+                                    </li>
+                                    <li class="social-media">
+                                        <div class="menu share-menu share-div">
+                                        <div class="btn trigger sharepost"><i class="fa fa-share"></i></div>
+                                        <span class="share-span">Share</span>
+                                    </li>
+                                </ul>
+                            </div>
                     </div>
                 </div>
                 <div class="coment-area">
@@ -242,3 +213,9 @@
 </div>
 </div>
 </div>
+
+<script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+
+<script src="/assets/js/my.js"></script>
+<script src="/assets/js/function.js" type="text/javascript"></script>
+@include('/user/includes/footer')

@@ -10,8 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 use App\Friend;
+use App\Story;
 use App\User;
 
 Route::get('/', function () {
@@ -23,23 +23,52 @@ Route::get('/', function () {
     $request = User::join("friends", "users.id","=", "friends.sender_id")
             ->where("receiver_id", $id)->where(["request_status" => "pending"])
             ->latest("friends.created_at")->first();
-    $contacts = User::where("status", "1")->get();
 
     $friends = Friend::where("request_status", "accepted")->where("sender_id", $id)->orWhere("receiver_id", $id)->get();
+
+    foreach ($friends as $key => $value) {
+        if($value->sender_id == $id){
+            $get_rec = Friend::where("sender_id", $id)->get("receiver_id");
+            foreach ($get_rec as $key => $item) {}
+            $contact = Friend::rightjoin('users', "friends.receiver_id", "=", "users.id")->where("receiver_id", $item->receiver_id)->first();
+
+        }else{
+            $get_sender = Friend::where("receiver_id", $id)->get("sender_id");
+            foreach ($get_sender as $key => $item) {}
+            $contact = Friend::rightjoin('users', "friends.sender_id", "=", "users.id")->where("sender_id", $item->sender_id)->first();
+        }
+
+    }
+    // dd($contact->id);
 
     foreach ($friends as $key => $value) {}
 
     if (!empty($value)) {
         $posts = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")
         ->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get();
+        
+        $friendsList = App\Friend::rightjoin("users", "friends.sender_id", "=", "users.id")->where("sender_id", $id)->orWhere("receiver_id", $id)->inRandomOrder()->get();
+        // dd($friendsList);
+
         $postsId = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get("posts.id");
         
-        return view('user/index', compact("user", "posts","postsId", "request", "contacts"));
+        $AuthStory = Story::rightjoin("users", "stories.user_id", "=", "users.id")->where("user_id", $id)->orderBy("stories.created_at", "desc")->first();
 
+        $story = Story::rightjoin("users", "stories.user_id", "=", "users.id")->orWhere("user_id", $value->sender_id)
+                ->orWhere("user_id", $value->receiver_id)->orderBy("stories.created_at", "desc")->get();
+         // $storyId = App\Story::rightjoin("users", "stories.user_id", "=", "users.id")->where("user_id", $value->sender_id)->orWhere("user_id", $value->receiver_id)->inRandomOrder()->get("stories.id");
+        //  $ip = "129.205.112.186";
+         $ip = "129.205.112.186";
+         $check_address = Location::get($ip);
+
+        return view('user/index', compact("user", "friendsList", "posts", "story", "AuthStory", "request", "contact","check_address"));
     }else{
-       
-
-        return view('user/new_index', compact("user", "request", "contacts"));
+        $AuthStory = Story::rightjoin("users", "stories.user_id", "=", "users.id")->where("user_id", $id)->orderBy("stories.created_at", "desc")->first();
+        $posts = App\Post::rightjoin("users", "posts.user_id", "=", "users.id")->where("user_id", $id)->get();
+        
+        $ip = "129.205.112.186";
+        $check_address = Location::get($ip);
+        return view('user/index', compact("user", "friendsList", "AuthStory", "posts", "request", "contact","check_address"));
     }
     // $friend_ids = '';
 
@@ -71,13 +100,14 @@ Route::get('/', function () {
     // dd($contacts);
    
     // $online_friends =
-    return view('user/index', compact("user", "posts","postsId", "request", "contacts"));
+    // return view('user/index', compact("user", "posts","postsId", "request", "contacts"));
 })->middleware("chatbook");
 Route::get('/page/login', "chatbookController@login");
 
 Route::group(['prefix' => '/', 'middleware' => 'chatbook'], function () {
 
     Route::get('newsfeed', "chatbookController@newsfeed");
+
 
     Route::get('time-line', "chatbookController@timeline");
 
@@ -116,6 +146,14 @@ Route::group(['prefix' => '/', 'middleware' => 'chatbook'], function () {
     Route::get('search', 'chatbookController@search');
 
     Route::get('profile/{secrete_id}/edit-profile', "chatbookController@edit_profile");
+    
+    Route::get('story/get/{id}', "chatbookController@get_story");
+
+    Route::get('pages/creation', "chatbookController@create_pages");
+
+    Route::post('groups/creation', "chatbookController@create_group");
+
+    Route::get('check_name/{cn}', "chatbookController@check_name");
 
     Route::get('logout', "chatbookController@logout");
 });
@@ -162,6 +200,15 @@ Route::post('/fetch_chat', 'ChatFunctionController@fetch_chat')->middleware("cha
 Route::post('/all_chats', 'ChatFunctionController@all_chat')->middleware("chatbook");
 
 Route::post('/update_is_typing_status', 'ChatFunctionController@update_is_typing')->middleware("chatbook");
+
+Route::post('story/create', "ChatFunctionController@storyCreate");
+
+Route::post('reply_to_story/{id}', "ChatFunctionController@story_reply");
+
+Route::post('create_group', "ChatFunctionController@create_group");
+Route::get('groups/{id}', "ChatFunctionController@group");
+
+Route::post('create_page', "ChatFunctionController@create_page");
 
 });
 // Route::get('/test', function () {

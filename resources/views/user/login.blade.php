@@ -28,10 +28,7 @@
 						<form method="POST" action="/page/login">
 							@csrf
 							@if (session()->has("msg"))
-								<p class="btn-danger text-center">The email or password is Wrong!</p>
-                            @endif
-                            @if (session()->has("mssg"))
-								<p class="btn-success text-center">Thanks for Joining ChatBook, We hope you get the Satisfaction you desire! You can now login below.</p>
+								<p class="alert alert-danger text-center">The email or password is Wrong!</p>
                             @endif
 							<div class="form-group">
 							  <input    type="text" id="input" name="email"/>

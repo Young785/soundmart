@@ -37,7 +37,7 @@ window.emojiPicker.discover();
 });
 
 $('.user-img').on('click', function() {
-    $('.user-setting').toggleClass("active");
+    $('.dropDiv').toggleClass("active");
 });
 //------ scrollbar plugin
 if ($.

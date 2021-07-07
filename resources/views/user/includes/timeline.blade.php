@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <section class="sec col-lg-12">
     @php
+    
         $user_sec = Auth::user()->secrete_id;
         $user_details = Auth::user();
         $id = App\User::where("secrete_id", $user->secrete_id)->firstOrFail();
@@ -9,11 +10,13 @@
   
         <div class="col-lg-2"></div>
         <div>
+            <div class="append-img"></div>
+
             @if ($user->user_cover_image == null)
                 <figure class="timeline-figure"></figure>
                 @else
                 <a href="/cover/{{ substr($user->user_cover_image, 0, 10) }}.{{$user->secrete_id}}.jpg">
-                    <div class="cover-image">
+                    <div>
                         <figure class="timeline-figure previous-cover col-lg-8">
                             <img src="{{asset("/cover")}}/{{ substr($user->user_cover_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="sub" alt="{{$user->name}}" title="{{$user->name}}">
                         </figure>
@@ -22,7 +25,26 @@
             @endif
         </div>
         <div class="col-lg-2"></div>
-       
+       <span style="
+    /* float: right; */
+    margin-left: 20px;
+">
+    <i class="fa fa-reply" style="
+    color: #b4b6b8;
+    font-size: 16px;
+    letter-spacing: 5px;
+" title="remove"></i>
+<i class="fa fa-trash" style="
+    color: #b4b6b8;
+    font-size: 16px;
+    letter-spacing: 5px;
+" title="remove"></i><i class="fa fa-share" style="
+    color: #b4b6b8;
+    font-size: 16px;
+    letter-spacing: 5px;
+" title="remove"></i>
+
+</span>
         <div class="col-lg-12 col-sm-3">
             <div class="col-lg-7 col-sm-3">
                 <div class="user-avatar" style="margin-right: 30px;">

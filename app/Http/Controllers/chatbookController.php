@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Checkin;
 use App\Friend;
+use App\Page;
 use Illuminate\Http\Request;
 use Stevebauman\Location\Facades\Location;
-
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
-
 use App\Post;
-
+use App\Story;
 use Symfony\Component\Console\Input\Input;
 
 class chatbookController extends Controller
@@ -27,12 +25,14 @@ class chatbookController extends Controller
         $id = Auth::user()->id;
 
         $posts = Post::all()->where("user_id", $id)->sortByDesc("created_at");
+
+        $story = Story::all()->where("user_id", $id)->sortByDesc("created_at");
         
         $request = User::join("friends", "users.id","=", "friends.sender_id")
                 ->where("receiver_id", $id)->where(["request_status" => "pending"])
                 ->latest("friends.created_at")->first();
 
-        return view("user/index", compact("user", "posts", "request"));
+        return view("user/index", compact("user", "posts", "story", "request"));
     }
     public function page()
     {
@@ -177,6 +177,29 @@ class chatbookController extends Controller
 
             $user_image = User::all()->where("id", $id);
             return view("user/timeline-photos", compact("posts", "users", "friends","friend", "check_friend", "request", "user", "image_explode", "check_ins",  "post_story", "user_image"));
+        }
+    }
+    public function get_story($id)
+    {
+        $data = Story::where("id", $id)->first();
+        return response()->json($data);
+    }
+    public function create_pages()
+    {
+        return view('user/create-page');
+    }
+        public function create_group()
+    {
+        return view('user/create-group');
+    }
+    public function check_name($cn)
+    {
+        $req_name = $cn;
+        $data = Page::where('page_name', $req_name)->first();
+        if($data != null){
+            return response()->json($req_name);
+        }else{
+            return response()->json();
         }
     }
 }

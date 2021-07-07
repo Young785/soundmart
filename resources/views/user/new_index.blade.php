@@ -1,6 +1,12 @@
 @include('/user/includes/header')
+@include('/user/story-upload')
+@include('/user/image_story')
+@include('/user/text-story')
+@include('/user/all_story')
+</div></div>
+
 <!--<div class="se-pre-con"></div>-->
-<div class="theme-layout">
+<div class="theme-layout searcher">
 	<div class="postoverlay"></div>
 	<div class="responsive-header">
 		<div class="mh-head second keep">
@@ -105,7 +111,38 @@
 									@include('/user/includes/sidebar-titles')
 								</aside>
 							</div><!-- sidebar -->
+							
 							<div class="col-lg-6 content-sec">
+								@if (session()->has("mssg"))
+									<p class="alert alert-success text-center">Thanks for Joining ChatBook, We hope you get the Satisfaction you desire! You can now login below.</p>
+								@endif
+								<div class="uwtps--div">
+                                    <a class="postStory">
+                                        <div class="uwtps">
+                                            <div class="uwtps--mini-div">
+                                                <span class="uwtps--span">
+                                                    <i class="fa fa-plus uwtps-iplus"></i>
+                                                </span>
+                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="uwtps--img" alt="">
+                                                <p class="uwtps--p">Create a Story</p>
+                                            </div>
+                                        </div>
+                                    </a>
+									@if ($story != null)
+										<div class="uwtps allStory">
+											<a href="" class="fs--uimg-a">
+												<span>
+													<img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="fs--uimg" alt="">
+												</span>
+											</a>
+											<div class="fs--mini-div">
+												<p class="fs-p">Haryormekun Hariyor</p>
+												<img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="" class="mini-img">
+											</div>
+										</div>
+										@else
+									@endif
+                                </div>
                                 <div class="central-meta new-pst post-div-header keep">
                                     <div class="header-title">
                                         <h3 class="head-title">Create Post

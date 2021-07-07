@@ -158,10 +158,10 @@ $(document).ready(function(){
                 $(".modal-backdrop").remove();
                 $(".previous-cover").addClass("keep");
                 var response_substr = response.user_cover_image.substr(0,10);
-                var res = '<figure class="timeline-figure previous-cover">';
-                        res += '<img src="/cover/'+response_substr+'.'+response.secrete_id+'.jpg" class="sub2" alt="'+response.name+'" title="'+response.name+'">';
+                var res = '<figure class="timeline-figure previous-cover col-lg-8">';
+                        res += '<img src="/cover/'+response_substr+'.'+response.secrete_id+'.jpg" class="sub" alt="'+response.name+'" title="'+response.name+'">';
                         res += '</figure>'; 
-                    $(".cover-image").append(res);
+                $(".append-img").append(res);
             }
         });
         });

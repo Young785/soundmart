@@ -17,6 +17,7 @@ class CreateMessagesTable extends Migration
             $table->bigIncrements('id');
             $table->Integer('comment_id')->nullable();
             $table->Integer('sender_id');
+            $table->Integer('story_id')->nullable();
             $table->Integer('receiver_id');
             $table->enum("msg_status", ['0','1'])->default("0");
             $table->string('message');

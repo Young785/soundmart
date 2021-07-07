@@ -1,99 +1,11 @@
 @include('/user/includes/header')
-    <div class="story-upload keep">
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <div class="col-lg-12">
-            <div class="col-lg-3 story-sd-nav">
-                <div class="story-sd-div">
-                    <span class="m-icon close-story" id="m-icon"><i class="ti-close"></i></span>
-                    <div class="">
-                        <a title="" href="/"><img src="/assets/images/logo.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="" style="margin-top: 30px;"> 
-                    <div style="height: 43px;">
-                        <p class="story--p">Your Story</p>
-                        <span class="story--span m-icon">
-                            <i class="fa fa-cog"></i>
-                        </span>
-                    </div>
-                    <div style="float: left">
-                        <figure class="story--fig">
-                            <img src="/assets/images/default.png" style="border-radius: 100%" alt="">
-                        </figure>
-                        <div class="story--p-div">Haryormekun Hariyor</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="st-header-div">
-                    <div class="" class="st-header-mdiv">
-                        <div class="">
-                            <span class="story--span m-icon user-img new--style">
-                                <i class="fa fa-caret-down"></i>
-                                <div class="user-setting dropDiv">
-                                    <div class="dropUser">
-                                        <a href="/profile/4722497077" title="">
-                                            <figure style="float: left">
-                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="req-image" style="height: 50px;" alt="Haryormekun Hariyo">
-                                            </figure>
-                                            <div class="drop--p">
-                                                <p class="dropName">Haryormekun Hariyor</p>
-                                            <p>View Profile</p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <hr style="margin-top: 0px !important">
-                                    <a href="/profile/4722497077/edit-profile" class="drop--a" title="">
-                                        <i class="ti-pencil-alt drop--i"></i>
-                                        <p class="drop-a-p">edit profile</p>
-                                        <span class="ryt-span">
-                                            <i class="fa fa-angle-double-right ryt-i"></i>
-                                        </span>
-                                    </a>
-                                    <a href="/accout-setting" title="" class="drop--a">
-                                        <i class="ti-settings drop--i"></i>
-                                        <p class="drop-a-p">account setting</p>
-                                        <span class="ryt-span">
-                                            <i class="fa fa-angle-double-right ryt-i"></i>
-                                        </span>
-                                    </a>
-                                    <a href="/logout" title="" class="drop--a">
-                                        <i class="ti-power-off drop--i"></i>
-                                        <p class="drop-a-p">log out</p>
-                                    </a>
-                                </div>
-                            </span>
-                            <span class="story--span m-icon new--style">
-                                <i class="fa fa-bell bell-i"></i>
-                                <span class="bell-span bell-span">12</span>
-                            </span>
-                            <span class="story--span m-icon new--style">
-                                <i class="ti-plus" style="font-size: 18px;"></i>
-                            </span>
-                        </div>
-                    </div> 
-                </div>
-                <div style="padding: 125px">
-                    <label class="fileContainer">
-                        <input type="file" id="story-image">
-                        <div class="st-fdiv">
-                            <div class="st-sdiv">
-                                <span class="st-span"><i class="ti-camera" style="color: #000;font-weight: bold;"></i></span><br>
-                                <span>Create a Photo Story</span>
-                            </div>
-                        </div>
-                    </label>
-                    <div class="st-fdiv2">
-                        <div class="st-sdiv">
-                            <span class="st-span"><i class="ti-text" style="color: #000;font-weight: bold;"></i></span><br>
-                            <span>Create a Photo Story</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('/user/create-group')
+    @include('/user/marketplace')
+    @include('/user/story-upload')
+    @include('/user/image_story')
     @include('/user/text-story')
+    @include('/user/all_story')
+    {{-- @include('/user/create-page') --}}
     <!--<div class="se-pre-con"></div>-->
     {{-- <div class="story-upload keep">
         <div class="col-lg-12">
@@ -199,40 +111,22 @@
 			</form>
 		</div>
 		@include('/user/includes/navbar')
-<style>
-.post {
-	width: 30%;
-	margin: 10px auto;
-	border: 1px solid #cbcbcb;
-	padding: 5px 10px 0px 10px;
-}
-.like, .unlike, .likes_count {
-	color: blue;
-}
-.hide {
-	display: none;
-}
-.fa-thumbs-up, .fa-thumbs-o-up {
-	transform: rotateY(-180deg);
-	font-size: 1.3em;
-}
-</style>
 	<section class="user-section">
 		<div class="gap2 gray-bg">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="row merged20" id="page-contents">
-							<div class="col-lg-3">
+							<div class="col-lg-3 right-side">
 								<aside class="sidebar static left"  id="sidebar-left">
                                     <div class="widget left-widget">
 										<a href="/profile/{{$user->secrete_id}}"  class="profile-a col-lg-12 col-md-12 col-sm-12">
                                             <div>
                                                 <figure class="col-lg-2 col-md-2 col-sm-3 req-figure">
-                                                        <img src="/assets/images/default.png" class="req-image" alt="">
+                                                        <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="req-image" alt="">
                                                 </figure>
                                                 <div class="col-lg-10 col-md-10 col-sm-10">
-                                                    <h3 class="profile-name">Kodaolu Idris</h3>
+                                                    <h3 class="profile-name">{{ $user->name }}</h3>
                                                 </div>
                                             </div>
                                         </a>
@@ -294,41 +188,7 @@
 								</aside>
 							</div><!-- sidebar -->
 							<div class="col-lg-6 content-sec">
-                                <div class="uwtps--div">
-                                    <a class="postStory">
-                                        <div class="uwtps">
-                                            <div class="uwtps--mini-div">
-                                                <span class="uwtps--span">
-                                                    <i class="fa fa-plus uwtps-iplus"></i>
-                                                </span>
-                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="uwtps--img" alt="">
-                                                <p class="uwtps--p">Create a Story</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <div class="uwtps">
-                                        <a href="" class="fs--uimg-a">
-                                            <span>
-                                                <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="fs--uimg" alt="">
-                                            </span>
-                                        </a>
-                                        <div class="fs--mini-div">
-                                            <p class="fs-p">Haryormekun Hariyor</p>
-
-                                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="" class="mini-img">
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <div class="m-uwtps-div">
-                                    <div class="m-uwtps">
-                                        <span class="m-uwtps-span">
-                                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="">
-                                            <span><i class="fa fa-plus m-plus"></i></span>
-                                            <span>Create a Story</span>
-                                        </span>
-                                    </div>
-                                </div>
+                                
                                 <div class="central-meta new-pst post-div-header keep">
                                     <div class="header-title">
                                         <h3 class="head-title">Create Post
@@ -342,7 +202,7 @@
                                             @if ($user->user_image == null)
                                                 <figure class="post-figure">
                                                     <a href="/profile/{{$user->secrete_id}}">
-                                                        <img src="/assets/images/default.png" alt="">
+                                                        <img src="/assets/images/default.png" class="req-image" alt="">
                                                     </a>
                                                 </figure>
                                             @else
@@ -366,9 +226,9 @@
 											<form method="POST" class="post-form" enctype="multipart/form-data">
 												@csrf												
                                                 <p class="emoji-picker-container">
-                                                    <textarea rows="2" class="post-textarea image_name" name="image_name" placeholder="What's on your mind, Hariyo?" data-emojiable="true" id="emojiinput"></textarea>
+                                                    <textarea rows="2" class="post-textarea image_name_a pad-emoji" name="image_name_a" placeholder="What's on your mind, {{ $user->name }}?" data-emojiable="true" id="emojiinput"></textarea>
                                                 </p>
-                                                <p><img id="result" class="result-image keep" /></p>
+                                                <p><img id="imageresult" class="result-image keep" /></p>
                                                 <div class="attachments">
 													<ul>
                                                         <p class="post-add">Add to Your Post</p>
@@ -402,6 +262,90 @@
 											</form>
 										</div>
 									</div>
+                                </div>
+								@if (session()->has("mssg"))
+                                    <p class="alert alert-success text-center">Thanks for Joining ChatBook, We hope you get the Satisfaction you desire! You can now login below.</p>
+                                @endif
+                                <div class="uwtps--div">
+                                    <div>
+                                        <a class="postStory">
+                                            <div class="uwtps">
+                                                <div class="uwtps--mini-div">
+                                                    <span class="uwtps--span">
+                                                        <i class="fa fa-plus uwtps-iplus"></i>
+                                                    </span>
+                                                    <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="uwtps--img" alt="">
+                                                    <p class="uwtps--p">Create a Story</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div id="postStory"></div>
+                                        {{-- @php
+                                            $count_story = App\Story::where("user_id", $AuthStory->id)->count();
+                                        @endphp --}}
+                                        @if ($AuthStory != null)
+                                            <div class="uwtps allStory" data-id="{{ $AuthStory->story_id }}">
+                                                <a href="" class="fs--uimg-a">
+                                                    <span>
+                                                        <img src="{{ asset("users") }}/{{ substr($AuthStory->user_image, 0, 10) }}.{{$AuthStory->secrete_id}}.jpg" class="fs--uimg" alt="">
+                                                    </span> 
+                                                </a>
+                                                <div class="fs--mini-div">
+                                                    @if (count([$AuthStory->name]) < 15)
+                                                        <p class="fs-p">{{ $AuthStory->name }}</p>
+                                                        @else
+                                                        <p class="fs-p">{{ Str::substr($AuthStory->name, 0, 16) }}</p>
+                                                    @endif
+                                                    <div alt="" class="mini-img {{ $AuthStory->story_bg }}">
+                                                        <div class="story-texts">{{ $AuthStory->story_name }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                        
+                                        @endif
+
+                                        @if ($story != null)
+                                            @foreach ($story as $item)
+                                                @if ($item->id != $user->id)
+                                                    <div class="uwtps allStory" data-id="{{ $item->story_id }}">
+                                                        <a href="" class="fs--uimg-a">
+                                                            <span>
+                                                                @if ($item->user_image == null)
+                                                                    <img src="/assets/images/default.png" class="fs--uimg" alt="">
+                                                                    @else
+                                                                        <img src="{{ asset("users") }}/{{ substr($item->user_image, 0, 10) }}.{{$item->secrete_id}}.jpg" class="fs--uimg" alt="">
+                                                                @endif
+                                                            </span> 
+                                                        </a>
+                                                        <div class="fs--mini-div">
+                                                            @if (count([$item->name]) < 15)
+                                                                <p class="fs-p">{{ $item->name }}</p>
+                                                                @else
+                                                                <p class="fs-p">{{ Str::substr($item->name, 0, 16) }}</p>
+                                                            @endif
+                                                            <div alt="" class="mini-img {{ $item->story_bg }}">
+                                                                <div class="story-texts">{{ $item->story_name }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                            @endif
+
+                                            @endforeach
+                                        @else
+                                        
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="m-uwtps-div">
+                                    <div class="m-uwtps">
+                                        <span class="m-uwtps-span">
+                                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" alt="">
+                                            <span><i class="fa fa-plus m-plus"></i></span>
+                                            <span>Create a Story</span>
+                                        </span>
+                                    </div>
                                 </div>
 								@if (session()->has("msg"))
 								<div role="alert" class="alert alert-success alert-dismissible" id="remove">
@@ -497,8 +441,112 @@
                                     </div>
 									</div>
                                 </div><!-- add post new box -->
+                                {{-- @if (count($story) != null)
+                                    @foreach($story as $key => $value)
+                                        <div class="central-meta item" id="post-{{ $value->story_id }}">
+                                            <div class="user-post">
+                                                <div class="friend-info">
+                                                    @if ($value->user_image == null)
+                                                        <figure>
+                                                            <a href="/profile/{{$value->secrete_id}}">
+                                                                <img src="/assets/images/default.png" alt="{{ $value->name }}" title="{{ $value->name }}">
+                                                            </a>
+                                                        </figure>
+                                                    @else
+                                                        <figure>
+                                                            <a href="/profile/{{$value->secrete_id}}" title="">
+                                                                <img src="{{ asset("users") }}/{{ substr($value->user_image, 0, 10) }}.{{$value->secrete_id}}.jpg"  class="req-image" style="height: 50px;"  title="{{ $value->name }}">
+                                                            </a>
+                                                        </figure>
+                                                    @endif
+                                                    @php
+                                                        $likes = App\Like::where("post_id", $value->post_id)->where("user_id", Auth::user()->id)->get();
+                                                        $dates = App\Story::where("story_id", $value->story_id)->get();
+                                                        $count_likes = App\Like::where("post_id", $value->post_id)->count();
+                                                        
+                                                        // $likes = App\Like::where("story_id", $item->story_id)->where("user_id", Auth::user()->id)->get();
+                                                        // dd($likes);
+                                                    @endphp
+                                                    <div class="friend-name">
+                                                        <ins><a href="/profile/{{$value->secrete_id}}" title="">{{ $value->name }}</a></ins>
+                                                        @foreach ($dates as $date)
+                                                        <span>published: {{ $date->updated_at->diffForHumans() }}</span>
+                                                            
+                                                        @endforeach
+                                                    </div>
+                                                    <div>
+                                                        kkk
+                                                    </div>
+                                                    <div class="pplikes">
+                                                        <a href="" class="dt-comments">
+                                                            <span>
+                                                                <i class="ti-heart" style="#4285f4">😂</i>
+                                                                    You, Hariyo, Dupe Adedunjoye and 73K others
+                                                                {{-- ❤️😱😪😡 --}}
+                                                            {{-- </span>
+                                                        </a>
+                                                        <a href="" class="comment-link">
+                                                            11 Comments
+                                                        </a>
+                                                    </div>
+                                                    <div class="we-video-info uf_div">
+                                                        <ul style="padding-left: 40px;">
+                                                            <span>
+                                                                <span id="dislike_{{ $value->story_id }}"></span>
+                                                                <span id="like_{{ $value->story_id }}"></span>
+
+                                                                @if (count($likes) != null)
+                                                                    <!-- user already likes post -->
+                                                                    <li class="dislike-li ">
+                                                                        <span class="dislike"  data-id="{{ $value->story_id }}" title="dislike">
+                                                                            <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                                            <span class="dislike-span">Like</span>
+                                                                        </span>
+
+                                                                        <span class="like hide" data-id="{{ $value->story_id }}" title="like">
+                                                                            <i class="fa fa-thumbs-up like-thumb"></i>
+                                                                            <span class="like-span">Like</span>
+                                                                        </span>
+                                                                    </li>
+                                                                @else
+                                                                        <!-- user has not yet liked post -->
+                                                                        <li class="like-li">
+                                                                            <span class="like"  data-id="{{ $value->story_id }}" title="like">
+                                                                                <i class="fa fa-thumbs-up like-thumb"></i>
+                                                                                <span class="like-span">Like</span>
+                                                                            </span>
+
+                                                                            <span class="dislike hide" data-id="{{ $value->story_id }}" title="dislike">
+                                                                                <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                                                <span class="dislike-span">Like</span>
+                                                                            </span>
+                                                                        </li> 
+                                                                @endif
+                                                            </span>
+                                                            <li>
+                                                                <span class="comment" id="com-tooltip" data-toggle="tooltip" title="Comments">
+                                                                    <i class="ti-comment comment-i"></i>
+                                                                    <span class="comment-span">Comments</span>
+                                                                </span>
+                                                            </li>
+                                                            <li class="social-media">
+                                                                <div class="menu share-menu share-div">
+                                                                <div class="btn trigger sharepost"><i class="fa fa-share"></i></div>
+                                                                <span class="share-span">Share</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+
+                                @endif --}}
+                                <div id="new-post"></div>
                                     @if (count($posts) != null)
-                                        <div class="more" id="new-post">
+                                        
+                                        <div class="more">
                                             @foreach ($posts as $item)
                                                 <div class="central-meta item" id="post-{{ $item->post_id }}">
                                                     <div class="user-post">
@@ -518,6 +566,7 @@
                                                             @endif
                                                             @php
                                                                 $likes = App\Like::where("post_id", $item->post_id)->where("user_id", Auth::user()->id)->get();
+                                                                // dd($likes);
                                                                 $dates = App\Post::where("post_id", $item->post_id)->get();
                                                                 $count_likes = App\Like::where("post_id", $item->post_id)->count();
                                                                 
@@ -530,7 +579,7 @@
                                                                 <span>published: {{ $date->updated_at->diffForHumans() }}</span>
                                                                     
                                                                 @endforeach
-                                                             
+                                                                <span class="fn-span"><i class="fa fa-ellipsis-h"></i></span>
                                                           
                                                    {{-- <span class="likes_count">{{ count($likes) }} likes</span> --}}
                                                             </div>  
@@ -539,15 +588,15 @@
                                                                     {{ $item->image_name }}
                                                                 </p>
                                                             </div>
-                                                            <div class="post-meta" >
+                                                            <div class="">
                                                                 @php
                                                                     $image_explode = explode("/", $item->image);
                                                                     $count = count($image_explode);
                                                                 @endphp
                                                                     @foreach ($image_explode as $value)
                                                                         @if ($count == '')
-                                                                        @elseif ($count == 1)
-                                                                            <img src="{{ asset("posts") }}/{{ $value }}"  alt="">
+                                                                        @elseif ($count == 1 && $value != null) 
+                                                                            <img src="{{ asset("posts") }}/{{ $value }}" class="one-post"  alt="">
                                                                         @elseif($count == 2)
                                                                             <img src="{{ asset("posts") }}/{{ $value }}" class="two-post"  alt="">
                                                                         @endif
@@ -556,7 +605,7 @@
                                                                     @if ($count == 3)
                                                                         <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
                                                                         <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="three-post"  alt="">
-                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="three-post"  alt="">
+                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="three-post" alt="">
                                                                     @endif
                                                                     @if ($count == 4)
                                                                         <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-three-post"  alt="">
@@ -566,101 +615,69 @@
                                                                     @endif
 
                                                                     @if ($count == 5 || $count == 6)
-                                                                        {{-- {{ $count }} --}}
-                                                                            <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-five-post"  alt="">
+                                                                        <div style="margin-bottom: 2px;">
+                                                                            <img src="{{ asset("posts") }}/{{ $image_explode[0] }}" class="one-five-post"alt="">
                                                                             <img src="{{ asset("posts") }}/{{ $image_explode[1] }}" class="one-five-post"  alt="">
-                                                                            <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="five-post"  alt="">
-                                                                            <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
-                                                                            <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
+                                                                        </div>
+                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[2] }}" class="five-post" style="margin-left: -1px" alt="">
+                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[3] }}" class="five-post"  alt="">
+                                                                        <img src="{{ asset("posts") }}/{{ $image_explode[4] }}" class="five-post"  alt="">
                                                                     @endif
                                                                 <div class="pplikes">
-                                                                    <a href="" style="color: #65676b;">
+                                                                    <a href="" class="dt-comments">
                                                                         <span>
                                                                             <i class="ti-heart" style="#4285f4">😂</i>
-                                                                             You, Hariyo, Dupe Adedunjoyef and 73K others
+                                                                             You, Hariyo, Dupe Adedunjoye and 73K others
                                                                             {{-- ❤️😱😪😡 --}}
                                                                         </span>
                                                                     </a>
                                                                     <a href="" class="comment-link">
-                                                                        <span>
-                                                                            <i class="ti-heart" style="#4285f4">😂</i>
-                                                                             11 Comments
-                                                                            
-                                                                        </span>
+                                                                        11 Comments
                                                                     </a>
                                                                 </div>
                                                                 <div class="we-video-info uf_div">
-                                                                    <ul>
+                                                                    <ul style="padding-left: 40px;">
                                                                         <span>
                                                                             @if (count($likes) != null)
                                                                                 <!-- user already likes post -->
-                                                                                <li class="dislike-li ">
-                                                                                    <span class="dislike"  data-id="{{ $item->post_id }}" title="dislike">
-                                                                                        <i class="ti-heart-broken"></i>
-                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                <li class="dislike-li" data-id="{{ $item->post_id }}">
+                                                                                    <span class="dislike" title="dislike">
+                                                                                        <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                                                        <span class="dislike-span">Like</span>
                                                                                     </span>
                                                                                 </li>
-                                                                                <li class="like-li">
-                                                                                    <span class="like hide" data-id="{{ $item->post_id }}" title="like">
-                                                                                        <i class="ti-heart"></i>
-                                                                                        <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                <li class="like-li hide" data-id="{{ $item->post_id }}">
+                                                                                    <span class="like" data-id="{{ $item->post_id }}" title="like">
+                                                                                        <i class="fa fa-thumbs-up like-thumb"></i>
+                                                                                        <span class="like-span">Like</span>
                                                                                     </span>
                                                                                 </li>
                                                                                 @else
                                                                                     <!-- user has not yet liked post -->
-                                                                                    <li class="like-li">
-                                                                                        <span class="like"  data-id="{{ $item->post_id }}" title="like">
-                                                                                            <i class="ti-heart"></i>
-                                                                                                <ins class="likes_count">{{ $count_likes }}</ins>
-                                                                                            </span>
-                                                                                        </li>   
-
-                                                                                    <li class="dislike-li hide">
-                                                                                        <span class="dislike hide" data-id="{{ $item->post_id }}" title="dislike">
-                                                                                            <i class="ti-heart-broken"></i>
-                                                                                            <ins class="likes_count">{{ $count_likes }}</ins>
+                                                                                    <li class="like-li" data-id="{{ $item->post_id }}">
+                                                                                        <span class="like" title="like">
+                                                                                            <i class="fa fa-thumbs-up like-thumb"></i>
+                                                                                            <span class="like-span">Like</span>
+                                                                                        </span>
+                                                                                    </li> 
+                                                                                    <li class="dislike-li hide" data-id="{{ $item->post_id }}">
+                                                                                        <span class="dislike" data-id="{{ $item->post_id }}" title="dislike">
+                                                                                            <i class="fa fa-thumbs-up dislike-thumb"></i>
+                                                                                            <span class="dislike-span">Like</span>
                                                                                         </span>
                                                                                     </li> 
                                                                             @endif
                                                                         </span>
                                                                         <li>
-                                                                            <span class="comment" data-toggle="tooltip" title="Comments">
-                                                                                <i class="fa fa-comments-o"></i>
-                                                                                <ins>52</ins>
+                                                                            <span class="comment" id="com-tooltip" data-toggle="tooltip" title="Comments">
+                                                                                <i class="ti-comment comment-i"></i>
+                                                                                <span class="comment-span">Comments</span>
                                                                             </span>
                                                                         </li>
                                                                         <li class="social-media">
-                                                                            <div class="menu share-menu">
-                                                                            <div class="btn trigger"><i class="fa fa-share-alt"></i></div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-html5"></i></a></div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-facebook"></i></a></div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-google-plus"></i></a></div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-twitter"></i></a></div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-css3"></i></a></div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-instagram"></i></a>
-                                                                                </div>
-                                                                            </div>
-                                                                                <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-dribbble"></i></a>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="rotater">
-                                                                                <div class="btn btn-icon"><a href="#" title=""><i class="fa fa-pinterest"></i></a>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            </div>
+                                                                            <div class="menu share-menu share-div">
+                                                                            <div class="btn trigger sharepost"><i class="fa fa-share"></i></div>
+                                                                            <span class="share-span">Share</span>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -683,7 +700,7 @@
                                                                         # code...
                                                                     }
                                                                @endphp
-                                                                @if ($tim == null)
+                                                                @if ($tim ?? '' == null )
                                                                     @else 
                                                                     <li>
                                                                         @if ($comment->user_image == null)
@@ -764,7 +781,7 @@
                                     @endforeach
                                     </div>
                                     @else
-                                    <div class="widget">
+                                    <div class="widget wlc-div">
                                         <h2 class="text-center"><b>Welcome to Chatbook!</b> <i style="text-decoration: underline">{{Auth::user()->name}}</i></h2>
                                         <p class="text-center">You can post, like,comment,add friends, see family members and more</p>
                                     </div>
@@ -848,7 +865,20 @@
                                         </div> 
                                         
                                     @endif
-                                    
+                                    <a href="">
+                                        <div class="widget" style="margin-bottom: 20px;">
+                                            <div class="contact">
+                                                <h3 class="friend-request">Birthdays</h3>
+                                            </div>
+                                            <div style="padding-top: 15px;">
+                                                <i class="fa fa-birthday-cake ckae-i"></i>
+                                                <span>
+                                                    <b> Haryormekun Hariyo</b>'s birthday is today
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+
                                     <div class="widget" id="contacts-widget">
                                         <div class="contact">
                                             <h3 class="friend-request">Contacts</h3>
@@ -861,7 +891,7 @@
                                         <input type="text" placeholder="Search friends" class="search-con form-control keep" id="search-me" name="search-me">
                                         <div class="online-friends-search"></div>
                                         <div class="online-friends-div">
-                                            @foreach ($contacts as $contact)
+                                            {{-- @foreach ($contacts as $contact) --}}
                                                 <div class="online-friends col-lg-12 col-md-12 col-sm-12 chatbox"  data-touserid="{{ $contact->id }}" data-tousername="{{ $contact->name }}" data-id="{{ $contact->id }}">
                                                         @if ($contact->user_image == null)
                                                             <figure class="col-lg-2 col-md-2 col-sm-3 req-figure">
@@ -882,7 +912,7 @@
                                                         <h3 class="online-h3">{{ $contact->name }}</h3>
                                                     </div>
                                                 </div>
-                                            @endforeach
+                                            {{-- @endforeach --}}
                                         </div>
                                     </div>
                                     <script>
@@ -992,77 +1022,101 @@
 		</div>
     </section>
 <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
+<script>
+      $(document).ready(function(){
+            $('.like-li').on('click', function(){
+                var post_id = $(this).data('id');
+                $post = $(this);
+                console.log(this);
+                
+                $.ajax({
+                    url: '/',
+                    type: 'post',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {
+                        'liked': 1,
+                        'post_id': post_id
+                    },
+                    success: function(response){
+                        // $post.parent().find('ins.likes_count').text(response);
+                        // $post.addClass('hide');
+                        $(this).addClass('hide');
+                        // $('.dislike-li').removeClass('hide');
+                        $(this).siblings().removeClass('hide');
+                        // var dislike_app = '<li class="dislike-li" data-id="'+post_id+'">';
+                        //     dislike_app+=     '<span class="dislike" title="dislike">';
+                        //     dislike_app+=          '<i class="fa fa-thumbs-up dislike-thumb"></i>';
+                        // dislike_app+=                '<span class="dislike-span">Like</span>';
+                        // dislike_app+=            '</span>';
+                        // dislike_app+=            '<span class="like hide" data-id="'+post_id+'" title="like">';
+                        // dislike_app+=                '<i class="fa fa-thumbs-up like-thumb"></i>';
+                        // dislike_app+=                '<span class="like-span">Like</span>';
+                        // dislike_app+=            '</span>';
+                        // dislike_app+=        '</li>';
+                        // $("#dislike_"+post_id).html(dislike_app);
+                    }
+                });
+            });
 
+        $('.dislike-li').on('click', function(){
+			var post_id = $(this).data('id');
+		    $post = $(this);
+            console.log(this);
+			$.ajax({
+				url: '/',   
+				type: 'post',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+				data: {
+					'disliked': 1,
+					'post_id': post_id
+				},
+				success: function(response){
+					// $post.parent().find('ins.likes_count').text(response);
+					// $post.addClass('hide');
+                    $(this).addClass('hide');
+                    // $('.like-li').removeClass('hide');
+                    $post.siblings().removeClass('hide');
+                    // var like_app = '<li class="like-li" data-id="'+post_id+'">';
+                    //     like_app+=     '<span class="like" title="like">';
+                    //     like_app+=          '<i class="fa fa-thumbs-up like-thumb"></i>';
+                    // like_app+=                '<span class="dislike-span">Like</span>';
+                    // like_app+=            '</span>';
+                    // like_app+=            '<span class="dislike hide" data-id="'+post_id+'" title="dislike">';
+                    // like_app+=                '<i class="fa fa-thumbs-up dislike-thumb"></i>';
+                    // like_app+=                '<span class="dislike-span">Like</span>';
+                    // like_app+=            '</span>';
+                    // like_app+=        '</li>';
+					
+                    // $("#like_"+post_id).html(like_app);
+				}
+			});
+        });
+    });
+</script>
 <script src="/assets/js/my.js"></script>
 <script src="/assets/js/function.js" type="text/javascript"></script>
 
 <script>
+    var loadCoverFile = function(event) {
+        var image = document.getElementById('imageresult');
+        $(".result-image").removeClass("keep");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
     $(document).ready(function(){
-        $('.postStory').on('click', function(){
-            $('.searcher').addClass('keep');
-            $('.user-section').addClass('keep');
-            $('.story-upload').removeClass('keep');
-        });
-        $('.close-story').on('click', function(){
-            $('.story-upload').addClass('keep');
-            $('.searcher').removeClass('keep');
-            $('.user-section').removeClass('keep');
-        });
-        $('.st-fdiv2').on('click', function(){
-            $('.story-upload').addClass('keep');
-            $('.story-upload1').removeClass('keep');
-        });
-        $('.close-tudiv').on('click', function(){
-            $(".postoverlay").fadeIn(500);
-            $('.story-div-header').removeClass('keep');
-            $('.story-div-header').addClass('show');
-        });
-        $('.post-span').on('click', function(){
-            $(".postoverlay").fadeOut(500);
-            $('.story-div-header').removeClass('show');
-            $('.story-div-header').addClass('keep');
-        });
-        $('.cancel-a').on('click', function(){
-            $(".postoverlay").fadeOut(500);
-            $('.story-div-header').removeClass('show');
-            $('.story-div-header').addClass('keep');
-        });
-        $('.postoverlay').not('.close-tudiv').click(function() {
-            $(".postoverlay").fadeOut(500);
-            $('.story-div-header').removeClass('show');
-            $('.story-div-header').addClass('keep');
-        });
-
-        $('.cancel-button').on('click', function(){
-            $('.story-upload').addClass('keep');
-            $('.story-div-header').addClass('keep');
-            $('.story-upload').removeClass('keep');
-        });
-
-        $('#text-input').on('keyup', function(){
-            var x = document.getElementById('text-input').value;
-            document.getElementById("sup-tp").innerHTML = x;
-        }); 
-        $('.selectColor').on('click', function(){
-            var result = sessionStorage.getItem("addpClass");
-
-            if (result != null) {
-                $('#sup-tdiv').removeClass(result);
-                sessionStorage.removeItem("addpClass");
-            }else{
-            }
-            var dataId = $(this).data('id');
-            var idSplit = dataId.match(/\d/g);
-            var id = idSplit.join('');
-            var add = '.add'+dataId;
-            var add1 = 'addp'+id;
-
-            sessionStorage.setItem("addpClass", add1);
-
-            $('.textRemoval').removeClass('text-active');
-            $('#sup-tdiv').addClass('addp'+id);
-            $(add).addClass('text-active');
-        });
+        
+$('.create-pages').on('click', function() {
+    $('.createDiv').toggleClass("active");
+});
+$('.create-sth').on('click', function() {
+    $('.createMain').addClass("active");
+}); 
     });
+
+</script>
+<script>
+    
+$('.new-h').on('click', function() {
+    $('.userDiv').toggleClass("active");
+}); 
 </script>
 @include('/user/includes/footer')

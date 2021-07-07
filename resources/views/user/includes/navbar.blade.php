@@ -213,18 +213,21 @@
     </div>
     <div class="user-img nav-img">
         @if ($user->user_image == null)
-            <img src="/assets/images/default.png" class="profile-image" alt="{{ $user->name }}">
+            <img src="/assets/images/default.png" class="non-profile-image" alt="{{ $user->name }}">
             <span class="prf-name">{{ Str::substr($user->name, 0, 6)}}</span>
         @else
             <img src="{{ asset("users") }}/{{ substr($user->user_image, 0, 10) }}.{{$user->secrete_id}}.jpg" class="profile-image nav-img" alt="{{ $user->name }}">
             <span class="prf-name">{{ Str::substr($user->name, 0, 6)}}</span>
         @endif  
     </div>
-    <ul class="setting-area">
+    <ul class="setting-area nav-sa">
         <li class="m-icon search-li hide"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-search"></i></a></li>
         <li class="m-icon homeli keep"><a href="#" class="search-click icon-a" title="Search" data-ripple=""><i class="fa fa-home"></i></a></li>
         <li class="m-icon more-option"><span class="fa fa-users main-menu" data-ripple=""></span></li>
         {{-- <li class="m-icon home-display"><a href="/newsfeed" type="button" title="Home" class="icon-a " onclick="home()" data-ripple=""><i class="fa fa-home"></i></a></li> --}}
+        <li class="m-icon create-sth">
+            <i class="ti-plus" id="ti-plus"></i>
+        </li>
         <li class="m-icon">
             <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-comment"></i><span class="msg-count">12</span></a>
             <div class="dropdowns">
@@ -245,7 +248,7 @@
                 <a href="messages.html" title="" class="more-mesg">view more</a>
             </div>
         </li>
-        <li class="m-icon">
+        <li class="m-icon h-tv">
             <a href="#" title="Messages" data-ripple="" class="icon-a"><i class="fa fa-tv"></i><span class="msg-count">12</span></a>
             <div class="dropdowns">
                 <span>5 New Messages</span>
@@ -317,8 +320,118 @@
                 <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
             </div>
         </li>
+
+        <li class="story--span m-icon user-imga new--style new--style1 new-h">
+            <i class="fa fa-caret-down"></i>
+            <div class="user-setting dropDiv userDiv">
+                <div class="dropUser">
+                    <a href="/profile/4722497077" title="">
+                        <figure style="float: left">
+                            <img src="http://127.0.0.1:8000/users/1615144360.4722497077.jpg" class="req-image" style="height: 50px;" alt="Haryormekun Hariyo">
+                        </figure>
+                        <div class="drop--p">
+                            <p class="dropName">Haryormekun Hariyor</p>
+                        <p>View Profile</p>
+                        </div>
+                    </a>
+                </div>
+                <hr style="margin-top: 0px !important">
+                <a href="/profile/4722497077/edit-profile" class="drop--a" title="">
+                    <i class="ti-pencil-alt drop--i"></i>
+                    <p class="drop-a-p">edit profile</p>
+                    <span class="ryt-span">
+                        <i class="fa fa-angle-double-right ryt-i"></i>
+                    </span>
+                </a>
+                <a href="/accout-setting" title="" class="drop--a">
+                    <i class="ti-settings drop--i"></i>
+                    <p class="drop-a-p">account setting</p>
+                    <span class="ryt-span">
+                        <i class="fa fa-angle-double-right ryt-i"></i>
+                    </span>
+                </a>
+                <a href="/logout" title="" class="drop--a">
+                    <i class="ti-power-off drop--i"></i>
+                    <p class="drop-a-p">log out</p>
+                </a>
+            </div>
+            
+            <div class="cs-main createMain">
+                <div class="dropUser" style="margin-bottom: -15px;">
+                    <p class="dropName">Create Something</p>
+                </div>
+                <div>
+                    <div class="create-div">
+                        <span class="m-icon cd-span">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                        <div id="create-div">Post<br>
+                            <span id="create-span">Share a post on News Feed</span>
+                        </div>
+                        
+                    </div>
+                    <div class="create-div">
+                        <span class="m-icon">
+                            <i class="fa fa-book"></i>
+                        </span>
+                        <div id="create-div">Story<br>
+                            <span id="create-span">Share a photo, video or write a text.</span>
+                        </div>
+                        
+                    </div>
+                    <div class="create-div">
+                        <span class="m-icon">
+                            <i class="fa fa-video"></i>
+                        </span>
+                        <div id="create-div">Room<br>
+                            <span id="create-span">Video chat with anyone on Chatbook.</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                <hr style="margin-top: 0px !important">
+                <div>
+                    <div class="create-div">
+                        <span class="m-icon">
+                            <i class="fa fa-flag"></i>
+                        </span>
+                        <div id="create-div">Page<br>
+                            <span id="create-span">Meet and share with patronizers or viewer.</span>
+                        </div>
+                        
+                    </div>
+                    <div class="create-div">
+                        <span class="m-icon">
+                            <i class="fa fa-users"></i>
+                        </span>
+                        <div id="create-div">Group<br>
+                            <span id="create-span">Meet with people who share your interest</span>
+                        </div>
+                        
+                    </div>
+                    <div class="create-div">
+                        <span class="m-icon">
+                            <i class="fa fa-map"></i>
+                        </span>
+                        <div id="create-div">Event<br>
+                            <span id="create-span">Meet to invite people to your Events</span>
+                        </div>
+                        
+                    </div>
+                    <div class="create-div" style="padding-bottom: 10px;">
+                        <span class="m-icon">
+                            <i class="fa fa-shopping-bag"></i>
+                        </span>
+                        <div id="create-div" style="padding-left: 50px;">MarketPlace<br>
+                            <span id="create-span">Sell Market to people within your country or outside World.</span>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </li>
     </ul>
-  
+</div></div>
 </div>
 </div><!-- topbar -->
 
@@ -405,3 +518,9 @@
 </div>
 </div>
 <!-- right sidebar user chat -->
+<script>
+    $('.user-imga').on('click', function() {
+        alert('I will make it by God"s" Grace and my friends, family, enemies will surely bow before me! Amen');
+    $('.dropDiv').toggleClass("active");
+});
+</script>

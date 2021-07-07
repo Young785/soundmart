@@ -16,6 +16,8 @@
 <script src="/assets/js/my.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/assets/js/function_3.js"></script>
+<script src="/assets/js/function_4.js"></script>
 
 <script src="/assets/js/jquery.min.js" type="text/javascript"></script>
 <script src="/assets/js/jquery-ui.js" type="text/javascript"></script>
