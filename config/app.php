@@ -164,7 +164,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
         Overtrue\LaravelFollow\FollowServiceProvider::class,
-
+        Unicodeveloper\Paystack\PaystackServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -230,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Location' => 'Stevebauman\Location\Facades\Location',
         'Image' => Intervention\Image\Facades\Image::class,
+        'Paystack' => Unicodeveloper\Paystack\Facades\Paystack::class,
 
     ],  
 
